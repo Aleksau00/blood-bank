@@ -1,4 +1,5 @@
 package com.bank.Blood.Bank.model;
+import com.bank.Blood.Bank.enums.Gender;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,6 +8,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+
+import static javax.persistence.DiscriminatorType.STRING;
+import static javax.persistence.InheritanceType.SINGLE_TABLE;
 
 /*
  * @Entity anotacija naznacava da je klasa perzistentni entitet. Klasa ima konstruktor bez parametara.
@@ -32,11 +36,14 @@ import javax.persistence.*;
  * - Unidirekcione/bidirekcione @ManyToMany sa List kolekcijom su prilično neefikasne
  */
 @Entity
+@Inheritance(strategy=SINGLE_TABLE)
+// ovom anotacijom se navodi diskriminatorska kolona
+@DiscriminatorColumn(name="role", discriminatorType=STRING)
 @Getter
 @Setter
 @NoArgsConstructor
 
-public class AppUser {
+public abstract class AppUser {
 
     /*
      * Svaki entitet ima svoj kljuc (surogat kljuc), dok se strategija generisanja
@@ -72,6 +79,18 @@ public class AppUser {
 
     @Column(name = "lastName", nullable = false)
     private String lastName;
+
+    @Column
+    private String phoneNumber;
+
+    @Column
+    private String umcn;
+
+    @Column
+    private Gender gender;
+
+    @Column
+    private String occupation;
 
     /*
      * Primer bidirekcione veze 1:n. Student sadrzi kolekciju ispita, ispit pripada
