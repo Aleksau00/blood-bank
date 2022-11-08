@@ -98,7 +98,7 @@ public class AppUser {
      * ispita u objektu student.
      */
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "address_id")
+    @JoinColumn(name = "address_id", nullable = true)
     private Address address;
 
     public AppUser(Integer id, String username, String password, String email, String firstName, String lastName, Address address) {
