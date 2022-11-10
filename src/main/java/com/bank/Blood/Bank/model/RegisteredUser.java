@@ -44,6 +44,10 @@ public class RegisteredUser extends AppUser {
     @OneToMany(mappedBy = "registeredUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Appointment> appointmentList = new HashSet<>();
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "poll_id", nullable = true)
+    private Poll poll;
+
     public void addFeedback(Feedback feedback) {
         feedbackList.add(feedback);
         feedback.setRegisteredUser(this);

@@ -90,7 +90,7 @@ public abstract class AppUser {
     private Gender gender;
 
     @Column
-    private String occupation;
+    private String institution;
 
     /*
      * Primer bidirekcione veze 1:n. Student sadrzi kolekciju ispita, ispit pripada
