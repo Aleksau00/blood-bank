@@ -42,7 +42,7 @@ public class Center {
 
     @ManyToMany( cascade = {CascadeType.ALL})
     @JoinTable(name = "center_blood", joinColumns = @JoinColumn(name = "center_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "blood_id", referencedColumnName = "id"))
-    private Set<Center> centers = new HashSet<Center>();
+    private Set<Center> bloodSet = new HashSet<Center>();
 
     @OneToMany(mappedBy = "center", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Equipment> equipmentList = new HashSet<>();
