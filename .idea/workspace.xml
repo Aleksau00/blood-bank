@@ -4,7 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8db099c5-a808-44c7-83a5-238d8e3c8bcd" name="Changes" comment="" />
+    <list default="true" id="8db099c5-a808-44c7-83a5-238d8e3c8bcd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/BloodBankApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/config/AppConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/controller/AppUserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/dto/AppUserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/enums/BloodType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/enums/Gender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Address.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Admin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/AppUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Appointment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Blood.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Center.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Complaint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Equipment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Feedback.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/LoyaltyCard.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Poll.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/RegisteredUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/model/Staff.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/repository/AppUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/java/com/bank/Blood/Bank/service/AppUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/main/resources/data-postgres.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-BE/src/test/java/com/bank/Blood/Bank/BloodBankApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BloodBank-FE/a.txt" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,22 +85,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Milina/Desktop/ISA/ISA-projekat&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;099f83eb0b5a66a9ef9ba26a26f636b7&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Milina/Desktop/ISA/ISA-projekat/BloodBank-BE",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "099f83eb0b5a66a9ef9ba26a26f636b7"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
-  <component name="RunManager" selected="Application.BloodBankApplication">
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.BloodBankApplication (1)">
     <configuration name="BloodBankApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.bank.Blood.Bank.BloodBankApplication" />
       <module name="ISA-projekat" />
@@ -77,6 +110,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BloodBankApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="BloodBank-BE" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.bank.Blood.Bank.BloodBankApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -104,7 +144,8 @@
       <updated>1667904521208</updated>
       <workItem from="1667916107938" duration="5461000" />
       <workItem from="1667923932076" duration="602000" />
-      <workItem from="1668094987739" duration="8121000" />
+      <workItem from="1668094987739" duration="7715000" />
+      <workItem from="1668106830367" duration="77000" />
     </task>
     <servers />
   </component>
