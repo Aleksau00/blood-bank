@@ -44,13 +44,13 @@ public class Center {
     @JoinTable(name = "center_blood", joinColumns = @JoinColumn(name = "center_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "blood_id", referencedColumnName = "id"))
     private Set<Center> bloodSet = new HashSet<Center>();
 
-    @OneToMany(mappedBy = "center", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "center", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Equipment> equipmentList = new HashSet<>();
 
-    @OneToMany(mappedBy = "center", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "center", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Staff> staffList = new HashSet<>();
 
-    @OneToMany(mappedBy = "center", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "center", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Appointment> appointmentList = new HashSet<>();
 
     public void addStaff(Staff staff) {

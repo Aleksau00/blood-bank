@@ -77,7 +77,7 @@ public class Address {
      * ce obezbediti da se ispiti izbrisu iz baze kada se izbrisu iz kolekcije
      * ispita u objektu student.
      */
-    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "address", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<AppUser> appUsers = new HashSet<AppUser>();
 
     public Address() {
