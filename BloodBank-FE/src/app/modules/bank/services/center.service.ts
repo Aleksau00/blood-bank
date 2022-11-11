@@ -26,5 +26,5 @@ export class CenterService {
   getCentersNameAsc(): Observable<Center[]> {
     return this.http.get<Center[]>(this.apiHost + 'api/centers/allNameAsc', {headers: this.headers});
   }
-  
+
 }
