@@ -1,1 +1,38 @@
-<p>home works!</p>
+<div class="content">
+  <div class="header-wrapper">
+    <mat-form-field>
+      <mat-label>Sort blood centers by:</mat-label>
+      <mat-select [ngModel]="method" (ngModelChange)="sortCenters($event)">
+        <mat-option *ngFor="let met of methods" [value]="met.value">
+          {{met.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="wrapper">
+    <mat-card class="example-card" *ngFor="let center of centers">
+      <mat-card-header>
+        <mat-card-title>{{center.name}}</mat-card-title>
+        <p><mat-card-subtitle>{{center.address.city}}, {{center.address.country}} <br/> <mat-card-subtitle>{{center.address.street}}, {{center.address.number}}, {{center.address.postalCode}}</mat-card-subtitle></mat-card-subtitle></p>
+
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{center.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="bottom-card">
+          <p>{{center.averageGrade}}<mat-icon>star</mat-icon></p>
+          <p>{{center.startTime.substring(0, 5)}}h - {{center.endTime.substring(0, 5)}}h</p>
+        </div>
+        <button mat-mini-fab class="mat-mini-fab" matTooltip="View" >
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<mat-paginator [length]="100"
+               [pageSize]="8"
+               [pageSizeOptions]="[2, 8, 16, 32]"
+               aria-label="Select page">
+</mat-paginator>

@@ -12,10 +12,10 @@ insert into address (country, city, street, number, postal_code) values ('Serbia
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Novi Sad', 'Lasla Gala', '55', '21400');
 
 
-insert into center (name, address_id, description, average_grade, start_time, end_time) values ('VMA', '1', 'Ambulance', '4.0', '07:00:00.751278', '09:52:20.751278');
-insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Health Clinic', '2', 'Health clinic for respiratory diseases', '4.5', '07:00:00.751278', '09:00:00.751278');
-insert into center (name, address_id, description, average_grade, start_time, end_time) values ('HCNS', '3', 'Ambulance', '4.0', '07:00:00.751278', '09:00:00.751278');
-insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Dragise Misovica', '4', 'Ambulance', '2.5', '07:00:00.751278', '09:00:00.751278');
+insert into center (name, address_id, description, average_grade, start_time, end_time) values ('VMA', '1', 'Ambulance', '4.0', '07:00', '09:52');
+insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Health Clinic', '2', 'Health clinic for respiratory diseases', '4.5', '07:00', '18:00');
+insert into center (name, address_id, description, average_grade, start_time, end_time) values ('HCNS', '3', 'Ambulance', '4.0', '07:00', '09:00');
+insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Dragise Misovica', '4', 'Ambulance', '2.5', '07:00', '09:00');
 
 insert into blood (amount, type) values (500, 0);
 insert into blood (amount, type) values (60, 1);

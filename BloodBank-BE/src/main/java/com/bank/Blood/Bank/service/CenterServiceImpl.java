@@ -20,6 +20,46 @@ public class CenterServiceImpl implements  CenterService{
     }
 
     @Override
+    public List<Center> findAllByOrderByNameAsc() {
+        return centerRepository.findAllByOrderByNameAsc();
+    }
+
+    @Override
+    public List<Center> findAllByOrderByNameDesc() {
+        return centerRepository.findAllByOrderByNameDesc();
+    }
+
+    @Override
+    public List<Center> findAllByOrderByAddressCityAsc() {
+        return centerRepository.findAllByOrderByAddressCityAsc();
+    }
+
+    @Override
+    public List<Center> findAllByOrderByAddressCityDesc() {
+        return centerRepository.findAllByOrderByAddressCityDesc();
+    }
+
+    @Override
+    public List<Center> findAllByOrderByAddressCountryAsc() {
+        return centerRepository.findAllByOrderByAddressCountryAsc();
+    }
+
+    @Override
+    public List<Center> findAllByOrderByAddressCountryDesc() {
+        return centerRepository.findAllByOrderByAddressCountryDesc();
+    }
+
+    @Override
+    public List<Center> findAllByOrderByAverageGradeDesc() {
+        return centerRepository.findAllByOrderByAverageGradeDesc();
+    }
+
+    @Override
+    public List<Center> findAllByOrderByAverageGradeAsc() {
+        return centerRepository.findAllByOrderByAverageGradeAsc();
+    }
+
+    @Override
     public Optional<Center> findOne(Integer id) {
         return centerRepository.findById(id);
     }

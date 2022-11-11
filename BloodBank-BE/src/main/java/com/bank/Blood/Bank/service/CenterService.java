@@ -9,4 +9,13 @@ public interface CenterService {
    List<Center> findAll();
    Optional<Center> findOne(Integer id);
    Center save(Center center);
+   List<Center> findAllByOrderByNameAsc();
+   List<Center> findAllByOrderByNameDesc();
+   List<Center> findAllByOrderByAddressCityAsc();
+   List<Center> findAllByOrderByAddressCityDesc();
+   List<Center> findAllByOrderByAddressCountryAsc();
+   List<Center> findAllByOrderByAddressCountryDesc();
+   List<Center> findAllByOrderByAverageGradeDesc();
+   List<Center> findAllByOrderByAverageGradeAsc();
+
 }

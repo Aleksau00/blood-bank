@@ -1,0 +1,15 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  background-color: #222831;
+  color: #eeeeee;
+}
+
+.mat-mini-fab {
+  background-color: #00ADB5;
+  color: #eeeeee;
+}
+
+
