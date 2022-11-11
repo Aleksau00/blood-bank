@@ -77,8 +77,7 @@ public class Address {
      * ce obezbediti da se ispiti izbrisu iz baze kada se izbrisu iz kolekcije
      * ispita u objektu student.
      */
-    @OneToMany(mappedBy = "address", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<AppUser> appUsers = new HashSet<AppUser>();
+
 
     public Address() {
         super();
@@ -132,25 +131,6 @@ public class Address {
         this.postalCode = postalCode;
     }
 
-    public Set<AppUser> getAppUsers() {
-        return appUsers;
-    }
-
-    public void setAppUsers(Set<AppUser> appUsers) {
-        this.appUsers = appUsers;
-    }
-
-    //kad god postoji bidirekciona veza, obe strane trebaju biti sinhronizovane
-    //kroz addChild i removeChild metode u roditeljskom entitetu
-    public void addAppUser(AppUser appUser) {
-        appUsers.add(appUser);
-        appUser.setAddress(this);
-    }
-
-    public void removeAppUser(AppUser appUser) {
-        appUsers.remove(appUser);
-        appUser.setAddress(null);
-    }
 
     @Override
     public boolean equals(Object o) {

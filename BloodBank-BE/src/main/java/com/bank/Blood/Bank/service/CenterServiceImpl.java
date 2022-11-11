@@ -1,6 +1,7 @@
 package com.bank.Blood.Bank.service;
 
 import com.bank.Blood.Bank.model.Center;
+import com.bank.Blood.Bank.repository.AddressRepository;
 import com.bank.Blood.Bank.repository.CenterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +12,15 @@ import java.util.Optional;
 @Service
 public class CenterServiceImpl implements  CenterService{
 
-    @Autowired
+
     private CenterRepository centerRepository;
+    private AddressRepository addressRepository;
+
+    @Autowired
+    public CenterServiceImpl(CenterRepository centerRepository, AddressRepository addressRepository){
+        this.centerRepository = centerRepository;
+        this.addressRepository = addressRepository;
+    }
 
     @Override
     public List<Center> findAll() {
@@ -64,8 +72,11 @@ public class CenterServiceImpl implements  CenterService{
         return centerRepository.findById(id);
     }
 
+
+
     @Override
     public Center save(Center center) {
+        addressRepository.save(center.getAddress());
         return centerRepository.save(center);
     }
 }

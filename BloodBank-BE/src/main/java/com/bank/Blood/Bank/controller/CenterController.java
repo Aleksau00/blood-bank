@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "api/centers")
 public class CenterController {
+
 
     private CenterService centerService;
 
@@ -39,7 +40,6 @@ public class CenterController {
         }
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
-
     @GetMapping(value = "/allNameAsc")
     public ResponseEntity<List<CenterDTO>> getAllByNameAsc(){
         List<Center> centerList = centerService.findAllByOrderByNameAsc();
@@ -112,13 +112,26 @@ public class CenterController {
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
     @GetMapping(value = "/allAverageGradeDesc")
-    public ResponseEntity<List<CenterDTO>> getAllByAverageGradeDesc(){
+    public ResponseEntity<List<CenterDTO>> getAllByAverageGradeDesc() {
         List<Center> centerList = centerService.findAllByOrderByAverageGradeDesc();
 
         List<CenterDTO> centerDTOS = new ArrayList<>();
-        for (Center center : centerList){
+        for (Center center : centerList) {
             centerDTOS.add(new CenterDTO(center));
         }
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
+    }
+    @PostMapping(consumes = "application/json")
+    public ResponseEntity<CenterDTO> saveCenter(@RequestBody CenterDTO centerDTO) {
+
+        Center center = new Center();
+        center.setName(centerDTO.getName());
+        center.setAddress(centerDTO.getAddress());
+        center.setDescription(centerDTO.getDescription());
+        center.setAverageGrade(centerDTO.getAverageGrade());
+        center.setStartTime(centerDTO.getStartTime());
+        center.setEndTime(centerDTO.getEndTime());
+        center = centerService.save(center);
+        return new ResponseEntity<>(new CenterDTO(center), HttpStatus.CREATED);
     }
 }

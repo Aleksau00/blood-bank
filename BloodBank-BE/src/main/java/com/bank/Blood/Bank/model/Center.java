@@ -47,7 +47,7 @@ public class Center {
     @OneToMany(mappedBy = "center", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Equipment> equipmentList = new HashSet<>();
 
-    @OneToMany(mappedBy = "center", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "center", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Staff> staffList = new HashSet<>();
 
     @OneToMany(mappedBy = "center", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
