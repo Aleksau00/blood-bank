@@ -28,7 +28,4 @@ public class CenterDTO {
     public CenterDTO(Center center){
         this(center.getId(), center.getName(), center.getAddress(), center.getDescription(), center.getAverageGrade(), center.getStartTime(), center.getEndTime());
     }
-
-
-
 }

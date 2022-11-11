@@ -60,8 +60,9 @@ public class CenterServiceImpl implements  CenterService{
     }
 
     @Override
-    public Optional<Center> findOne(Integer id) {
-        return centerRepository.findById(id);
+    public Center findOne(Integer id) {
+       Optional<Center> center = centerRepository.findById(id);
+       return center.isEmpty() ? null : center.get();
     }
 
     @Override
