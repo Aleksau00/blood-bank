@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
+
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,28 @@ public class CenterController {
         }
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<CenterDTO> getCenter(@PathVariable("id") Integer id){
+         Center center = centerService.findOne(id);
+        if (center == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }else {
+            return new ResponseEntity<>(new CenterDTO(center), HttpStatus.OK);
+        }
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CenterDTO> updateCenter(@RequestBody Center center, @PathVariable("id") Integer id){
+        Center editCenter = centerService.update(center, id);
+        if (editCenter == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }else {
+            return new ResponseEntity<>(new CenterDTO(center), HttpStatus.OK);
+        }
+    }
+
+
     @GetMapping(value = "/allNameAsc")
     public ResponseEntity<List<CenterDTO>> getAllByNameAsc(){
         List<Center> centerList = centerService.findAllByOrderByNameAsc();
@@ -135,3 +159,4 @@ public class CenterController {
         return new ResponseEntity<>(new CenterDTO(center), HttpStatus.CREATED);
     }
 }
+

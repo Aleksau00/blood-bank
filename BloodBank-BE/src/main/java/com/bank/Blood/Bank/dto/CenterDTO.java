@@ -42,7 +42,6 @@ public class CenterDTO {
         this.endTime = endTime;
     }
 
-
     public CenterDTO(Integer id, String name, Address address, String description, double averageGrade, LocalTime startTime, LocalTime endTime, Set<Staff> staffList) {
         this.id = id;
         this.name = name;
