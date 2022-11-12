@@ -7,6 +7,7 @@ import {FormsModule} from "@angular/forms";
 import { SystemAdministratorComponent } from './system-administrator/system-administrator.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UsersComponent } from './users/users.component';
+import { SearchComponent } from './search/search.component';
 
 
 
@@ -16,6 +17,7 @@ import { UsersComponent } from './users/users.component';
     SystemAdministratorComponent,
     RegistrationComponent,
     UsersComponent,
+    SearchComponent,
 ],
   imports: [
     CommonModule,

@@ -15,20 +15,20 @@ public class AppUserDTO {
     private String username;
     private String password;
     private String email;
-
     private String firstName;
     private String lastName;
-
     private String phoneNumber;
     private String umcn;
     private Gender gender;
     private String institution;
 
     public AppUserDTO(AppUser appUser) {
-        this(appUser.getId(), appUser.getUsername(), appUser.getPassword(), appUser.getEmail(), appUser.getFirstName(), appUser.getLastName(),  appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution());
+        this(appUser.getId(), appUser.getUsername(), appUser.getPassword(), appUser.getEmail(), appUser.getFirstName(), appUser.getLastName(),
+                appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution());
     }
 
-    public AppUserDTO(Integer id, String username, String password, String email, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution) {
+    public AppUserDTO(Integer id, String username, String password, String email, String firstName, String lastName, String phoneNumber,
+                      String umcn, Gender gender, String institution) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -48,6 +48,9 @@ public class AppUserDTO {
     public String getUsername() {
         return username;
     }
+    public String getPassword() {
+        return username;
+    }
 
     public String getEmail() {
         return email;
@@ -60,4 +63,14 @@ public class AppUserDTO {
     public String getLastName() {
         return lastName;
     }
+    public String getPhoneNumber(){ return phoneNumber;}
+    public String getUmcn() {
+        return umcn;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+    public String getInstitution(){ return institution;}
+
 }
