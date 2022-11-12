@@ -7,7 +7,8 @@ import java.util.Optional;
 
 public interface CenterService {
    List<Center> findAll();
-   Optional<Center> findOne(Integer id);
+   Center findOne(Integer id);
+   Center update(Center center, Integer id);
    Center save(Center center);
    List<Center> findAllByOrderByNameAsc();
    List<Center> findAllByOrderByNameDesc();

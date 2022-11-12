@@ -9,8 +9,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AppUserService {
+public interface AppUserService {
 
+    /*
     @Autowired
     private AppUserRepository appUserRepository;
 
@@ -33,6 +34,8 @@ public class AppUserService {
     public void remove(Integer id) {
         appUserRepository.deleteById(id);
     }
+*/
 
+    List<AppUser> findAll();
 
 }

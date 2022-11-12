@@ -6,6 +6,8 @@ import {MaterialModule} from "../../material/material.module";
 import {FormsModule} from "@angular/forms";
 import { SystemAdministratorComponent } from './system-administrator/system-administrator.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { UsersComponent } from './users/users.component';
+
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import { RegistrationComponent } from './registration/registration.component';
     HomeComponent,
     SystemAdministratorComponent,
     RegistrationComponent,
-  ],
+    UsersComponent,
+],
   imports: [
     CommonModule,
     AppRoutingModule,

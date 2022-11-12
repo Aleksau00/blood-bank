@@ -1,6 +1,13 @@
 package com.bank.Blood.Bank.dto;
 
 import com.bank.Blood.Bank.model.AppUser;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@Getter
+@Setter
 
 public class AppUserDTO {
     private Integer id;
@@ -11,9 +18,7 @@ public class AppUserDTO {
     private String email;
 
 
-    public AppUserDTO() {
 
-    }
 
     public AppUserDTO(AppUser appUser) {
         this(appUser.getId(), appUser.getUsername(), appUser.getFirstName(), appUser.getLastName(), appUser.getEmail() );

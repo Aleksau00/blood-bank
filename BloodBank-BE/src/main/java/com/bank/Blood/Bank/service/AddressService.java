@@ -10,4 +10,6 @@ public interface AddressService {
     List<Address> findAll();
     Optional<Address> findOne(Integer id);
     Address save(Address address);
+    Address update(Address address, Integer id);
+
 }
