@@ -67,7 +67,7 @@ public abstract class AppUser {
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "password", unique = false, nullable = false)
+    @Column(name = "password", unique = false, nullable = true)
     private String password;
 
     @Column
