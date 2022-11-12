@@ -66,6 +66,12 @@ public class CenterServiceImpl implements  CenterService{
     }
 
     @Override
+    public Center update(Center center, Integer id){
+        Optional<Center> editCenter = centerRepository.findById(id);
+        return editCenter.isEmpty() ? null : centerRepository.save(center);
+    }
+
+    @Override
     public Center save(Center center) {
         return centerRepository.save(center);
     }

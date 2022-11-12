@@ -38,9 +38,19 @@ public class CenterController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<CenterDTO> getCenter(@PathVariable Integer id){
+    public ResponseEntity<CenterDTO> getCenter(@PathVariable("id") Integer id){
          Center center = centerService.findOne(id);
         if (center == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }else {
+            return new ResponseEntity<>(new CenterDTO(center), HttpStatus.OK);
+        }
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CenterDTO> updateCenter(@RequestBody Center center, @PathVariable("id") Integer id){
+        Center editCenter = centerService.update(center, id);
+        if (editCenter == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }else {
             return new ResponseEntity<>(new CenterDTO(center), HttpStatus.OK);
