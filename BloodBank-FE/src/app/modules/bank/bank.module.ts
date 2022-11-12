@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CreatePollComponent } from './create-poll/create-poll.component';
+import { MaterialModule} from "../../material/material.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CreatePollComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class BankModule { }

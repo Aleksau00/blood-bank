@@ -8,8 +8,17 @@ mat-toolbar {
 }
 
 .mat-mini-fab {
+  margin: 6px;
   background-color: #00ADB5;
   color: #eeeeee;
+}
+
+.login-button {
+  margin-left: 26px;
+}
+
+.mat-raised-button {
+  margin-left: 8px;
 }
 
 

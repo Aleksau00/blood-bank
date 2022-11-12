@@ -5,12 +5,14 @@ import { HomeComponent } from './home/home.component';
 import {MaterialModule} from "../../material/material.module";
 import {FormsModule} from "@angular/forms";
 import { SystemAdministratorComponent } from './system-administrator/system-administrator.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     SystemAdministratorComponent,
+    RegistrationComponent,
   ],
   imports: [
     CommonModule,

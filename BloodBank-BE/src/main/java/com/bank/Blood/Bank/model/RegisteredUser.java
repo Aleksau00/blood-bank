@@ -38,13 +38,13 @@ public class RegisteredUser extends AppUser {
     @Column
     private BloodType bloodType;
 
-    @OneToMany(mappedBy = "registeredUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "registeredUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Feedback> feedbackList = new HashSet<>();
 
-    @OneToMany(mappedBy = "registeredUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "registeredUser", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Appointment> appointmentList = new HashSet<>();
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "poll_id", nullable = true)
     private Poll poll;
 

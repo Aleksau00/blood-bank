@@ -1,0 +1,22 @@
+<h1 mat-dialog-title class="mat-dialog-title">Fill out a poll</h1>
+<div mat-dialog-content>
+  <p>
+    <mat-form-field color="primary" id="occupationInput" appearance="fill">
+      <mat-label >Your occupation</mat-label>
+      <input [(ngModel)]="poll.occupation" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary" id="donationCount" appearance="fill">
+      <mat-label>Your donation count</mat-label>
+      <input [(ngModel)]="poll.donationCount" matInput>
+    </mat-form-field>
+  </p>
+  <section class="example-section">
+    <mat-checkbox color="primary" labelPosition="after" class="example-margin" [(ngModel)]="consent">I agree to share my public profile information.</mat-checkbox>
+  </section>
+  <div mat-dialog-action [align]="'end'">
+    <button class="dialogButtonCancel" mat-raised-button [disabled]="!isValidInput()"  mat-dialog-close>Cancel</button>
+    <button class="dialogButton" mat-raised-button color="primary" (click)="createPoll()">Send</button>
+  </div>
+</div>

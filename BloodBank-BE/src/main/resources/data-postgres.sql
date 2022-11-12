@@ -1,16 +1,15 @@
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role) values ('perica', 'perap', 'pera@pera.com', 'Petar', 'Petrovic', '086745384', '1305994779876', 0,'FTN', 'registeredUser');
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role) values ('jelica', 'jelenas', 'jelena@jelena.com', 'Jelena', 'Savic', '086745444', '1305994779876', 1,'FTN', 'registeredUser');
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role) values ('anica', 'anaj', 'ana@ana.com', 'Ana', 'Jovanovic', '086745777', '1805994773344', 1,'Economy faculty in Novi Sad', 'registeredUser');
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role) values ('sanjica', 'sanjak', 'sanja@sanja.com', 'Sanja', 'Kondic', '086746534', '1505994779876', 1,'Medical technician', 'staff');
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role) values ('danica', 'danicak', 'dana@dana.com', 'Danica', 'Dakic', '086746573', '1807994779477', 1,'Medical technician', 'staff');
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role) values ('vanja', 'vanjak', 'vanja@vanja.com', 'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin');
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role) values ('saki', 'slavicam', 'saki@saki.com', 'Slavica', 'Misic', '068665573', '1411987790440', 1,'Center administrator', 'staff');
-
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Belgrade', 'Puskinova', '77', '11000');
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Belgrade', 'Safarikova', '40', '11000');
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Novi Sad', 'Pavla Papa', '66', '21400');
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Novi Sad', 'Lasla Gala', '55', '21400');
 
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id) values ('perica', 'perap', 'pera@pera.com', 'Petar', 'Petrovic', '086745384', '1305994779876', 0,'FTN', 'registeredUser', 1);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id) values ('jelica', 'jelenas', 'jelena@jelena.com', 'Jelena', 'Savic', '086745444', '1305994779876', 1,'FTN', 'registeredUser', 1);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id) values ('anica', 'anaj', 'ana@ana.com', 'Ana', 'Jovanovic', '086745777', '1805994773344', 1,'Economy faculty in Novi Sad', 'registeredUser', 1);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id) values ('sanjica', 'sanjak', 'sanja@sanja.com', 'Sanja', 'Kondic', '086746534', '1505994779876', 1,'Medical technician', 'staff', 2);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id) values ('danica', 'danicak', 'dana@dana.com', 'Danica', 'Dakic', '086746573', '1807994779477', 1,'Medical technician', 'staff', 3);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id) values ('vanja', 'vanjak', 'vanja@vanja.com', 'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id) values ('saki', 'slavicam', 'saki@saki.com', 'Slavica', 'Misic', '068665573', '1411987790440', 1,'Center administrator', 'staff', 3);
 
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('VMA', '1', 'Ambulance', '4.0', '07:00', '09:52');
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Health Clinic', '2', 'Health clinic for respiratory diseases', '4.5', '07:00', '18:00');
