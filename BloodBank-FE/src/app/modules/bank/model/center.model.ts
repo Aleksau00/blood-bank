@@ -1,9 +1,9 @@
 import { Address} from "./address.model";
+import {AddressDTO} from "../dto/addressDTO.model";
 
 export class Center {
-  id: number = 0;
   name: string = '';
-  address: Address = new Address();
+  address: AddressDTO = new AddressDTO();
   description: string = '';
   averageGrade: number = 0;
   startTime: string = '';
@@ -12,7 +12,6 @@ export class Center {
 
   public constructor(obj?: any) {
     if (obj) {
-      this.id = obj.id;
       this.name = obj.name;
       this.address = obj.address;
       this.description = obj.description;

@@ -14,6 +14,10 @@ export class CenterService {
 
   constructor(private http: HttpClient) { }
 
+  saveCenter(center: any): Observable<any>{
+    return  this.http.post<any>(this.apiHost + 'api/centers', center, {headers: this.headers});
+  }
+
   getCenters(): Observable<Center[]> {
     return this.http.get<Center[]>(this.apiHost + 'api/centers/all', {headers: this.headers});
   }
