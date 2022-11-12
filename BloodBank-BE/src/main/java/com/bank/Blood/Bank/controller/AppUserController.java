@@ -12,29 +12,29 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-@RestController
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.transaction.Transactional;
+
+@Controller
+@Transactional
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "api/users")
 public class AppUserController {
+    private AppUserService appUserService;
 
     @Autowired
-    private AppUserService appUserService;
+    public AppUserController(AppUserService appUserService){
+        this.appUserService = appUserService;
+    }
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<AppUserDTO>> getAllUsers() {
-
         List<AppUser> users = appUserService.findAll();
 
         // convert students to DTOs
-        List<AppUserDTO> usersDTO = new ArrayList<AppUserDTO>();
+        List<AppUserDTO> usersDTO = new ArrayList<>();
         for (AppUser a : users) {
             usersDTO.add(new AppUserDTO(a));
         }

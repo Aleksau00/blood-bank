@@ -16,7 +16,9 @@ public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
     public AppUser findAppUserById(Integer id);
 
 
-    public Page<AppUser> findAll(Pageable pageable);
+    //public Page<AppUser> findAll(Pageable pageable);
+
+    public List<AppUser> findAll();
 
 
 
