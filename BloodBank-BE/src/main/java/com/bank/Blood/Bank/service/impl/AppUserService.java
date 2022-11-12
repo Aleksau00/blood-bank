@@ -1,4 +1,4 @@
-package com.bank.Blood.Bank.service;
+package com.bank.Blood.Bank.service.impl;
 import java.util.List;
 
 import com.bank.Blood.Bank.model.AppUser;
