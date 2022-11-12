@@ -18,21 +18,23 @@ export class CreateCenterComponent implements OnInit {
   constructor(private centerService: CenterService, private router: Router) {
   }
 
-  public createCenter() {
+  /*public createCenter() {
     if (!this.isValidInput()) {
       alert("Center cannot be empty.");
       return;
     }
     try {
-      /*this.centerService.(this.feedback).subscribe(res => {
+      this.centerService.(this.feedback).subscribe(res => {
         alert("Feedback sent for review.")
         this.router.navigate(['/home']);
-      });*/
+      });
     } catch (error) {
       alert(error)
     }
 
   }
+  */
+
 
   private isValidInput(): boolean {
     return this.center.name != '';

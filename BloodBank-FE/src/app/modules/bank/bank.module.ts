@@ -23,8 +23,7 @@ import {MatInputModule} from "@angular/material/input";
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
-    CreateCenterComponent
+    ReactiveFormsModule
   ]
 })
 export class BankModule { }
