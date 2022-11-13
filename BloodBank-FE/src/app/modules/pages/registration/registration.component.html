@@ -64,8 +64,8 @@
 
     </p>
     <div mat-dialog-action [align]="'end'">
-      <button class="dialogButtonCancel" mat-raised-button [disabled]="!isValidInput()"  mat-dialog-close>Cancel</button>
-      <button class="dialogButton" mat-raised-button color="primary" (click)="createUser()">Sign in</button>
+      <button class="dialogButtonCancel" mat-raised-button (click)="cancel()"   mat-dialog-close>Cancel</button>
+      <button class="dialogButton" mat-raised-button color="primary" [disabled]="!isValidInput()" (click)="createUser()">Sign up</button>
     </div>
   </div>
 </div>

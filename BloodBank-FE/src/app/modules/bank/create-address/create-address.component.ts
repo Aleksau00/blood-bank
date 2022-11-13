@@ -9,9 +9,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 })
 export class CreateAddressComponent implements OnInit {
 
-  public addressDialog: AddressDTO = new AddressDTO();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: string,
+  public addressDialog: AddressDTO = new AddressDTO();
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
               private dialogRef: MatDialogRef<CreateAddressComponent>) { }
 
   ngOnInit(): void {
@@ -24,6 +24,11 @@ export class CreateAddressComponent implements OnInit {
     }
     this.dialogRef.close({data: this.addressDialog});
     alert("Address saved.")
+  }
+
+  public return() {
+    this.dialogRef.close( {data: this.addressDialog
+    })
   }
 
   public isValidInput(): boolean {

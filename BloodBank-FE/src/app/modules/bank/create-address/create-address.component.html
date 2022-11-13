@@ -15,7 +15,7 @@
   <p>
     <mat-form-field color="primary"  appearance="fill">
       <mat-label >Street</mat-label>
-      <input [(ngModel)]="addressDialog.street" matInput>
+      <input [(ngModel)]="addressDialog.street"   matInput>
     </mat-form-field>
   </p>
   <p>
@@ -31,7 +31,7 @@
     </mat-form-field>
   </p>
   <div mat-dialog-action [align]="'end'">
-    <button class="dialogButton" mat-raised-button  mat-dialog-close>Cancel</button>
+    <button class="dialogButton" mat-raised-button (click)="return()"  mat-dialog-close>Cancel</button>
     <button class="dialogButton" mat-raised-button color="primary" [disabled]="!isValidInput()" (click)="createAddress()" mat-dialog-close>Save</button>
   </div>
 </div>
