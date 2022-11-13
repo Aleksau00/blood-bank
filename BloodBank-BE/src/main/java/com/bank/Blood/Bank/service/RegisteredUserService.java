@@ -12,4 +12,6 @@ public interface RegisteredUserService {
     RegisteredUser findOne(int id);
 
     RegisteredUser save(RegisteredUser registeredUser);
+
+    RegisteredUser update(RegisteredUser registeredUser, Integer id);
 }

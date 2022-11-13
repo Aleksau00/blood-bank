@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {CreateCenterComponent} from "../../bank/create-center/create-center.component";
+import {Center} from "../../bank/model/center.model";
+import {CenterService} from "../../bank/services/center.service";
+import {Router} from "@angular/router";
+import {Staff} from "../../bank/model/staffCenter.model";
+import {StaffService} from "../../bank/services/staff.service";
 
 @Component({
   selector: 'app-system-administrator',
@@ -9,17 +12,45 @@ import {CreateCenterComponent} from "../../bank/create-center/create-center.comp
 })
 export class SystemAdministratorComponent implements OnInit {
 
+  public staff: Staff = new Staff();
+  public center: Center = new Center();
+  public consent: boolean = false;
 
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private centerService: CenterService,private staffService: StaffService, private router: Router) {
+  }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CreateCenterComponent, {
-      width: '400px',
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+
+  public createCenter() {
+    if (!this.isValidInput()) {
+      alert("Center cannot be empty.");
+      return;
+    }
+    try {
+      this.centerService.saveCenter(this.center).subscribe(res => {
+        alert("Poll submitted.")
+      });
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  public createStaff(){
+    if (!this.isValidInput()) {
+      alert("Staff cannot be empty.");
+      return;
+    }
+    try {
+      this.staffService.saveStaff(this.staff).subscribe(res => {
+        alert("Staff submitted.")
+      });
+    } catch (error) {
+      alert(error)
+    }
+  }
+
+  public isValidInput(): boolean {
+    return true;
   }
 
   ngOnInit(): void {

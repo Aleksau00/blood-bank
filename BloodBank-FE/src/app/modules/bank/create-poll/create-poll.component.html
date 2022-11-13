@@ -16,7 +16,7 @@
     <mat-checkbox color="primary" labelPosition="after" class="example-margin" [(ngModel)]="consent">I agree to share my public profile information.</mat-checkbox>
   </section>
   <div mat-dialog-action [align]="'end'">
-    <button class="dialogButtonCancel" mat-raised-button [disabled]="!isValidInput()"  mat-dialog-close>Cancel</button>
-    <button class="dialogButton" mat-raised-button color="primary" (click)="createPoll()">Send</button>
+    <button class="dialogButtonCancel" mat-raised-button   mat-dialog-close>Cancel</button>
+    <button class="dialogButton" mat-raised-button color="primary" [disabled]="!isValidInput()" (click)="createPoll()">Send</button>
   </div>
 </div>

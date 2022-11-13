@@ -1,6 +1,36 @@
 <div>
 </div>
 <div class="wrapper" >
-    <p>kme</p>
+  <div class="h2">
+    <h2>Personal profile</h2>
+  </div>
+  <p>
+    <mat-form-field class="mat-form-field" color="primary"> Name: </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.firstName}} </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary"> Username: </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.username}} </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field class="mat-form-field" color="primary"> Surname: </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.lastName}} </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary"> E-mail: </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.email}} </mat-form-field>
+  </p><p>
+  <mat-form-field class="mat-form-field" color="primary"> Gender: </mat-form-field>
+  <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.gender}} </mat-form-field>
+  <mat-form-field class="mat-form-field" color="primary"> Phone number: </mat-form-field>
+  <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.phoneNumber}} </mat-form-field>
+</p><p>
+  <mat-form-field class="mat-form-field" color="primary"> Umcn: </mat-form-field>
+  <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.umcn}} </mat-form-field>
+  <mat-form-field class="mat-form-field" color="primary"> Institution: </mat-form-field>
+  <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.institution}} </mat-form-field>
+</p>
+  <p>
+    <mat-form-field class="mat-form-field" color="primary"> Address: </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.address?.street}} {{registeredUser?.address?.number}},
+      {{registeredUser?.address?.city}}, {{registeredUser?.address?.postalCode}}
+      {{registeredUser?.address?.country}}</mat-form-field>
+  </p>
 </div>
 

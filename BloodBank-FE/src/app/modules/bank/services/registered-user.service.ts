@@ -22,4 +22,8 @@ export class RegisteredUserService {
   createUser(user: any): Observable<any> {
     return this.http.post<any>(this.apiHost + 'api/registeredUsers', user, {headers: this.headers});
   }
+
+  updateUser(user: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'api/registeredUsers/' + user.id, user,{headers: this.headers});
+  }
 }
