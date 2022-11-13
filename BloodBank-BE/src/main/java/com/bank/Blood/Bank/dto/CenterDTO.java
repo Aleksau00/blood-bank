@@ -26,10 +26,9 @@ public class CenterDTO {
     private double averageGrade;
     private LocalTime startTime;
     private LocalTime endTime;
-    private Set<Staff> staffList;
 
     public CenterDTO(Center center){
-        this(center.getId(), center.getName(), center.getAddress(), center.getDescription(), center.getAverageGrade(), center.getStartTime(), center.getEndTime(), center.getStaffList());
+        this(center.getId(), center.getName(), center.getAddress(), center.getDescription(), center.getAverageGrade(), center.getStartTime(), center.getEndTime());
     }
 
     public CenterDTO(Integer id, String name, Address address, String description, double averageGrade, LocalTime startTime, LocalTime endTime){
@@ -42,14 +41,5 @@ public class CenterDTO {
         this.endTime = endTime;
     }
 
-    public CenterDTO(Integer id, String name, Address address, String description, double averageGrade, LocalTime startTime, LocalTime endTime, Set<Staff> staffList) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.description = description;
-        this.averageGrade = averageGrade;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.staffList = staffList;
-    }
+
 }

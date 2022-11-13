@@ -1,31 +1,25 @@
-img {
-  width: 100%;
-  max-height: 500px;
+.example-section {
+  margin: 12px 0;
 }
 
-.centered-text-on-image {
-  position: absolute;
-  top: 45%;
-  left: 55%;
-  transform: translate(-50%, -50%);
+#feedbackArea {
+  width: 346px;
+}
+
+.mat-dialog-title {
+  font-width: bold;
+}
+.mat-dialog-title2 {
+  font-width: bold;
+}
+.mat-dialog-content {
+  width: 50%;
+}
+.dialogButton {
+  margin: 4px;
   color: white;
-  align-items: center;
 }
 
-
-mat-card-content {
-  font-size: large;
-}
-
-.example-card{
-  border-radius: 20px;
-  border-color: black;
-  border: 30px black;
-  margin-top: 10px;
-  background-color: #E4E9F1;
-}
-
-.feedback-title{
-  margin: 5px;
-  font-size: larger;
+.dialogButtonCancel {
+  margin: 4px;
 }

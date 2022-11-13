@@ -2,15 +2,20 @@ package com.bank.Blood.Bank.dto;
 
 import com.bank.Blood.Bank.enums.Gender;
 import com.bank.Blood.Bank.model.Address;
+import com.bank.Blood.Bank.model.Appointment;
+import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.model.Staff;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @NoArgsConstructor
 @Getter
 @Setter
-public class StaffDTO {
+public class StaffWithoutCenterDTO {
+    private Integer id;
     private String username;
     private String firstName;
     private String lastName;
@@ -23,14 +28,14 @@ public class StaffDTO {
     private String umcn;
     private Gender gender;
     private String institution;
-    private CenterDTO centerDTO;
 
-    public StaffDTO(Staff appUser){
-        this(appUser.getAddress(), appUser.getUsername(), appUser.getFirstName(),
-                appUser.getLastName(), appUser.getEmail(), appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution(), new CenterDTO(appUser.getCenter()));}
+    public StaffWithoutCenterDTO(Staff appUser){
+        this(appUser.getId(), appUser.getAddress(), appUser.getUsername(), appUser.getFirstName(),
+                appUser.getLastName(), appUser.getEmail(), appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution());}
 
 
-    public StaffDTO(Address address, String username, String firstName, String lastName, String email, String phoneNumber, String umcn, Gender gender, String institution, CenterDTO centerDTO){
+    public StaffWithoutCenterDTO(Integer id,Address address, String username, String firstName, String lastName, String email, String phoneNumber, String umcn, Gender gender, String institution){
+        this.id = id;
         this.address = address;
         this.username = username;
         this.firstName = firstName;
@@ -40,7 +45,6 @@ public class StaffDTO {
         this.umcn = umcn;
         this.gender = gender;
         this.institution = institution;
-        this.centerDTO = centerDTO;
     }
 
 }
