@@ -44,12 +44,13 @@ export class RegistrationComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateAddressComponent, {
       width: '280px',
       data: {
-        data :{
-          'country': this.user.address.country,
-          'city': this.user.address.city,
-          'street': this.user.address.street,
-          'number': this.user.address.number,
-          'postalCode': this.user.address.postalCode
+        address: {
+          country: this.user.address.country,
+          city: this.user.address.city,
+          street: this.user.address.street,
+          number: this.user.address.number,
+          postalCode: this.user.address.postalCode
+
         }
       }
     });
@@ -65,6 +66,12 @@ export class RegistrationComponent implements OnInit {
       this.user.umcn != '' && this.user.institution != '' && this.user.username != '' && this.user.address.country != ''
       && this.user.address.city != '' && this.user.address.street != '' && this.user.address.postalCode != '' && this.user.address.number != '')
   }
+
+  public cancel(): void {
+    this.router.navigate(['']);
+  }
+
+
 
   ngOnInit(): void {
   }
