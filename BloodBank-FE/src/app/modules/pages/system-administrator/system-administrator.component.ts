@@ -9,8 +9,8 @@ import {CreateCenterComponent} from "../../bank/create-center/create-center.comp
 })
 export class SystemAdministratorComponent implements OnInit {
 
-  constructor() { }
-/*
+
+
   constructor(public dialog: MatDialog) { }
 
   openDialog(): void {
@@ -20,7 +20,7 @@ export class SystemAdministratorComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
-  }*/
+  }
 
   ngOnInit(): void {
   }

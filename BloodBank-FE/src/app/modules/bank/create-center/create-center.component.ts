@@ -10,33 +10,31 @@ import {CenterService} from "../services/center.service";
 })
 export class CreateCenterComponent implements OnInit {
 
+  public center: Center = new Center();
+  public consent: boolean = false;
+
   ngOnInit(): void {
   }
-
-  public center: Center = new Center();
 
   constructor(private centerService: CenterService, private router: Router) {
   }
 
-  /*public createCenter() {
+  public createCenter() {
     if (!this.isValidInput()) {
       alert("Center cannot be empty.");
       return;
     }
     try {
-      this.centerService.(this.feedback).subscribe(res => {
-        alert("Feedback sent for review.")
-        this.router.navigate(['/home']);
+      this.centerService.saveCenter(this.center).subscribe(res => {
+        alert("Poll submitted.")
       });
     } catch (error) {
       alert(error)
     }
-
   }
-  */
-
-
-  private isValidInput(): boolean {
-    return this.center.name != '';
+  public isValidInput(): boolean {
+      return (this.center.name != '')
   }
+
+
 }

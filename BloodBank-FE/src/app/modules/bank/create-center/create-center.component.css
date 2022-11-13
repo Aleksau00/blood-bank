@@ -2,13 +2,16 @@
   margin: 12px 0;
 }
 
-#centerArea {
+#feedbackArea {
   width: 346px;
+}
+
+.mat-dialog-title {
+  font-width: bold;
 }
 
 .dialogButton {
   margin: 4px;
-  background-color: #1B273C ;
   color: white;
 }
 

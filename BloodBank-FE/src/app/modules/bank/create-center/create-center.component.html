@@ -1,1 +1,68 @@
+<h1 mat-dialog-title class="mat-dialog-title">Fill out a poll</h1>
+<div mat-dialog-content>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Enter name</mat-label>
+      <input [(ngModel)]="center.name" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Enter country</mat-label>
+      <input [(ngModel)]="center.address.country" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Enter city</mat-label>
+      <input [(ngModel)]="center.address.city" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Enter street</mat-label>
+      <input [(ngModel)]="center.address.street" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Enter number</mat-label>
+      <input [(ngModel)]="center.address.number" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Enter postal code</mat-label>
+      <input [(ngModel)]="center.address.postalCode" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Enter average grade</mat-label>
+      <input [(ngModel)]="center.averageGrade" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Enter start time</mat-label>
+      <input [(ngModel)]="center.startTime" matInput>
+    </mat-form-field>
+  </p>  <p>
+  <mat-form-field color="primary"  appearance="fill">
+    <mat-label >Enter end time</mat-label>
+    <input [(ngModel)]="center.endTime" matInput>
+  </mat-form-field>
+</p>
 
+
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label>Description</mat-label>
+      <input [(ngModel)]="center.description" matInput>
+    </mat-form-field>
+  </p>
+  <div mat-dialog-action [align]="'end'">
+    <button class="dialogButtonCancel" mat-raised-button [disabled]="!isValidInput()"  mat-dialog-close>Cancel</button>
+    <button class="dialogButton" mat-raised-button color="primary" (click)="createCenter()">Send</button>
+  </div>
+</div>
