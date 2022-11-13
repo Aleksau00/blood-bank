@@ -1,25 +1,43 @@
-.example-section {
-  margin: 12px 0;
+.dialogCenter {
+  position:absolute;
+  top:6.7%;
+  left:15%;
+  display: flex;
+  justify-content: left;
+  align-content: center;
+  font-size: 11px;
 }
 
-#feedbackArea {
-  width: 346px;
+.dialogAdministrator {
+  position:absolute;
+  top:6.7%;
+  right:15%;
+  display: flex;
+  justify-content: right;
+  align-content: center;
+  font-size: 11px;
 }
 
 .mat-dialog-title {
   font-width: bold;
-}
-.mat-dialog-title2 {
-  font-width: bold;
-}
-.mat-dialog-content {
-  width: 50%;
-}
-.dialogButton {
-  margin: 4px;
-  color: white;
+  justify-content: center;
 }
 
-.dialogButtonCancel {
-  margin: 4px;
+.mat-form-field {
+  margin: 10px;
+}
+
+.mat-footer-cell {
+  display: flex;
+  flex-direction: row;
+
+  align-items: flex-start;
+}
+
+.mat-label {
+  margin: 0 80px;
+}
+
+.mat-radio-button {
+  margin-left: 10px;
 }

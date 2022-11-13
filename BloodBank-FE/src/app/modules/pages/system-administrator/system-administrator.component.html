@@ -1,157 +1,158 @@
-<h1 mat-dialog-title class="mat-dialog-title">Create a center</h1>
-<div mat-dialog-content>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter name</mat-label>
-      <input [(ngModel)]="staff.center.name" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter country</mat-label>
-      <input [(ngModel)]="staff.center.address.country" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter city</mat-label>
-      <input [(ngModel)]="staff.center.address.city" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter street</mat-label>
-      <input [(ngModel)]="staff.center.address.street" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter number</mat-label>
-      <input [(ngModel)]="staff.center.address.number" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter postal code</mat-label>
-      <input [(ngModel)]="staff.center.address.postalCode" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter average grade</mat-label>
-      <input [(ngModel)]="staff.center.averageGrade" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter start time</mat-label>
-      <input [(ngModel)]="staff.center.startTime" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-  <mat-form-field color="primary"  appearance="fill">
-    <mat-label >Enter end time</mat-label>
-    <input [(ngModel)]="staff.center.endTime" matInput>
-  </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label>Description</mat-label>
-      <input [(ngModel)]="staff.center.description" matInput>
-    </mat-form-field>
-  </p>
-  <div mat-dialog-content class="mat-dialog-title">
-    <h1 mat-dialog-title >Create administrator</h1>
-  </div>
+<form name = "form" #f="ngForm" (ngSubmit)="f.form.valid && createStaff()">
 
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter username</mat-label>
-      <input [(ngModel)]="staff.username" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter password</mat-label>
-      <input [(ngModel)]="staff.password" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter name</mat-label>
-      <input [(ngModel)]="staff.firstName" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter last name</mat-label>
-      <input [(ngModel)]="staff.lastName" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter email</mat-label>
-      <input [(ngModel)]="staff.email" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter country</mat-label>
-      <input [(ngModel)]="staff.address.country" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter city</mat-label>
-      <input [(ngModel)]="staff.address.city" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter street</mat-label>
-      <input [(ngModel)]="staff.address.street" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-  <mat-form-field color="primary"  appearance="fill">
-    <mat-label >Enter number</mat-label>
-    <input [(ngModel)]="staff.address.number" matInput>
-  </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label>Enter postal code</mat-label>
-      <input [(ngModel)]="staff.address.postalCode" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter phone number</mat-label>
-      <input [(ngModel)]="staff.phoneNumber" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter umcn</mat-label>
-      <input [(ngModel)]="staff.umcn" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter gender</mat-label>
-      <input [(ngModel)]="staff.gender" matInput>
-    </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field color="primary"  appearance="fill">
-      <mat-label >Enter institution</mat-label>
-      <input [(ngModel)]="staff.institution" matInput>
-    </mat-form-field>
-  </p>
-  <div mat-dialog-action [align]="'end'">
-    <button class="dialogButton" mat-raised-button color="primary" (click)="createStaff()">Send</button>
+</form>
+<div class="dialogCenter">
+  <div  style="font-size: 11px">
+  <h1 mat-dialog-title class="mat-dialog-title">Create a center</h1>
+    <p>
+      <mat-form-field class = "mat-form-field" color="primary"  appearance="fill">
+        <mat-label >Enter name</mat-label>
+        <input class="mat-input-element" [(ngModel)]="staff.center.name" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter country</mat-label>
+        <input [(ngModel)]="staff.center.address.country" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter city</mat-label>
+        <input [(ngModel)]="staff.center.address.city" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter street</mat-label>
+        <input [(ngModel)]="staff.center.address.street" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter number</mat-label>
+        <input [(ngModel)]="staff.center.address.number" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter postal code</mat-label>
+        <input [(ngModel)]="staff.center.address.postalCode" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter average grade</mat-label>
+        <input [(ngModel)]="staff.center.averageGrade" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter start time</mat-label>
+        <input [(ngModel)]="staff.center.startTime" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter end time</mat-label>
+        <input [(ngModel)]="staff.center.endTime" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label>Description</mat-label>
+        <input [(ngModel)]="staff.center.description" matInput>
+      </mat-form-field>
+    </p>
   </div>
 </div>
 
 
 
+
+
+<div class = "dialogAdministrator">
+  <div style="font-size: 11px">
+    <div mat-dialog-content class="mat-dialog-title">
+      <h1 mat-dialog-title >Create administrator</h1>
+    </div>
+
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter username</mat-label>
+        <input [(ngModel)]="staff.username" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter password</mat-label>
+        <input [(ngModel)]="staff.password" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter name</mat-label>
+        <input [(ngModel)]="staff.firstName" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter last name</mat-label>
+        <input [(ngModel)]="staff.lastName" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter email</mat-label>
+        <input [(ngModel)]="staff.email" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter country</mat-label>
+        <input [(ngModel)]="staff.address.country" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter city</mat-label>
+        <input [(ngModel)]="staff.address.city" matInput>
+      </mat-form-field>
+
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter street</mat-label>
+        <input [(ngModel)]="staff.address.street" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter number</mat-label>
+        <input [(ngModel)]="staff.address.number" matInput>
+      </mat-form-field>
+
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label>Enter postal code</mat-label>
+        <input [(ngModel)]="staff.address.postalCode" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter phone number</mat-label>
+        <input [(ngModel)]="staff.phoneNumber" matInput>
+      </mat-form-field>
+
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter umcn</mat-label>
+        <input [(ngModel)]="staff.umcn" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter institution</mat-label>
+        <input [(ngModel)]="staff.institution" matInput>
+      </mat-form-field>
+    </p>
+    <div class="mat-footer-cell">
+      <mat-label class="mat-label">Gender</mat-label>
+    </div>
+    <p>
+      <mat-radio-group [(ngModel)]="staff.gender" class="example-radio-group" aria-label="Select an option">
+        <mat-radio-button class="mat-radio-button" value=FEMALE>Female</mat-radio-button>
+        <mat-radio-button class="mat-radio-button" value=MALE>Male</mat-radio-button>
+        <mat-radio-button class="mat-radio-button" value=OTHER>Other</mat-radio-button>
+      </mat-radio-group>
+
+
+    </p>
+    <div mat-dialog-action [align]="'end'">
+      <button class="dialogButton" mat-raised-button color="primary" [disabled]="!isValidInput()" (click)="createStaff()">Send</button>
+    </div>
+
+
+
+  </div>
+</div>

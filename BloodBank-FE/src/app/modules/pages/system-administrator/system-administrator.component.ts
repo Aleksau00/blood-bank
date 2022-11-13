@@ -50,7 +50,18 @@ export class SystemAdministratorComponent implements OnInit {
   }
 
   public isValidInput(): boolean {
-    return true;
+    return (this.staff.center.name != '' && this.staff.center.address.country != '' &&
+      this.staff.center.address.city != '' && this.staff.center.address.street != '' &&
+      this.staff.center.address.number != '' && this.staff.center.address.postalCode != '' &&
+      this.staff.center.averageGrade != null && this.staff.center.startTime != '' &&
+      this.staff.center.endTime != '' && this.staff.center.description != '' &&
+      this.staff.username != '' && this.staff.password != '' &&
+      this.staff.firstName != '' && this.staff.lastName != '' &&
+      this.staff.email != '' && this.staff.address.country != '' &&
+      this.staff.address.city != '' && this.staff.address.street != '' &&
+      this.staff.address.number != '' && this.staff.address.postalCode != '' &&
+      this.staff.phoneNumber != '' && this.staff.umcn != '' &&
+      this.staff.institution != '' && this.staff.gender != '')
   }
 
   ngOnInit(): void {
