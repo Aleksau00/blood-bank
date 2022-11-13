@@ -91,7 +91,7 @@ public abstract class AppUser {
     @Column
     private String phoneNumber;
 
-    @NotBlank(message = "UMCN(JMBG) is required")
+    @Pattern(regexp="[\\d]{13}", message = "umcn not valid")
     @Column
     private String umcn;
 
