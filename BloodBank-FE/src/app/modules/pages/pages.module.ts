@@ -11,6 +11,8 @@ import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CenterComponent } from './center/center.component';
 import { StaffProfileComponent } from './staff-profile/staff-profile.component';
+import { CenterUpdateComponent } from './center-update/center-update.component';
+import { StaffProfileUpdateComponent } from './staff-profile-update/staff-profile-update.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { StaffProfileComponent } from './staff-profile/staff-profile.component';
     SearchComponent,
     ProfileComponent,
     CenterComponent,
-    StaffProfileComponent
+    StaffProfileComponent,
+    CenterUpdateComponent,
+    StaffProfileUpdateComponent
 ],
   imports: [
     CommonModule,
