@@ -5,6 +5,7 @@ import { RegisteredUser } from "../model/registeredUser.model";
 import { PollService } from "../services/poll.service";
 import { RegisteredUserService } from "../services/registered-user.service";
 import {Observable} from "rxjs";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-poll',
@@ -17,7 +18,7 @@ export class CreatePollComponent implements OnInit {
   public user: RegisteredUser = new RegisteredUser();
   public consent: boolean = false;
 
-  constructor(private pollService: PollService, private registeredUserService: RegisteredUserService, private router: Router) { }
+  constructor(private dialogRef: MatDialogRef<CreatePollComponent>, private pollService: PollService, private registeredUserService: RegisteredUserService, private router: Router) { }
 
   public getRegisteredUser() {
     console.log(this.registeredUserService.getUser(1));
@@ -29,8 +30,9 @@ export class CreatePollComponent implements OnInit {
       return;
     }
     try {
-      this.pollService.createPoll(this.poll).subscribe(res => {
-      alert("Poll submitted.")
+        this.pollService.createPoll(this.poll).subscribe(res => {
+        alert("Poll submitted.")
+        this.dialogRef.close();
     });
     } catch(error) {
       alert(error)

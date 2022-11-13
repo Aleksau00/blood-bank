@@ -27,6 +27,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/registration']);
   }
 
+  openHome(): void {
+    this.router.navigate(['']);
+  }
+
   ngOnInit(): void {
   }
 
