@@ -2,6 +2,7 @@ package com.bank.Blood.Bank.dto;
 
 import com.bank.Blood.Bank.enums.Gender;
 import com.bank.Blood.Bank.model.Address;
+import com.bank.Blood.Bank.model.LoyaltyCard;
 import com.bank.Blood.Bank.model.RegisteredUser;
 
 import java.util.Optional;
@@ -20,6 +21,10 @@ public class RegisteredUserDTO {
     private String umcn;
     private Gender gender;
     private String institution;
+    private Integer points;
+    private Boolean isAuthenticated;
+    private LoyaltyCard loyaltyCard;
+
 
 
     public RegisteredUserDTO() {
@@ -28,10 +33,11 @@ public class RegisteredUserDTO {
 
     public RegisteredUserDTO(RegisteredUser appUser) {
         this(appUser.getId(), appUser.getAddress(), appUser.getUsername(), appUser.getFirstName(),
-                appUser.getLastName(), appUser.getEmail(), appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution());
+                appUser.getLastName(), appUser.getEmail(), appUser.getPhoneNumber(), appUser.getUmcn(),
+                appUser.getGender(), appUser.getInstitution(), appUser.getPoints(), appUser.getIsAuthenticated(), appUser.getLoyaltyCard());
     }
 
-    public RegisteredUserDTO(Integer id, Address address, String username, String firstName, String lastName, String email, String phoneNumber, String umcn, Gender gender, String institution) {
+    public RegisteredUserDTO(Integer id, Address address, String username, String firstName, String lastName, String email, String phoneNumber, String umcn, Gender gender, String institution, Integer points, Boolean isAuthenticated, LoyaltyCard loyaltyCard) {
         this.id = id;
         this.address = address;
         this.username = username;
@@ -42,9 +48,37 @@ public class RegisteredUserDTO {
         this.umcn = umcn;
         this.gender = gender;
         this.institution = institution;
+        this.points = points;
+        this.isAuthenticated = isAuthenticated;
+        this.loyaltyCard = loyaltyCard;
     }
 
     public RegisteredUserDTO(Optional<RegisteredUser> registeredUser) {
+    }
+
+
+    public Boolean getAuthenticated() {
+        return isAuthenticated;
+    }
+
+    public void setAuthenticated(Boolean authenticated) {
+        isAuthenticated = authenticated;
+    }
+
+    public LoyaltyCard getLoyaltyCard() {
+        return loyaltyCard;
+    }
+
+    public void setLoyaltyCard(LoyaltyCard loyaltyCard) {
+        this.loyaltyCard = loyaltyCard;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
     }
 
     public Integer getId() {

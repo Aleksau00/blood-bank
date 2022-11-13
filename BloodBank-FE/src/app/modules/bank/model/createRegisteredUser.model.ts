@@ -1,4 +1,5 @@
 import { Address} from "./address.model";
+import {AddressDTO} from "../dto/addressDTO.model";
 
 export class CreateRegisteredUser {
   username: string = '';
@@ -6,7 +7,7 @@ export class CreateRegisteredUser {
   password: string = '';
   lastName: string = '';
   email: string = '';
-  address: Address = new Address();
+  address: AddressDTO = new AddressDTO();
   phoneNumber: string = '';
   umcn: string = '';
   gender: string = '';

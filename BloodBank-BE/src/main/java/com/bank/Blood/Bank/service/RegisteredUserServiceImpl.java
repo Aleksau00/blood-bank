@@ -1,8 +1,11 @@
 package com.bank.Blood.Bank.service;
 
+import com.bank.Blood.Bank.model.Center;
+import com.bank.Blood.Bank.model.LoyaltyCard;
 import com.bank.Blood.Bank.model.RegisteredUser;
 import com.bank.Blood.Bank.repository.AddressRepository;
 import com.bank.Blood.Bank.repository.CenterRepository;
+import com.bank.Blood.Bank.repository.LoyaltyCardRepository;
 import com.bank.Blood.Bank.repository.RegisteredUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +17,14 @@ import java.util.Optional;
 public class RegisteredUserServiceImpl implements RegisteredUserService {
 
 
-
+    private LoyaltyCardRepository loyaltyCardRepository;
     private AddressRepository addressRepository;
     private RegisteredUserRepository registeredUserRepository;
 
+
     @Autowired
-    public RegisteredUserServiceImpl(RegisteredUserRepository registeredUserRepository, AddressRepository addressRepository) {
+    public RegisteredUserServiceImpl(LoyaltyCardRepository loyaltyCardRepository, RegisteredUserRepository registeredUserRepository, AddressRepository addressRepository) {
+        this.loyaltyCardRepository = loyaltyCardRepository;
         this.registeredUserRepository = registeredUserRepository;
         this.addressRepository = addressRepository;
     }
@@ -42,6 +47,10 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
     @Override
     public RegisteredUser save(RegisteredUser registeredUser) {
+        registeredUser.setPoints(0);
+        registeredUser.setIsAuthenticated(false);
+        Optional<LoyaltyCard> loyaltyCard = loyaltyCardRepository.findById(1);
+        registeredUser.setLoyaltyCard(loyaltyCard.get());
         addressRepository.save(registeredUser.getAddress());
         return registeredUserRepository.save(registeredUser);
     }

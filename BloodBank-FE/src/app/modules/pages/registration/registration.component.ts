@@ -6,6 +6,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {CreatePollComponent} from "../../bank/create-poll/create-poll.component";
 import {CreateAddressComponent} from "../../bank/create-address/create-address.component";
+import {catchError} from "rxjs";
+import {errorContext} from "rxjs/internal/util/errorContext";
 
 @Component({
   selector: 'app-registration',
@@ -20,18 +22,18 @@ export class RegistrationComponent implements OnInit {
   constructor(public dialog: MatDialog, private registeredUserService: RegisteredUserService, private router: Router) { }
 
   public createUser() {
-    console.log(this.user);
-    if(!this.isValidInput()) {
-      alert("You must enter all the fields")
-      return;
-    }
+   // if(!this.isValidInput()) {
+     // alert("You must enter all the fields")
+     // return;
+  //  }
     try {
       this.registeredUserService.createUser(this.user).subscribe(res => {
         alert("Registered successfully");
         this.router.navigate(['']);
       },
         error => {
-          alert("Username not available");
+          catchError(error)
+            alert(error.message)
         });
     } catch (error) {
       console.log("Xdpls");
@@ -41,6 +43,15 @@ export class RegistrationComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateAddressComponent, {
       width: '280px',
+      data: {
+        data :{
+          'country': this.user.address.country,
+          'city': this.user.address.city,
+          'street': this.user.address.street,
+          'number': this.user.address.number,
+          'postalCode': this.user.address.postalCode
+        }
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -50,8 +61,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   public isValidInput(): boolean {
-    return (this.user.firstName != '' && this.user.password == this.confirmPassword && this.user.lastName != '' && this.user.email != '' && this.user.phoneNumber != '' &&
-    this.user.umcn != '' && this.user.institution != '' && this.user.username != '' && this.user.address.country != ''
+      return (this.user.firstName != '' && this.user.password == this.confirmPassword && this.user.lastName != '' && this.user.email != '' && this.user.phoneNumber != '' &&
+      this.user.umcn != '' && this.user.institution != '' && this.user.username != '' && this.user.address.country != ''
       && this.user.address.city != '' && this.user.address.street != '' && this.user.address.postalCode != '' && this.user.address.number != '')
   }
 

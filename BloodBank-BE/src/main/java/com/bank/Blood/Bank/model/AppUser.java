@@ -4,11 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.NumberFormat;
+
 
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import static javax.persistence.DiscriminatorType.STRING;
 import static javax.persistence.InheritanceType.SINGLE_TABLE;
@@ -64,27 +67,35 @@ public abstract class AppUser {
     /*
      * Kolona moze imati ime koje se razlikuje od naziva atributa.
      */
+    @NotEmpty
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
+    @NotBlank(message = "password is required")
     @Column(name = "password", unique = false, nullable = true)
     private String password;
 
+    @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "email is not valid")
     @Column
     private String email;
 
+    @NotBlank(message = "first name is required")
     @Column(name = "firstName", nullable = false)
     private String firstName;
 
+    @NotBlank(message = "last name is required")
     @Column(name = "lastName", nullable = false)
     private String lastName;
 
+    @Pattern(regexp="[\\d]{9,10}", message = "phone number not valid")
     @Column
     private String phoneNumber;
 
+    @NotBlank(message = "UMCN(JMBG) is required")
     @Column
     private String umcn;
 
+    @NotNull
     @Column
     private Gender gender;
 
@@ -115,6 +126,7 @@ public abstract class AppUser {
      * ce obezbediti da se ispiti izbrisu iz baze kada se izbrisu iz kolekcije
      * ispita u objektu student.
      */
+    @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id", nullable = true)
     private Address address;
