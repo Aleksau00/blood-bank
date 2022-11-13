@@ -6,13 +6,13 @@ import { MaterialModule } from "src/app/material/material.module";
 import { CreateRoomComponent } from "./create-room/create-room.component";
 import { RoomDetailComponent } from "./room-detail/room-detail.component";
 import { RoomsComponent } from "./rooms/rooms.component";
-import { UpdateRoomComponent } from "./update-room/update-room.component";
+import { UpdateProfileComponent } from "./update-profile/update-profile.component";
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
   { path: 'rooms/add', component: CreateRoomComponent },
-  { path: 'rooms/:id', component: RoomDetailComponent },  
-  { path: 'rooms/:id/update', component: UpdateRoomComponent },
+  { path: 'rooms/:id', component: RoomDetailComponent },
+  { path: 'profile/update', component: UpdateProfileComponent },
 ];
 
 @NgModule({
@@ -20,7 +20,7 @@ const routes: Routes = [
     RoomsComponent,
     RoomDetailComponent,
     CreateRoomComponent,
-    UpdateRoomComponent
+    UpdateProfileComponent
   ],
   imports: [
     CommonModule,

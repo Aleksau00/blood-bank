@@ -44,7 +44,6 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         return null;
     }
 
-
     @Override
     public RegisteredUser save(RegisteredUser registeredUser) {
         registeredUser.setPoints(0);
@@ -53,5 +52,19 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         registeredUser.setLoyaltyCard(loyaltyCard.get());
         addressRepository.save(registeredUser.getAddress());
         return registeredUserRepository.save(registeredUser);
+    }
+
+    @Override
+    public RegisteredUser update(RegisteredUser registeredUser, Integer id){
+        Optional<RegisteredUser> optExistingUser = registeredUserRepository.findById(id);
+        RegisteredUser existingUser = optExistingUser.get();
+        existingUser.setFirstName(registeredUser.getFirstName());
+        existingUser.setLastName(registeredUser.getLastName());
+        existingUser.setGender(registeredUser.getGender());
+        existingUser.setUmcn(registeredUser.getUmcn());
+        existingUser.setPhoneNumber(registeredUser.getPhoneNumber());
+        existingUser.setInstitution(registeredUser.getInstitution());
+        RegisteredUser editedUser = registeredUserRepository.save(existingUser);
+        return editedUser;
     }
 }
