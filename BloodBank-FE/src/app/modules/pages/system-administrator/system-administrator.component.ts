@@ -50,6 +50,20 @@ export class SystemAdministratorComponent implements OnInit {
   }
 
   public isValidInput(): boolean {
+    let stringRGEX = /^[a-zA-Z ]*$/;
+    let numberRGEX = /^[0-9]*$/;
+    let emailRGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!this.staff.center.name.match(stringRGEX) || !this.staff.center.address.country.match(stringRGEX) ||
+      !this.staff.center.address.city.match(stringRGEX) || !this.staff.center.address.street.match(stringRGEX) ||
+      !this.staff.center.description.match(stringRGEX) || !this.staff.username.match(stringRGEX) ||
+      !this.staff.firstName.match(stringRGEX) || !this.staff.center.address.postalCode.match(numberRGEX) ||
+      !this.staff.lastName.match(stringRGEX) || !this.staff.address.country.match(stringRGEX) ||
+      !this.staff.address.city.match(stringRGEX) || !this.staff.address.street.match(stringRGEX) ||
+      !this.staff.institution.match(stringRGEX) || !this.staff.address.postalCode.match(numberRGEX) ||
+      !this.staff.email.match(emailRGEX) || !this.staff.phoneNumber.match(numberRGEX) ||
+      !this.staff.umcn.match(numberRGEX) || !this.staff.address.number.match(numberRGEX)){
+      return false;
+    }
     return (this.staff.center.name != '' && this.staff.center.address.country != '' &&
       this.staff.center.address.city != '' && this.staff.center.address.street != '' &&
       this.staff.center.address.number != '' && this.staff.center.address.postalCode != '' &&
@@ -61,7 +75,8 @@ export class SystemAdministratorComponent implements OnInit {
       this.staff.address.city != '' && this.staff.address.street != '' &&
       this.staff.address.number != '' && this.staff.address.postalCode != '' &&
       this.staff.phoneNumber != '' && this.staff.umcn != '' &&
-      this.staff.institution != '' && this.staff.gender != '')
+      this.staff.institution != '' && this.staff.gender != ''
+      )
   }
 
   ngOnInit(): void {

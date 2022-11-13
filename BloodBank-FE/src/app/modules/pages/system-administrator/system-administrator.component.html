@@ -7,51 +7,51 @@
     <p>
       <mat-form-field class = "mat-form-field" color="primary"  appearance="fill">
         <mat-label >Enter name</mat-label>
-        <input class="mat-input-element" [(ngModel)]="staff.center.name" matInput>
+        <input class="mat-input-element" [(ngModel)]="staff.center.name"  ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter country</mat-label>
-        <input [(ngModel)]="staff.center.address.country" matInput>
+        <input [(ngModel)]="staff.center.address.country" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter city</mat-label>
-        <input [(ngModel)]="staff.center.address.city" matInput>
+        <input [(ngModel)]="staff.center.address.city" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter street</mat-label>
-        <input [(ngModel)]="staff.center.address.street" matInput>
+        <input [(ngModel)]="staff.center.address.street" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter number</mat-label>
-        <input [(ngModel)]="staff.center.address.number" matInput>
+        <input [(ngModel)]="staff.center.address.number" ngModel pattern="[0-9]*" matInput>
       </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter postal code</mat-label>
-        <input [(ngModel)]="staff.center.address.postalCode" matInput>
+        <input [(ngModel)]="staff.center.address.postalCode" ngModel pattern="[0-9]*" matInput>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter average grade</mat-label>
-        <input [(ngModel)]="staff.center.averageGrade" matInput>
+        <input [(ngModel)]="staff.center.averageGrade" ngModel pattern="[+-]?([0-9]*[.])?[0-9]+" matInput>
       </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter start time</mat-label>
-        <input [(ngModel)]="staff.center.startTime" matInput>
+        <input type="time" [(ngModel)]="staff.center.startTime" matInput>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter end time</mat-label>
-        <input [(ngModel)]="staff.center.endTime" matInput>
+        <input type="time" [(ngModel)]="staff.center.endTime" matInput>
       </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label>Description</mat-label>
-        <input [(ngModel)]="staff.center.description" matInput>
+        <input [(ngModel)]="staff.center.description" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
     </p>
   </div>
@@ -70,7 +70,7 @@
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter username</mat-label>
-        <input [(ngModel)]="staff.username" matInput>
+        <input [(ngModel)]="staff.username" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter password</mat-label>
@@ -80,60 +80,60 @@
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter name</mat-label>
-        <input [(ngModel)]="staff.firstName" matInput>
+        <input [(ngModel)]="staff.firstName" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter last name</mat-label>
-        <input [(ngModel)]="staff.lastName" matInput>
+        <input [(ngModel)]="staff.lastName" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter email</mat-label>
-        <input [(ngModel)]="staff.email" matInput>
+        <input [(ngModel)]="staff.email" ngModel pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*"  matInput>
       </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter country</mat-label>
-        <input [(ngModel)]="staff.address.country" matInput>
+        <input [(ngModel)]="staff.address.country" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter city</mat-label>
-        <input [(ngModel)]="staff.address.city" matInput>
+        <input [(ngModel)]="staff.address.city" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
 
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter street</mat-label>
-        <input [(ngModel)]="staff.address.street" matInput>
+        <input [(ngModel)]="staff.address.street" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter number</mat-label>
-        <input [(ngModel)]="staff.address.number" matInput>
+        <input [(ngModel)]="staff.address.number" ngModel pattern="[0-9]*" matInput>
       </mat-form-field>
 
       <mat-form-field color="primary"  appearance="fill">
         <mat-label>Enter postal code</mat-label>
-        <input [(ngModel)]="staff.address.postalCode" matInput>
+        <input [(ngModel)]="staff.address.postalCode" ngModel pattern="[0-9]*" matInput>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter phone number</mat-label>
-        <input [(ngModel)]="staff.phoneNumber" matInput>
+        <input [(ngModel)]="staff.phoneNumber" ngModel pattern="[0-9]{9,10}" matInput>
       </mat-form-field>
 
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter umcn</mat-label>
-        <input [(ngModel)]="staff.umcn" matInput>
+        <input [(ngModel)]="staff.umcn" ngModel pattern="[0-9]{13}" matInput>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter institution</mat-label>
-        <input [(ngModel)]="staff.institution" matInput>
+        <input [(ngModel)]="staff.institution" ngModel pattern="[a-zA-Z ]*" matInput>
       </mat-form-field>
     </p>
     <div class="mat-footer-cell">
