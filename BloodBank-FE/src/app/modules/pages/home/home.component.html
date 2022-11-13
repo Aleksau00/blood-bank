@@ -1,6 +1,14 @@
 <div class="content">
   <div class="header-wrapper">
     <mat-form-field>
+      <mat-label>Filter by:</mat-label>
+      <mat-select [ngModel]="method" (ngModelChange)="sortCenters($event)">
+        <mat-option *ngFor="let met of filters" [value]="met.value">
+          {{met.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
       <mat-label>Sort blood centers by:</mat-label>
       <mat-select [ngModel]="method" (ngModelChange)="sortCenters($event)">
         <mat-option *ngFor="let met of methods" [value]="met.value">
@@ -8,26 +16,33 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <app-search (searchTextChanged)="onSearchTextEntered($event)" class="search"></app-search>
   </div>
   <div class="wrapper">
     <mat-card class="example-card" *ngFor="let center of centers">
-      <mat-card-header>
-        <mat-card-title>{{center.name}}</mat-card-title>
-        <p><mat-card-subtitle>{{center.address.city}}, {{center.address.country}} <br/> <mat-card-subtitle>{{center.address.street}}, {{center.address.number}}, {{center.address.postalCode}}</mat-card-subtitle></mat-card-subtitle></p>
+      <div *ngIf= "(searchText === '') || (center.name.toLowerCase().includes(searchText.toLowerCase())) || (center.address.city.toLowerCase().includes(searchText.toLowerCase())) ||
+                  (center.address.country.toLowerCase().includes(searchText.toLowerCase())) || (center.address.street.toLowerCase().includes(searchText.toLowerCase())) || (center.address.number.includes(searchText.toLowerCase()))" >
 
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{center.description}}</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <div class="bottom-card">
-          <p>{{center.averageGrade}}<mat-icon class="icon-display">star</mat-icon></p>
-          <p>{{center.startTime.substring(0, 5)}}h - {{center.endTime.substring(0, 5)}}h</p>
-        </div>
-        <button mat-mini-fab class="mat-mini-fab" matTooltip="View" >
-          <mat-icon>search</mat-icon>
-        </button>
-      </mat-card-actions>
+        <mat-card-header>
+          <mat-card-title>{{center.name}}</mat-card-title>
+          <p><mat-card-subtitle>{{center.address.city}}, {{center.address.country}} <br/> <mat-card-subtitle>{{center.address.street}}, {{center.address.number}}, {{center.address.postalCode}}</mat-card-subtitle></mat-card-subtitle></p>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>{{center.description}}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <div class="bottom-card">
+            <p>{{center.averageGrade}}<mat-icon class="icon-display">star</mat-icon></p>
+            <p>{{center.startTime.substring(0, 5)}}h - {{center.endTime.substring(0, 5)}}h</p>
+          </div>
+          <button mat-mini-fab class="mat-mini-fab" matTooltip="View" >
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-card-actions>
+
+      </div>
     </mat-card>
   </div>
 </div>

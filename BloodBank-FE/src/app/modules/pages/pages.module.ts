@@ -8,7 +8,7 @@ import { SystemAdministratorComponent } from './system-administrator/system-admi
 import { RegistrationComponent } from './registration/registration.component';
 import { UsersComponent } from './users/users.component';
 import { SearchComponent } from './search/search.component';
-
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -18,6 +18,7 @@ import { SearchComponent } from './search/search.component';
     RegistrationComponent,
     UsersComponent,
     SearchComponent,
+    ProfileComponent,
 ],
   imports: [
     CommonModule,

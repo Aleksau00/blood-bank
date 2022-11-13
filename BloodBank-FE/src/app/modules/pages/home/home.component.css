@@ -45,10 +45,12 @@ mat-card-header {
 
 .header-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  padding: 10px;
   align-content: space-around;
 }
+
 .content {
   margin: 2rem;
 }
@@ -56,4 +58,8 @@ mat-card-header {
 .icon-display {
   color: #00ADB5;
   transform: translateY(20%);
+}
+
+.header-wrapper .mat-form-field + .mat-form-field {
+  margin-left: 10px;
 }
