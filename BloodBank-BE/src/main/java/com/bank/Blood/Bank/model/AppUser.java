@@ -72,7 +72,7 @@ public abstract class AppUser {
     private String username;
 
     @NotBlank(message = "password is required")
-    @Column(name = "password", unique = false, nullable = true)
+    @Column(name = "password", unique = false, nullable = false)
     private String password;
 
     @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "email is not valid")

@@ -9,6 +9,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { UsersComponent } from './users/users.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CenterComponent } from './center/center.component';
+import { StaffProfileComponent } from './staff-profile/staff-profile.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
     UsersComponent,
     SearchComponent,
     ProfileComponent,
+    CenterComponent,
+    StaffProfileComponent
 ],
   imports: [
     CommonModule,

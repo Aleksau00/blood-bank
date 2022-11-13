@@ -6,6 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./center.component.css']
 })
 export class CenterComponent implements OnInit {
+createUser() {
+throw new Error('Method not implemented.');
+}
+isValidInput() {
+throw new Error('Method not implemented.');
+}
+openDialog() {
+throw new Error('Method not implemented.');
+}
 
   constructor() { }
 

@@ -9,14 +9,12 @@ import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { BankModule } from "./modules/bank/bank.module";
-import { CenterComponent } from './center/center.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    CenterComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
