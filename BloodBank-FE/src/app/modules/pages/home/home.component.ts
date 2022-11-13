@@ -31,7 +31,11 @@ export class HomeComponent implements OnInit {
 
   ];
   method: Method = {value: 'NameAsc', viewValue: 'Name A-Z'};
+  filters: Method[] = [
+    {value: 'NameAsc', viewValue: 'Grade 3 and above'},
+    {value: 'NameDesc', viewValue: 'Grade 3 and below'}
 
+  ];
   // MatPaginator Output
 
   constructor(private centerService: CenterService, private router: Router) { }
@@ -46,5 +50,11 @@ export class HomeComponent implements OnInit {
     this.centerService.getCentersSorted(this.method).subscribe(res => {
     this.centers = res;
     })
+  }
+
+  searchText: string = '';
+
+  onSearchTextEntered(searchValue: string){
+    this.searchText = searchValue;
   }
 }

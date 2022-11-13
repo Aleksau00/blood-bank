@@ -32,7 +32,7 @@ public class RegisteredUser extends AppUser {
     private Boolean isCapable; //moze da da krv
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "registered_user_id", nullable = true)
+    @JoinColumn(name = "loyalty_card_id", nullable = true)
     private LoyaltyCard loyaltyCard;
 
     @Column

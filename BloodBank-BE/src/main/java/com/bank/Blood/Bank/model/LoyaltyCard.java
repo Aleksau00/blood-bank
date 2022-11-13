@@ -25,6 +25,4 @@ public class LoyaltyCard {
     @Column
     private Integer points;
 
-    @OneToMany(mappedBy = "loyaltyCard", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<RegisteredUser> registeredUsers = new HashSet<>();
 }

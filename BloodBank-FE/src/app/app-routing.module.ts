@@ -4,12 +4,16 @@ import { CenterComponent } from "./center/center.component";
 import { HomeComponent } from "./modules/pages/home/home.component";
 import { SystemAdministratorComponent} from "./modules/pages/system-administrator/system-administrator.component";
 import { UsersComponent} from "./modules/pages/users/users.component";
+import { ProfileComponent} from "./modules/pages/profile/profile.component";
+import {RegistrationComponent} from "./modules/pages/registration/registration.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'system-administrator', component: SystemAdministratorComponent},
   { path: 'users', component: UsersComponent },
-  { path: 'center', component: CenterComponent }
+  { path: 'center', component: CenterComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'registration', component: RegistrationComponent }
 ];
 
 @NgModule({

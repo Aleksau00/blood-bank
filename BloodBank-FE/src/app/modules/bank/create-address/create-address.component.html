@@ -1,0 +1,37 @@
+<h1 mat-dialog-title class="mat-dialog-title">Address info</h1>
+<div mat-dialog-content>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Country</mat-label>
+      <input [(ngModel)]="addressDialog.country" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >City</mat-label>
+      <input [(ngModel)]="addressDialog.city" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Street</mat-label>
+      <input [(ngModel)]="addressDialog.street" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary"  appearance="fill">
+      <mat-label >Number</mat-label>
+      <input [(ngModel)]="addressDialog.number" matInput>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field color="primary" id="occupationInput" appearance="fill">
+      <mat-label >Postal code</mat-label>
+      <input [(ngModel)]="addressDialog.postalCode" matInput>
+    </mat-form-field>
+  </p>
+  <div mat-dialog-action [align]="'end'">
+    <button class="dialogButton" mat-raised-button  mat-dialog-close>Cancel</button>
+    <button class="dialogButton" mat-raised-button color="primary" [disabled]="!isValidInput()" (click)="createAddress()" mat-dialog-close>Save</button>
+  </div>
+</div>
