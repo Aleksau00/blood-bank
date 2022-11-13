@@ -1,1 +1,72 @@
+<div class="wrapper">
+  <div  style="font-size: 11px">
+      <h1 mat-dialog-title class="mat-dialog-title">Sign up</h1>
+    <p>
+      <mat-form-field class="mat-form-field" color="primary" id="occupationInput" appearance="fill">
+        <mat-label >First name</mat-label>
+        <input class="mat-input-element" [(ngModel)]="user.firstName" matInput>
+      </mat-form-field>
+      <mat-form-field class="mat-form-field" color="primary" id="donationCount" appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input class="mat-input-element" [(ngModel)]="user.lastName" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="mat-form-field" color="primary" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input class="mat-input-element" [(ngModel)]="user.username" matInput>
+      </mat-form-field>
+      <mat-form-field class="mat-form-field" color="primary" appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input class="mat-input-element" [(ngModel)]="user.email" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="mat-form-field" color="primary" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" class="mat-input-element" [(ngModel)]="user.password" matInput>
+      </mat-form-field>
+      <mat-form-field class="mat-form-field" color="primary" appearance="fill">
+        <mat-label>Confirm password</mat-label>
+        <input type="password" class="mat-input-element" [(ngModel)]="confirmPassword" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="mat-form-field" color="primary" appearance="fill">
+        <mat-label>Phone number</mat-label>
+        <input class="mat-input-element" [(ngModel)]="user.phoneNumber" matInput>
+      </mat-form-field>
+      <mat-form-field class="mat-form-field" color="primary" appearance="fill">
+        <mat-label>Institution(work)</mat-label>
+        <input class="mat-input-element" [(ngModel)]="user.institution" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="mat-form-field" color="primary" appearance="fill">
+        <mat-label>UMCN(JMBG)</mat-label>
+        <input class="mat-input-element" [(ngModel)]="user.umcn" matInput>
+      </mat-form-field>
+      <button (click)="openDialog()" color="primary" mat-raised-button id="addressButton" class="mat-raised-button" matTooltip="Add address" >
+        <mat-label>Add address</mat-label>
+        <mat-icon>add</mat-icon>
+      </button>
+    </p>
+    <div class="mat-footer-cell">
+        <mat-label class="mat-label">Gender</mat-label>
+    </div>
+    <p>
+      <mat-radio-group [(ngModel)]="user.gender" class="example-radio-group" aria-label="Select an option">
+        <mat-radio-button class="mat-radio-button" value=0>Female</mat-radio-button>
+        <mat-radio-button class="mat-radio-button" value=1>Male</mat-radio-button>
+        <mat-radio-button class="mat-radio-button" value=2>Other</mat-radio-button>
+      </mat-radio-group>
+
+
+    </p>
+    <div mat-dialog-action [align]="'end'">
+      <button class="dialogButtonCancel" mat-raised-button [disabled]="!isValidInput()"  mat-dialog-close>Cancel</button>
+      <button class="dialogButton" mat-raised-button color="primary" (click)="createUser()">Sign in</button>
+    </div>
+  </div>
+</div>
 

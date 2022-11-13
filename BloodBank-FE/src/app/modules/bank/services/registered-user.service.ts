@@ -16,4 +16,8 @@ export class RegisteredUserService {
   getUser(id: number): Observable<RegisteredUser> {
     return this.http.get<RegisteredUser>(this.apiHost + 'api/registeredUsers/' + id, {headers: this.headers});
   }
+
+  createUser(user: any): Observable<any> {
+    return this.http.post<any>(this.apiHost + 'api/registeredUsers', user, {headers: this.headers});
+  }
 }

@@ -1,0 +1,19 @@
+.example-section {
+  margin: 12px 0;
+}
+
+#feedbackArea {
+  width: 346px;
+}
+
+.mat-dialog-title {
+  font-width: bold;
+}
+
+.dialogButton {
+  margin: 4px;
+}
+
+.dialogButtonCancel {
+  margin: 4px;
+}

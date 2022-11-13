@@ -7,6 +7,7 @@ import { CreateCenterComponent } from './create-center/create-center.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
+import { CreateAddressComponent } from './create-address/create-address.component';
 
 
 
@@ -14,7 +15,8 @@ import {MatInputModule} from "@angular/material/input";
 @NgModule({
   declarations: [
     CreatePollComponent,
-    CreateCenterComponent
+    CreateCenterComponent,
+    CreateAddressComponent
   ],
   imports: [
     CommonModule,

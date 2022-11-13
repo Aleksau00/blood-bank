@@ -13,6 +13,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -33,6 +34,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatMenuModule,
     MatSelectModule,
     MatDialogModule,
+    MatRadioModule
 
   ],
   exports: [
@@ -49,7 +51,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatPaginatorModule,
     MatMenuModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
 
   ]
 })

@@ -14,4 +14,8 @@ export class AddressDTO{
       this.postalCode = obj.postalCode;
     }
   }
+
+  toString() {
+    return `${this.street}, ${this.number}, ${this.postalCode}, ${this.city}, ${this.country}`;
+  }
 }
