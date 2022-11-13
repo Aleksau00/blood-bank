@@ -17,7 +17,7 @@ export class StaffService {
     return this.http.get<Staff>(this.apiHost + 'api/staff/' + id, {headers: this.headers});
   }
 
-  updateStaff(staff: any, id: number): Observable<Staff> {
-    return this.http.put<Staff>(this.apiHost + 'api/staff' + id, {this.headers: this.headers})
+  updateStaff(staff: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'api/staff/' + staff.id, staff, {headers: this.headers})
   }
 }

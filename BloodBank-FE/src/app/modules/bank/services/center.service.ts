@@ -14,6 +14,11 @@ export class CenterService {
 
   constructor(private http: HttpClient) { }
 
+  // saveCentar(center: Omit<Centar, "id">): Observable<any>{
+  //   return  this.http.post<any>(this.apiHost + 'api/centers', center, {headers: this.headers});
+  // }
+
+
   saveCenter(center: any): Observable<any>{
     return  this.http.post<any>(this.apiHost + 'api/centers', center, {headers: this.headers});
   }
@@ -31,4 +36,11 @@ export class CenterService {
     return this.http.get<Center[]>(this.apiHost + 'api/centers/allNameAsc', {headers: this.headers});
   }
 
+  getCenterById(id: number): Observable<Center> {
+    return this.http.get<Center>(this.apiHost + 'api/centers/' + id, {headers: this.headers});
+  }
+
+  updateCenter(id: number, center: Center): Observable<Center> {
+    return this.http.put<Center>(this.apiHost + 'api/centers/' + id, center, {headers: this.headers})
+  }
 }

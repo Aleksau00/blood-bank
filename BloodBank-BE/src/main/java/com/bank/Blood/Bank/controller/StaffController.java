@@ -1,6 +1,7 @@
 package com.bank.Blood.Bank.controller;
 
 import com.bank.Blood.Bank.dto.CenterDTO;
+import com.bank.Blood.Bank.dto.EditStaffDTO;
 import com.bank.Blood.Bank.dto.StaffDTO;
 import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.model.Staff;
@@ -26,22 +27,22 @@ public class StaffController {
     public StaffController(StaffService staffService){ this.staffService = staffService;}
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<StaffDTO> getStaff(@PathVariable("id") Integer id){
+    public ResponseEntity<EditStaffDTO> getStaff(@PathVariable("id") Integer id){
         Staff staff = staffService.findOne(id);
         if (staff == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }else {
-            return new ResponseEntity<>(new StaffDTO(staff), HttpStatus.OK);
+            return new ResponseEntity<>(new EditStaffDTO(staff), HttpStatus.OK);
         }
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<StaffDTO> updateStaff(@RequestBody Staff staff, @PathVariable("id") Integer id){
+    public ResponseEntity<EditStaffDTO> updateStaff(@RequestBody Staff staff, @PathVariable("id") Integer id){
         Staff editStaff = staffService.update(staff, id);
         if (editStaff == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }else {
-            return new ResponseEntity<>(new StaffDTO(staff), HttpStatus.OK);
+            return new ResponseEntity<>(new EditStaffDTO(staff), HttpStatus.OK);
         }
     }
 }

@@ -1,6 +1,21 @@
 import { Address} from "./address.model";
 import {AddressDTO} from "../dto/addressDTO.model";
 
+export interface Centar {
+  id: number;
+  name: string;
+  adress: AddressDTO;
+  description: string;
+  averageGrade: number;
+  startTime: string;
+  endTime: string;
+}
+
+// const c: Centar = {
+//   id: 4,
+//   name: "Neki centar"
+// }
+
 export class Center {
   name: string = '';
   address: AddressDTO = new AddressDTO();
