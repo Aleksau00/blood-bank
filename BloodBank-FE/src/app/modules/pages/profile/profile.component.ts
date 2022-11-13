@@ -1,8 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {AppUserService} from "../../bank/services/appUser.service";
-import {Router} from "@angular/router";
-import { AppUser } from "../../bank/model/appUser.model";
-import {Center} from "../../bank/model/center.model";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {RegisteredUser} from "../../bank/model/registeredUser.model";
+import {RegisteredUserService} from "../../bank/services/registered-user.service";
 
 export interface Method{
   value: string;
@@ -16,14 +15,14 @@ export interface Method{
 })
 export class ProfileComponent implements OnInit {
 
-  public users: AppUser[] = [];
+  public registeredUser: RegisteredUser | undefined;
 
-  constructor(private appUserService: AppUserService, private router: Router) {}
+  constructor(private registerUserService: RegisteredUserService, private route: ActivatedRoute) {}
 
-  ngOnInit(): void{
-    this.appUserService.getAppUsers().subscribe(res => {
-      this.users = res;
-      console.log(this.users);
+  ngOnInit(): void {
+    this.registerUserService.getUser(1).subscribe(res => {
+      console.log(res);
+    this.registeredUser = res;
     })
   }
 

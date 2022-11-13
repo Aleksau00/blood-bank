@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  padding-left: 30px;
+  padding-top: 50px;
+}
+
+.mat-form-field {
+  margin: 10px;
+}
+
+.h2 {
+  padding-left: 10px;
+}

@@ -1,7 +1,9 @@
 package com.bank.Blood.Bank.controller;
 
 import com.bank.Blood.Bank.dto.RegisteredUserDTO;
+import com.bank.Blood.Bank.dto.StaffDTO;
 import com.bank.Blood.Bank.model.RegisteredUser;
+import com.bank.Blood.Bank.model.Staff;
 import com.bank.Blood.Bank.service.RegisteredUserService;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,16 @@ public class RegisteredUserController {
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<RegisteredUser>(savedUser, HttpStatus.CONFLICT);
+        }
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<RegisteredUserDTO> updateUser(@RequestBody RegisteredUser registeredUser, @PathVariable("id") Integer id){
+        RegisteredUser editUser = registeredUserService.update(registeredUser, id);
+        if (editUser == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }else {
+            return new ResponseEntity<>(new RegisteredUserDTO(registeredUser), HttpStatus.OK);
         }
     }
 }
