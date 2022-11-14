@@ -6,7 +6,6 @@ export interface Centar {
 
 export interface Staff{
   password: String;
-  center: Center;
 }
 
 export class Staff {
