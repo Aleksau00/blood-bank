@@ -7,6 +7,7 @@ import {Center} from "../../bank/model/center.model";
   providedIn: 'root'
 })
 export class CenterService{
+  [x: string]: any;
   apiHost: string = 'http://localhost:5000';
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 

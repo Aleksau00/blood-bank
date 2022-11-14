@@ -16,7 +16,7 @@ export class StaffProfileUpdateComponent implements OnInit {
   constructor(private staffService: StaffService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.staffService.getStaff(4).subscribe(res => {
+    this.staffService.getStaff(5).subscribe(res => {
     this.staff = res;
     })
   }
@@ -24,7 +24,7 @@ export class StaffProfileUpdateComponent implements OnInit {
   updateStaff(): void {
     if (!this.isValidInput()) return;
     this.staffService.updateStaff(this.staff).subscribe(res => {
-      this.router.navigate(['/profile/update']);
+      this.router.navigate(['/staff-profile']);
     });
   }
 

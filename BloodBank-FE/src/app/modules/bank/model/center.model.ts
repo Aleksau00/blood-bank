@@ -1,5 +1,6 @@
 import { Address} from "./address.model";
 import {AddressDTO} from "../dto/addressDTO.model";
+import { Staff } from "./staffCenter.model";
 
 export interface Centar {
   id: number;
@@ -9,6 +10,7 @@ export interface Centar {
   averageGrade: number;
   startTime: string;
   endTime: string;
+  staffList: Array<Staff>
 }
 
 // const c: Centar = {
@@ -23,6 +25,7 @@ export class Center {
   averageGrade: number = 0;
   startTime: string = '';
   endTime: string = '';
+
 
 
   public constructor(obj?: any) {

@@ -9,19 +9,14 @@ import { StaffService } from '../../bank/services/staff.service';
   styleUrls: ['./staff-profile.component.css']
 })
 export class StaffProfileComponent implements OnInit {
-editUser() {
-throw new Error('Method not implemented.');
-}
-createUser() {
-throw new Error('Method not implemented.');
-}
+
 
   public staff: Staff | undefined;
 
   constructor(private staffService: StaffService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.staffService.getStaff(4).subscribe(res => {
+    this.staffService.getStaff(5).subscribe(res => {
     this.staff = res;
     })
   }

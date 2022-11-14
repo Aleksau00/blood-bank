@@ -41,9 +41,14 @@
     </div>
     <div>
       <p>
+        
         <mat-form-field appearance="fill">
           <mat-label>Username: </mat-label>
           <input matInput [(ngModel)]="staff.username">
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Password: </mat-label>
+          <input matInput [(ngModel)]="staff.password">
         </mat-form-field><br>
         <mat-form-field appearance="fill">
           <mat-label>E-mail: </mat-label>
@@ -57,6 +62,7 @@
           <mat-label>Institution: </mat-label>
           <input matInput [(ngModel)]="staff.institution">
         </mat-form-field>
+        
         <button mat-stroked-button (click)="updateStaff()">
           Submit
         </button>

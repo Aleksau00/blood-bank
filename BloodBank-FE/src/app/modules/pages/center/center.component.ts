@@ -9,15 +9,6 @@ import { CenterService } from '../../bank/services/center.service';
   styleUrls: ['./center.component.css']
 })
 export class CenterComponent implements OnInit {
-createUser() {
-throw new Error('Method not implemented.');
-}
-isValidInput() {
-throw new Error('Method not implemented.');
-}
-openDialog() {
-throw new Error('Method not implemented.');
-}
 
 public center: Center | undefined;
 

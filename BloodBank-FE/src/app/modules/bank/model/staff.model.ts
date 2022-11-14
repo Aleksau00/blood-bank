@@ -1,4 +1,13 @@
 import { Address} from "./address.model";
+import { Center } from "./center.model";
+
+export interface Centar {
+}
+
+export interface Staff{
+  password: String;
+  center: Center;
+}
 
 export class Staff {
   id: number = 0;
@@ -11,6 +20,7 @@ export class Staff {
   umcn: string = '';
   gender: string = '';
   institution: string = '';
+
 
 
   public constructor(obj?: any) {

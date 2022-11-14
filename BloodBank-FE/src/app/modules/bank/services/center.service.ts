@@ -40,7 +40,7 @@ export class CenterService {
     return this.http.get<Center>(this.apiHost + 'api/centers/' + id, {headers: this.headers});
   }
 
-  updateCenter(id: number, center: Center): Observable<Center> {
-    return this.http.put<Center>(this.apiHost + 'api/centers/' + id, center, {headers: this.headers})
+  updateCenter(center: any): Observable<any> {
+    return this.http.put<any>(this.apiHost + 'api/centers/' + center.id, center, {headers: this.headers});
   }
 }
