@@ -1,4 +1,5 @@
 import { Address} from "./address.model";
+import {LoyaltyCard} from "./loyaltyCard.model";
 
 export class RegisteredUser {
   id: number = 0;
@@ -12,7 +13,7 @@ export class RegisteredUser {
   gender: string = '';
   institution: string = '';
   points: number = 0;
-  loyaltyCard: string = '';
+  loyaltyCard: LoyaltyCard = new LoyaltyCard();
 
 
   public constructor(obj?: any) {

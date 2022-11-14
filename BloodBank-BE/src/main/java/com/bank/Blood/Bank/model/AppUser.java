@@ -68,7 +68,7 @@ public abstract class AppUser {
      * Kolona moze imati ime koje se razlikuje od naziva atributa.
      */
     @NotEmpty
-    @Column(name = "username", unique = false, nullable = false)
+    @Column(name = "username", unique = true, nullable = false)
     private String username;
 
     @NotBlank(message = "password is required")
@@ -76,7 +76,7 @@ public abstract class AppUser {
     private String password;
 
     @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "email is not valid")
-    @Column
+    @Column(unique = true)
     private String email;
 
     @NotBlank(message = "first name is required")

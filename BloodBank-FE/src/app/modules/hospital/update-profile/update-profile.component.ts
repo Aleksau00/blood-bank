@@ -17,7 +17,7 @@ export class UpdateProfileComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-      this.registeredUserService.getUser(1).subscribe(res => {
+      this.registeredUserService.getUser(8).subscribe(res => {
         this.registeredUser = res;
       })
   }

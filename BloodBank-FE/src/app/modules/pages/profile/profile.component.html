@@ -21,7 +21,7 @@
     <mat-form-field class="mat-form-field" color="primary"><b> E-mail: </b></mat-form-field>
     <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.email}} </mat-form-field>
     <mat-form-field class="mat-form-field" color="primary"><b> Loyalty status: </b></mat-form-field>
-    <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.loyaltyCard}} </mat-form-field>
+    <mat-form-field class="mat-form-field" color="primary"> {{registeredUser!.loyaltyCard.name}} </mat-form-field>
   </p><p>
   <mat-form-field class="mat-form-field" color="primary"><b> Gender: </b></mat-form-field>
   <mat-form-field class="mat-form-field" color="primary"> {{registeredUser?.gender}} </mat-form-field>
