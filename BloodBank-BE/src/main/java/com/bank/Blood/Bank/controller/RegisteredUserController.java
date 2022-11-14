@@ -1,5 +1,6 @@
 package com.bank.Blood.Bank.controller;
 
+import com.bank.Blood.Bank.dto.PasswordDTO;
 import com.bank.Blood.Bank.dto.RegisteredUserDTO;
 import com.bank.Blood.Bank.dto.StaffDTO;
 import com.bank.Blood.Bank.model.RegisteredUser;
@@ -62,4 +63,15 @@ public class RegisteredUserController {
             return new ResponseEntity<>(new RegisteredUserDTO(registeredUser), HttpStatus.OK);
         }
     }
+
+    /*
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<PasswordDTO> updatePassword(@RequestBody RegisteredUser registeredUser, @PathVariable("id") Integer id){
+        RegisteredUser editUser = registeredUserService.updatePassword(registeredUser, id);
+        if (editUser == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }else {
+            return new ResponseEntity<>(new PasswordDTO(registeredUser), HttpStatus.OK);
+        }
+    }*/
 }

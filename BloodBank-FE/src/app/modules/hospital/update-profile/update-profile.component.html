@@ -1,53 +1,25 @@
 <div *ngIf="registeredUser" class="main-div">
   <div class="div-column">
+    <h2>Edit profile</h2>
     <p>
       <mat-form-field appearance="fill">
         <mat-label>Name: </mat-label>
         <input matInput [(ngModel)]="registeredUser.firstName">
-      </mat-form-field><br>
+      </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Surname: </mat-label>
         <input matInput [(ngModel)]="registeredUser.lastName">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Gender: </mat-label>
-        <input matInput [(ngModel)]="registeredUser.gender">
-      </mat-form-field><br>
+        <mat-select [(ngModel)]="registeredUser.gender">
+          <mat-option value="MALE">MALE</mat-option>
+          <mat-option value="FEMALE">FEMALE</mat-option>
+        </mat-select>
+      </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>UMCN: </mat-label>
         <input matInput [(ngModel)]="registeredUser.umcn">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Street: </mat-label>
-        <input matInput [(ngModel)]="registeredUser.address.street">
-      </mat-form-field><br>
-      <mat-form-field appearance="fill">
-        <mat-label>Street number: </mat-label>
-        <input matInput [(ngModel)]="registeredUser.address.number">
-      </mat-form-field><br>
-      <mat-form-field appearance="fill">
-        <mat-label>City: </mat-label>
-        <input matInput [(ngModel)]="registeredUser.address.city">
-      </mat-form-field><br>
-      <mat-form-field appearance="fill">
-        <mat-label>Postal code: </mat-label>
-        <input matInput [(ngModel)]="registeredUser.address.postalCode">
-      </mat-form-field><br>
-      <mat-form-field appearance="fill">
-        <mat-label>Address country: </mat-label>
-        <input matInput [(ngModel)]="registeredUser.address.country">
-      </mat-form-field><br>
-    </p>
-  </div>
-  <div>
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Username: </mat-label>
-        <input matInput [(ngModel)]="registeredUser.username">
-      </mat-form-field><br>
-      <mat-form-field appearance="fill">
-        <mat-label>E-mail: </mat-label>
-        <input matInput [(ngModel)]="registeredUser.email">
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Phone number: </mat-label>
@@ -57,10 +29,47 @@
         <mat-label>Institution: </mat-label>
         <input matInput [(ngModel)]="registeredUser.institution">
       </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Username: </mat-label>
+        <input matInput [(ngModel)]="registeredUser.username">
+      </mat-form-field><br>
+    </p>
+  </div>
+  <div>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>City: </mat-label>
+        <input matInput [(ngModel)]="registeredUser.address.city">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Postal code: </mat-label>
+        <input matInput [(ngModel)]="registeredUser.address.postalCode">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Street: </mat-label>
+        <input matInput [(ngModel)]="registeredUser.address.street">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Street number: </mat-label>
+        <input matInput [(ngModel)]="registeredUser.address.number">
+      </mat-form-field><br>
+      <mat-form-field appearance="fill">
+        <mat-label>Address country: </mat-label>
+        <input matInput [(ngModel)]="registeredUser.address.country">
+      </mat-form-field><br>
+      <mat-label class="email-label">E-mail cannot be changed. </mat-label>
+      <mat-form-field appearance="fill">
+        <mat-label>E-mail: </mat-label>
+        <input matInput [(ngModel)]="registeredUser.email" disabled>
+      </mat-form-field>
+      <button mat-stroked-button (click)="cancel()">
+        Cancel
+      </button>
       <button mat-stroked-button (click)="updateUser()">
         Submit
       </button>
-    </p>
-  </div>
 
+    </p>
+
+  </div>
 </div>

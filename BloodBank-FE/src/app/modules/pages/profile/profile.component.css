@@ -9,8 +9,14 @@
 
 .mat-form-field {
   margin: 10px;
+  font-size: 15px;
 }
 
 .h2 {
   padding-left: 10px;
+}
+
+.title-edit {
+  display: flex;
+  flex-direction: row;
 }

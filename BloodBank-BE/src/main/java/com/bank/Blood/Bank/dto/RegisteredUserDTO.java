@@ -25,8 +25,6 @@ public class RegisteredUserDTO {
     private Boolean isAuthenticated;
     private LoyaltyCard loyaltyCard;
 
-
-
     public RegisteredUserDTO() {
 
     }
