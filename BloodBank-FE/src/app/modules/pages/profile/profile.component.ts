@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit {
 
   public registeredUser: RegisteredUser | undefined;
 
-  constructor(private registerUserService: RegisteredUserService, private route: ActivatedRoute) {}
+  constructor(private registerUserService: RegisteredUserService, private router: Router) {}
 
   ngOnInit(): void {
     this.registerUserService.getUser(1).subscribe(res => {
@@ -25,5 +25,10 @@ export class ProfileComponent implements OnInit {
     this.registeredUser = res;
     })
   }
+
+  public editProfile(): void {
+    this.router.navigate(['/profile/update'])
+  }
+
 
 }

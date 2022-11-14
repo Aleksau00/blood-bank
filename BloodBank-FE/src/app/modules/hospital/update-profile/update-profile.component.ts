@@ -25,11 +25,28 @@ export class UpdateProfileComponent implements OnInit {
   public updateUser(): void {
     if (!this.isValidInput()) return;
     this.registeredUserService.updateUser(this.registeredUser).subscribe(res => {
-      this.router.navigate(['/profile/update']);
+      this.router.navigate(['/profile']);
+    });
+  }
+
+  public updatePassword(): void {
+    if (!this.isValidInput()) return;
+    this.registeredUserService.updatePassword(this.registeredUser).subscribe(res => {
+      this.router.navigate(['/profile']);
     });
   }
 
   private isValidInput(): boolean {
-    return this.registeredUser?.firstName != '' && this.registeredUser?.lastName != '';
+    return this.registeredUser?.firstName != '' && this.registeredUser?.lastName != ''
+      && this.registeredUser?.gender != '' && this.registeredUser?.umcn != ''
+      && this.registeredUser?.address?.city != '' && this.registeredUser?.address?.country != ''
+      && this.registeredUser?.address?.postalCode != '' && this.registeredUser?.address?.street != ''
+      && this.registeredUser?.address?.number != '' && this.registeredUser?.username != ''
+      && this.registeredUser?.email != '' && this.registeredUser?.phoneNumber != ''
+      && this.registeredUser?.institution != '';
+  }
+
+  public cancel(): void {
+    this.router.navigate(['/profile'])
   }
 }

@@ -1,11 +1,14 @@
 <div class="content">
   <div class="header-wrapper">
-    <mat-form-field>
-      <mat-label>Filter by:</mat-label>
-      <mat-select [ngModel]="method" (ngModelChange)="sortCenters($event)">
-        <mat-option *ngFor="let met of filters" [value]="met.value">
-          {{met.viewValue}}
-        </mat-option>
+    <mat-form-field appearance="fill">
+      <mat-label>Filter by grade:</mat-label>
+      <mat-select [(ngModel)]="selectedGrade">
+        <mat-option value="0"> Remove filter </mat-option>
+        <mat-option value="1"><mat-icon>star</mat-icon></mat-option>
+        <mat-option value="2"><mat-icon>star</mat-icon><mat-icon>star</mat-icon></mat-option>
+        <mat-option value="3"><mat-icon>star</mat-icon><mat-icon>star</mat-icon><mat-icon>star</mat-icon></mat-option>
+        <mat-option value="4"><mat-icon>star</mat-icon><mat-icon>star</mat-icon><mat-icon>star</mat-icon><mat-icon>star</mat-icon></mat-option>
+        <mat-option value="5"><mat-icon>star</mat-icon><mat-icon>star</mat-icon><mat-icon>star</mat-icon><mat-icon>star</mat-icon><mat-icon>star</mat-icon></mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
@@ -20,32 +23,33 @@
   </div>
   <div class="wrapper">
     <div *ngFor="let center of centers">
-      <mat-card class="example-card"  *ngIf= "(searchText === '') || (center.name.toLowerCase().includes(searchText.toLowerCase())) || (center.address.city.toLowerCase().includes(searchText.toLowerCase())) ||
-                  (center.address.country.toLowerCase().includes(searchText.toLowerCase())) || (center.address.street.toLowerCase().includes(searchText.toLowerCase())) || (center.address.number.includes(searchText.toLowerCase()))" >
-        <div>
-          <mat-card-header>
-            <mat-card-title>{{center.name}}</mat-card-title>
-            <p><mat-card-subtitle>{{center.address.city}}, {{center.address.country}} <br/> <mat-card-subtitle>{{center.address.street}}, {{center.address.number}}, {{center.address.postalCode}}</mat-card-subtitle></mat-card-subtitle></p>
-          </mat-card-header>
+      <div *ngIf="(center.averageGrade.toString() === selectedGrade.valueOf() || '0' === selectedGrade.valueOf())">
+          <mat-card class="example-card"  *ngIf= "(searchText === '') || (center.name.toLowerCase().includes(searchText.toLowerCase())) || (center.address.city.toLowerCase().includes(searchText.toLowerCase())) ||
+                    (center.address.country.toLowerCase().includes(searchText.toLowerCase())) || (center.address.street.toLowerCase().includes(searchText.toLowerCase())) || (center.address.number.includes(searchText.toLowerCase()))" >
+            <div>
+              <mat-card-header>
+                <mat-card-title>{{center.name}}</mat-card-title>
+                <p><mat-card-subtitle>{{center.address.city}}, {{center.address.country}} <br/> <mat-card-subtitle>{{center.address.street}}, {{center.address.number}}, {{center.address.postalCode}}</mat-card-subtitle></mat-card-subtitle></p>
+              </mat-card-header>
 
-          <mat-card-content>
-            <p>{{center.description}}</p>
-          </mat-card-content>
+              <mat-card-content>
+                <p>{{center.description}}</p>
+              </mat-card-content>
 
-          <mat-card-actions>
-            <div class="bottom-card">
-              <p>{{center.averageGrade}}<mat-icon class="icon-display">star</mat-icon></p>
-              <p>{{center.startTime.substring(0, 5)}}h - {{center.endTime.substring(0, 5)}}h</p>
+              <mat-card-actions>
+                <div class="bottom-card">
+                  <p>{{center.averageGrade}}<mat-icon class="icon-display">star</mat-icon></p>
+                  <p>{{center.startTime.substring(0, 5)}}h - {{center.endTime.substring(0, 5)}}h</p>
+                </div>
+                <button mat-mini-fab class="mat-mini-fab" matTooltip="View" >
+                  <mat-icon>search</mat-icon>
+                </button>
+              </mat-card-actions>
+
             </div>
-            <button mat-mini-fab class="mat-mini-fab" matTooltip="View" >
-              <mat-icon>search</mat-icon>
-            </button>
-          </mat-card-actions>
-
-        </div>
-      </mat-card>
+          </mat-card>
+      </div>
     </div>
-
   </div>
 </div>
 <mat-paginator [length]="100"

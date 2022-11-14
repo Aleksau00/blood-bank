@@ -11,6 +11,8 @@ export class RegisteredUser {
   umcn: string = '';
   gender: string = '';
   institution: string = '';
+  points: number = 0;
+  loyaltyCard: string = '';
 
 
   public constructor(obj?: any) {
@@ -25,6 +27,8 @@ export class RegisteredUser {
       this.umcn = obj.umcn;
       this.gender = obj.gender;
       this.institution = obj.institution;
+      this.points = obj.points;
+      this.loyaltyCard = obj.loyaltyCard;
     }
   }
 }

@@ -64,6 +64,19 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         existingUser.setUmcn(registeredUser.getUmcn());
         existingUser.setPhoneNumber(registeredUser.getPhoneNumber());
         existingUser.setInstitution(registeredUser.getInstitution());
+        existingUser.setUsername(registeredUser.getUsername());
+        existingUser.setAddress(registeredUser.getAddress());
+        //existingUser.setPassword(registeredUser.getPassword());
+        RegisteredUser editedUser = registeredUserRepository.save(existingUser);
+        return editedUser;
+    }
+
+    @Override
+    public RegisteredUser updatePassword(RegisteredUser registeredUser, Integer id) {
+        Optional<RegisteredUser> optExistingUser = registeredUserRepository.findById(id);
+        RegisteredUser existingUser = optExistingUser.get();
+        //if(registeredUser.getPassword()==)
+        existingUser.setPassword(registeredUser.getPassword());
         RegisteredUser editedUser = registeredUserRepository.save(existingUser);
         return editedUser;
     }

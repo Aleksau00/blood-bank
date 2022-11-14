@@ -10,11 +10,11 @@ export interface Method {
   viewValue: string;
 }
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [CenterService]
 })
 export class HomeComponent implements OnInit {
 
@@ -31,11 +31,8 @@ export class HomeComponent implements OnInit {
 
   ];
   method: Method = {value: 'NameAsc', viewValue: 'Name A-Z'};
-  filters: Method[] = [
-    {value: 'NameAsc', viewValue: 'Grade 3 and above'},
-    {value: 'NameDesc', viewValue: 'Grade 3 and below'}
+  selectedGrade: string='0';
 
-  ];
   // MatPaginator Output
 
   constructor(private centerService: CenterService, private router: Router) { }

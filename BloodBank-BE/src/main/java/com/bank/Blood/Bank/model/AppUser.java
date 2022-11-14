@@ -68,7 +68,7 @@ public abstract class AppUser {
      * Kolona moze imati ime koje se razlikuje od naziva atributa.
      */
     @NotEmpty
-    @Column(name = "username", unique = true, nullable = false)
+    @Column(name = "username", unique = false, nullable = false)
     private String username;
 
     @NotBlank(message = "password is required")

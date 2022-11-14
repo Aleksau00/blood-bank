@@ -16,6 +16,17 @@ mat-form-field {
 }
 
 .main-div {
+  padding-top: 50px;
+  margin: initial;
   display: flex;
   flex-direction: row;
+  vertical-align: top;
+}
+
+.email-label {
+  color: gray;
+  padding-left: 8px;
+}
+
+.password-label {
 }

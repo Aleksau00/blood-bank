@@ -14,4 +14,6 @@ public interface RegisteredUserService {
     RegisteredUser save(RegisteredUser registeredUser);
 
     RegisteredUser update(RegisteredUser registeredUser, Integer id);
+
+    RegisteredUser updatePassword(RegisteredUser registeredUser, Integer id);
 }
