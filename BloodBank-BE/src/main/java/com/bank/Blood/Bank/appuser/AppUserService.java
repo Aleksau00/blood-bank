@@ -1,11 +1,7 @@
-package com.bank.Blood.Bank.service;
+package com.bank.Blood.Bank.appuser;
 import java.util.List;
 
-import com.bank.Blood.Bank.model.AppUser;
-import com.bank.Blood.Bank.repository.AppUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.bank.Blood.Bank.appuser.AppUser;
 import org.springframework.stereotype.Service;
 
 @Service

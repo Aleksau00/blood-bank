@@ -1,14 +1,9 @@
-package com.bank.Blood.Bank.repository;
+package com.bank.Blood.Bank.appuser;
 
-import com.bank.Blood.Bank.model.AppUser;
+import com.bank.Blood.Bank.appuser.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
-
+import java.util.Optional;
 
 
 public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
@@ -20,6 +15,6 @@ public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
 
     public List<AppUser> findAll();
 
-
+    Optional<AppUser> findByEmail(String s);
 
 }

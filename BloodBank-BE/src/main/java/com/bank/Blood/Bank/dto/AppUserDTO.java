@@ -1,7 +1,7 @@
 package com.bank.Blood.Bank.dto;
 
 import com.bank.Blood.Bank.enums.Gender;
-import com.bank.Blood.Bank.model.AppUser;
+import com.bank.Blood.Bank.appuser.AppUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

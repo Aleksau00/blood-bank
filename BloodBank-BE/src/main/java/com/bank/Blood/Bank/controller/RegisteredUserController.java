@@ -1,11 +1,10 @@
 package com.bank.Blood.Bank.controller;
 
-import com.bank.Blood.Bank.dto.PasswordDTO;
+import com.bank.Blood.Bank.appuser.AppUserService;
+import com.bank.Blood.Bank.appuser.EmailValidator;
 import com.bank.Blood.Bank.dto.RegisteredUserDTO;
-import com.bank.Blood.Bank.dto.StaffDTO;
 import com.bank.Blood.Bank.model.RegisteredUser;
-import com.bank.Blood.Bank.model.Staff;
-import com.bank.Blood.Bank.service.RegisteredUserService;
+import com.bank.Blood.Bank.appuser.RegisteredUserService;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -23,10 +21,14 @@ import java.util.Optional;
 public class RegisteredUserController {
 
     private final RegisteredUserService registeredUserService;
+    private final AppUserService appUserService;
+    private final EmailValidator emailValidator;
 
     @Autowired
-    public RegisteredUserController(RegisteredUserService registeredUserService) {
+    public RegisteredUserController(AppUserService appUserService,RegisteredUserService registeredUserService, EmailValidator emailValidator) {
         this.registeredUserService = registeredUserService;
+        this.appUserService = appUserService;
+        this.emailValidator = emailValidator;
     }
 
     @GetMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,8 +41,13 @@ public class RegisteredUserController {
         return new ResponseEntity<>(registeredUserDTO, HttpStatus.OK);
     }
 
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RegisteredUser> createUser(@Valid @RequestBody RegisteredUser registeredUser) throws ConstraintViolationException {
+        boolean isValid = emailValidator.test(registeredUser.getEmail());
+        if(!isValid){
+            throw new IllegalStateException("Email is not valid");
+        }
         RegisteredUser savedUser = null;
         try {
             savedUser = registeredUserService.save(registeredUser);
@@ -62,6 +69,11 @@ public class RegisteredUserController {
         }else {
             return new ResponseEntity<>(new RegisteredUserDTO(registeredUser), HttpStatus.OK);
         }
+    }
+
+    @GetMapping(path = "confirm")
+    public String confirm(@RequestParam("token") String token) {
+        return registeredUserService.confirmToken(token);
     }
 
     /*
