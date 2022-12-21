@@ -13,6 +13,9 @@ export class RegisteredUser {
   gender: string = '';
   institution: string = '';
   points: number = 0;
+  isLocked: boolean = false;
+  isEnabled: boolean = false;
+  appUserRole: string = '';
   loyaltyCard: LoyaltyCard = new LoyaltyCard();
 
 
@@ -29,6 +32,9 @@ export class RegisteredUser {
       this.gender = obj.gender;
       this.institution = obj.institution;
       this.points = obj.points;
+      this.isLocked = obj.isLocked;
+      this.isEnabled = obj.isEnabled;
+      this.appUserRole = obj.appUserRole;
       this.loyaltyCard = obj.loyaltyCard;
     }
   }
