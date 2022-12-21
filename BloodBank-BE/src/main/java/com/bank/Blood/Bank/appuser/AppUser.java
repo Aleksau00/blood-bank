@@ -8,8 +8,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
+import java.security.Timestamp;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -141,6 +143,7 @@ public abstract class AppUser implements UserDetails {
     @Column
     private Boolean isEnabled;
 
+
     @Column
     private AppUserRole appUserRole;
 
@@ -186,6 +189,8 @@ public abstract class AppUser implements UserDetails {
         this.isEnabled = isEnabled;
         this.appUserRole = appUserRole;
     }
+
+
 
     /*
      * Pri implementaciji equals and hashCode metoda treba obratiti paznju da se
