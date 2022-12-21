@@ -1,0 +1,96 @@
+
+<div class = "dialogAdministrator">
+  <div style="font-size: 11px">
+    <div mat-dialog-content class="mat-dialog-title">
+      <h1 mat-dialog-title >Create administrator</h1>
+    </div>
+
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter username</mat-label>
+        <input [(ngModel)]="staff.username" ngModel pattern="[a-zA-Z ]*" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter password</mat-label>
+        <input [(ngModel)]="staff.password" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter name</mat-label>
+        <input [(ngModel)]="staff.firstName" ngModel pattern="[a-zA-Z ]*" matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter last name</mat-label>
+        <input [(ngModel)]="staff.lastName" ngModel pattern="[a-zA-Z ]*" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter email</mat-label>
+        <input [(ngModel)]="staff.email" ngModel pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*"  matInput>
+      </mat-form-field>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter country</mat-label>
+        <input [(ngModel)]="staff.address.country" ngModel pattern="[a-zA-Z ]*" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter city</mat-label>
+        <input [(ngModel)]="staff.address.city" ngModel pattern="[a-zA-Z ]*" matInput>
+      </mat-form-field>
+
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter street</mat-label>
+        <input [(ngModel)]="staff.address.street" ngModel pattern="[a-zA-Z ]*" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter number</mat-label>
+        <input [(ngModel)]="staff.address.number" ngModel pattern="[0-9]*" matInput>
+      </mat-form-field>
+
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label>Enter postal code</mat-label>
+        <input [(ngModel)]="staff.address.postalCode" ngModel pattern="[0-9]*" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter phone number</mat-label>
+        <input [(ngModel)]="staff.phoneNumber" ngModel pattern="[0-9]{9,10}" matInput>
+      </mat-form-field>
+
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter umcn</mat-label>
+        <input [(ngModel)]="staff.umcn" ngModel pattern="[0-9]{13}" matInput>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field color="primary"  appearance="fill">
+        <mat-label >Enter institution</mat-label>
+        <input [(ngModel)]="staff.institution" ngModel pattern="[a-zA-Z ]*" matInput>
+      </mat-form-field>
+    </p>
+    <div class="mat-footer-cell">
+      <mat-label class="mat-label">Gender</mat-label>
+    </div>
+    <p>
+      <mat-radio-group [(ngModel)]="staff.gender" class="example-radio-group" aria-label="Select an option">
+        <mat-radio-button class="mat-radio-button" value=FEMALE>Female</mat-radio-button>
+        <mat-radio-button class="mat-radio-button" value=MALE>Male</mat-radio-button>
+        <mat-radio-button class="mat-radio-button" value=OTHER>Other</mat-radio-button>
+      </mat-radio-group>
+
+
+    </p>
+    <div mat-dialog-action [align]="'end'">
+      <button class="dialogButton" mat-raised-button color="primary" (click)="createStaff()">Send</button>
+    </div>
+
+
+
+  </div>
+</div>

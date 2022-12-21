@@ -1,0 +1,43 @@
+.dialogCenter {
+  position:absolute;
+  top:6.7%;
+  left:15%;
+  display: flex;
+  justify-content: left;
+  align-content: center;
+  font-size: 11px;
+}
+
+.dialogAdministrator {
+  position:absolute;
+  top:6.7%;
+  right:15%;
+  display: flex;
+  justify-content: right;
+  align-content: center;
+  font-size: 11px;
+}
+
+.mat-dialog-title {
+  font-width: bold;
+  justify-content: center;
+}
+
+.mat-form-field {
+  margin: 10px;
+}
+
+.mat-footer-cell {
+  display: flex;
+  flex-direction: row;
+
+  align-items: flex-start;
+}
+
+.mat-label {
+  margin: 0 80px;
+}
+
+.mat-radio-button {
+  margin-left: 10px;
+}
