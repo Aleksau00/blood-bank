@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   public sortCenters(newValue : Method) {
     this.method = newValue;
     this.centerService.getCentersSorted(this.method).subscribe(res => {
-    this.centers = res;
+      this.centers = res;
     })
   }
 
