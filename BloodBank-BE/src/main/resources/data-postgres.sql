@@ -53,6 +53,6 @@ insert into feedback (grade, registered_user_id) values (2, 2);
 
 
 
-insert into poll (date, donation_count, occupation, registered_user_id) values ('2022-07-07', 5, 'Student', 1);
-insert into poll (date, donation_count, occupation, registered_user_id) values ('2022-06-06', 3, 'Student', 2);
-insert into poll (date, donation_count, occupation, registered_user_id) values ('2022-05-05', 9, 'Student', 3);
+insert into poll (date, donation_count, occupation, registered_user_id, question1, question2, question3, question4, question5, question6, question7) values ('2022-07-07', 5, 'Student', 1, false, false, false, false, false, false, false);
+insert into poll (date, donation_count, occupation, registered_user_id, question1, question2, question3, question4, question5, question6, question7) values ('2022-06-06', 3, 'Student', 2, false, false, false, false, false, false, false);
+insert into poll (date, donation_count, occupation, registered_user_id, question1, question2, question3, question4, question5, question6, question7) values ('2022-05-05', 9, 'Student', 3, false, false, false, false, false, true, false);
