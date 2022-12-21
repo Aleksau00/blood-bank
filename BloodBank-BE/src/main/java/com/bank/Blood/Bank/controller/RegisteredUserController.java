@@ -44,7 +44,7 @@ public class RegisteredUserController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RegisteredUser> createUser(@Valid @RequestBody RegisteredUser registeredUser) throws ConstraintViolationException {
-        boolean isValid = emailValidator.test(registeredUser.getEmail());
+        boolean isValid = emailValidator.test(registeredUser.getUsername());
         if(!isValid){
             throw new IllegalStateException("Email is not valid");
         }

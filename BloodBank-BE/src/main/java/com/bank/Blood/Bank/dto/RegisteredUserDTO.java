@@ -12,9 +12,6 @@ public class RegisteredUserDTO {
     private String username;
     private String firstName;
     private String lastName;
-
-    private String email;
-
     private Address address;
 
     private String phoneNumber;
@@ -31,17 +28,16 @@ public class RegisteredUserDTO {
 
     public RegisteredUserDTO(RegisteredUser appUser) {
         this(appUser.getId(), appUser.getAddress(), appUser.getUsername(), appUser.getFirstName(),
-                appUser.getLastName(), appUser.getEmail(), appUser.getPhoneNumber(), appUser.getUmcn(),
+                appUser.getLastName(), appUser.getPhoneNumber(), appUser.getUmcn(),
                 appUser.getGender(), appUser.getInstitution(), appUser.getPoints(), appUser.getIsAuthenticated(), appUser.getLoyaltyCard());
     }
 
-    public RegisteredUserDTO(Integer id, Address address, String username, String firstName, String lastName, String email, String phoneNumber, String umcn, Gender gender, String institution, Integer points, Boolean isAuthenticated, LoyaltyCard loyaltyCard) {
+    public RegisteredUserDTO(Integer id, Address address, String username, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution, Integer points, Boolean isAuthenticated, LoyaltyCard loyaltyCard) {
         this.id = id;
         this.address = address;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.phoneNumber = phoneNumber;
         this.umcn = umcn;
         this.gender = gender;
@@ -87,9 +83,6 @@ public class RegisteredUserDTO {
         return username;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
     public String getFirstName() {
         return firstName;

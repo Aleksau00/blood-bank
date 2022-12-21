@@ -13,12 +13,12 @@
     </p>
     <p>
       <mat-form-field class="mat-form-field" color="primary" appearance="fill">
-        <mat-label>Username</mat-label>
+        <mat-label>Email</mat-label>
         <input class="mat-input-element" [(ngModel)]="user.username" matInput>
       </mat-form-field>
       <mat-form-field class="mat-form-field" color="primary" appearance="fill">
-        <mat-label>E-mail</mat-label>
-        <input class="mat-input-element" [(ngModel)]="user.email" matInput>
+        <mat-label>UMCN(JMBG)</mat-label>
+        <input class="mat-input-element" [(ngModel)]="user.umcn" matInput>
       </mat-form-field>
     </p>
     <p>
@@ -42,10 +42,7 @@
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field class="mat-form-field" color="primary" appearance="fill">
-        <mat-label>UMCN(JMBG)</mat-label>
-        <input class="mat-input-element" [(ngModel)]="user.umcn" matInput>
-      </mat-form-field>
+
       <button (click)="openDialog()" color="primary" mat-raised-button id="addressButton" class="mat-raised-button" matTooltip="Add address" >
         <mat-label>Add address</mat-label>
         <mat-icon>add</mat-icon>

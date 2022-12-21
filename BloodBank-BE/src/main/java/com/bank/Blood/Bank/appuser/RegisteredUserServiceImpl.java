@@ -58,11 +58,11 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
     @Override
     public RegisteredUser save(RegisteredUser registeredUser) throws IllegalAccessException {
-        boolean isValidEmail = emailValidator.test(registeredUser.getEmail());
+        boolean isValidEmail = emailValidator.test(registeredUser.getUsername());
         if(!isValidEmail) {
             throw new IllegalStateException("Email not valid");
         }
-        boolean userExists = registeredUserRepository.findByEmail(registeredUser.getEmail())
+        boolean userExists = registeredUserRepository.findByUsername(registeredUser.getUsername())
                 .isPresent();
         if (userExists){
             throw new IllegalAccessException("Email already taken!");
@@ -86,7 +86,7 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         confirmationTokenService.saveConfirmationToken(confirmationTokenoken);
 
         String link = "http://localhost:8082/api/registeredUsers/confirm?token=" + token;
-        emailSender.send(registeredUser.getEmail(),buildEmail(registeredUser.getFirstName(), link));
+        emailSender.send(registeredUser.getUsername(),buildEmail(registeredUser.getFirstName(), link));
         return registeredUser1;
     }
 
@@ -206,7 +206,7 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
         confirmationTokenService.setConfirmedAt(token);
         enableRegisteredUser(
-                confirmationToken.getAppUser().getEmail());
+                confirmationToken.getAppUser().getUsername());
         return "confirmed";
     }
 

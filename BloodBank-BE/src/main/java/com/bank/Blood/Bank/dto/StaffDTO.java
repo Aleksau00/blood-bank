@@ -14,11 +14,7 @@ public class StaffDTO {
     private String username;
     private String firstName;
     private String lastName;
-
-    private String email;
-
     private Address address;
-
     private String phoneNumber;
     private String umcn;
     private Gender gender;
@@ -27,15 +23,14 @@ public class StaffDTO {
 
     public StaffDTO(Staff appUser){
         this(appUser.getAddress(), appUser.getUsername(), appUser.getFirstName(),
-                appUser.getLastName(), appUser.getEmail(), appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution(), new CenterDTO(appUser.getCenter()));}
+                appUser.getLastName(), appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution(), new CenterDTO(appUser.getCenter()));}
 
 
-    public StaffDTO(Address address, String username, String firstName, String lastName, String email, String phoneNumber, String umcn, Gender gender, String institution, CenterDTO centerDTO){
+    public StaffDTO(Address address, String username, String firstName, String lastName,  String phoneNumber, String umcn, Gender gender, String institution, CenterDTO centerDTO){
         this.address = address;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.phoneNumber = phoneNumber;
         this.umcn = umcn;
         this.gender = gender;

@@ -14,8 +14,10 @@
     <button mat-mini-fab class="mat-mini-fab" matTooltip="Add center" >
       <mat-icon>add</mat-icon>
     </button>
-    <button mat-raised-button color="primary" class="login-button">Log in</button>
-    <button mat-raised-button color="primary" class="mat-raised-button" (click)="openRegistration()" mat-dialog-close>Sign up</button>
+    <button  *ngIf="!isLoggedIn" mat-raised-button color="primary" class="login-button" (click)="openLogin()">Log in</button>
+    <button  *ngIf="!isLoggedIn" mat-raised-button color="primary" class="mat-raised-button" (click)="openRegistration()" mat-dialog-close>Sign up</button>
+    <button  *ngIf="isLoggedIn" mat-raised-button color="primary" class="mat-raised-button" (click)="signOut()" mat-dialog-close>Sign out</button>
+
   </div>
 </mat-toolbar>
 

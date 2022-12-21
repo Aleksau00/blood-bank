@@ -6,7 +6,6 @@ export class CreateRegisteredUser {
   firstName: string = '';
   password: string = '';
   lastName: string = '';
-  email: string = '';
   address: AddressDTO = new AddressDTO();
   phoneNumber: string = '';
   umcn: string = '';
@@ -23,7 +22,6 @@ export class CreateRegisteredUser {
       this.firstName = obj.firstName;
       this.password = obj.password;
       this.lastName = obj.lastName;
-      this.email = obj.email;
       this.address = obj.address;
       this.phoneNumber = obj.phoneNumber;
       this.umcn = obj.umcn;

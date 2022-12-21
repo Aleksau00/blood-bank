@@ -3,6 +3,9 @@ import { CreatePollComponent } from "../bank/create-poll/create-poll.component";
 import {MatDialog} from "@angular/material/dialog";
 import {RegistrationComponent} from "../pages/registration/registration.component";
 import {Router} from "@angular/router";
+import {AppUser} from "../bank/model/appUser.model";
+import {TokenStorageService} from "../bank/services/token-storage.service";
+import {UserToken} from "../bank/model/user-token.model";
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +14,13 @@ import {Router} from "@angular/router";
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private router: Router) { }
+  user: UserToken;
+  isLoggedIn: boolean = false;
+
+  constructor(private tokenStorageService: TokenStorageService, public dialog: MatDialog, private router: Router) {
+    this.user = this.tokenStorageService.getUser()
+    this.isLoggedIn = this.tokenStorageService.isLoggedIn()
+  }
 
   openDialogCreatePoll(): void {
     const dialogRef = this.dialog.open(CreatePollComponent, {
@@ -27,11 +36,22 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/registration']);
   }
 
+  openLogin(): void {
+    this.router.navigate(['/login']);
+  }
+
   openHome(): void {
     this.router.navigate(['']);
   }
 
   ngOnInit(): void {
+  }
+
+  signOut() {
+    this.tokenStorageService.signOut()
+    this.router.navigate(['']).then(()=>{
+      window.location.reload();
+    })
   }
 
 }

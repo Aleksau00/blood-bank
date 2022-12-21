@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { Center } from "../../bank/model/center.model";
 import { CenterService} from "../../bank/services/center.service";
 import {PageEvent} from '@angular/material/paginator';
+import {TokenStorageService} from "../../bank/services/token-storage.service";
 
 
 export interface Method {
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit {
 
   // MatPaginator Output
 
-  constructor(private centerService: CenterService, private router: Router) { }
+  constructor(private tokenStorageService: TokenStorageService, private centerService: CenterService, private router: Router) { }
 
   ngOnInit(): void {
     this.centerService.getCentersNameAsc().subscribe(res => {
