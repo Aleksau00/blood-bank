@@ -11,6 +11,9 @@ import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CenterComponent } from './center/center.component';
 import { StaffProfileComponent } from './staff-profile/staff-profile.component';
+import { AddAdministratorComponent } from './add-administrator/add-administrator.component';
+import { WorkingScheduleComponent } from './working-schedule/working-schedule.component';
+import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
 
 @NgModule({
   declarations: [
@@ -21,14 +24,17 @@ import { StaffProfileComponent } from './staff-profile/staff-profile.component';
     SearchComponent,
     ProfileComponent,
     CenterComponent,
-    StaffProfileComponent
+    StaffProfileComponent,
+    AddAdministratorComponent,
+    WorkingScheduleComponent
 
 ],
   imports: [
     CommonModule,
     AppRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ScheduleModule
   ]
 })
 export class PagesModule { }

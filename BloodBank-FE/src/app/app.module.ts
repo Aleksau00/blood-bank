@@ -9,7 +9,7 @@ import { PagesModule } from "./modules/pages/pages.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { BankModule } from "./modules/bank/bank.module";
-
+import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 
 @NgModule({
   declarations: [
@@ -24,9 +24,10 @@ import { BankModule } from "./modules/bank/bank.module";
     MaterialModule,
     PagesModule,
     HospitalModule,
-    BankModule
+    BankModule,
+    ScheduleModule, RecurrenceEditorModule
   ],
-  providers: [],
+  providers: [DayService, WeekService, WorkWeekService, MonthAgendaService, MonthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
