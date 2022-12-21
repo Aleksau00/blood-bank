@@ -10,6 +10,7 @@ import { StaffProfileComponent } from "./modules/pages/staff-profile/staff-profi
 import {AddAdministratorComponent} from "./modules/pages/add-administrator/add-administrator.component";
 import {WorkingScheduleComponent} from "./modules/pages/working-schedule/working-schedule.component";
 import {LoginComponent} from "./modules/pages/login/login.component";
+import {AddCenterAppointmentComponent} from "./modules/bank/add-center-appointment/add-center-appointment.component";
 
 
 const routes: Routes = [
@@ -22,9 +23,8 @@ const routes: Routes = [
   { path: 'staff-profile', component: StaffProfileComponent},
   { path: 'add-administrator', component: AddAdministratorComponent},
   { path: 'working-schedule', component: WorkingScheduleComponent},
-  { path: 'login', component: LoginComponent}
-
-
+  { path: 'login', component: LoginComponent},
+  { path: 'add-center-appointment', component: AddCenterAppointmentComponent}
 
 ];
 

@@ -5,10 +5,13 @@
   <span>Blood bank</span>
   <span class="example-spacer"></span>
   <div class="example-button-container">
+    <button mat-mini-fab class="mat-mini-fab" matTooltip="Add an appointment" (click)="AddAppointment()">
+      <mat-icon>assignment_add</mat-icon>
+    </button>
     <button mat-mini-fab class="mat-mini-fab" matTooltip="Fill out a poll" (click)="openDialogCreatePoll()" >
       <mat-icon>add_comment</mat-icon>
     </button>
-    <button mat-mini-fab class="mat-mini-fab" matTooltip="Account info" >
+    <button mat-mini-fab class="mat-mini-fab" matTooltip="Account info" (click)="AccountInfo()">
       <mat-icon>account_circle</mat-icon>
     </button>
     <button mat-mini-fab class="mat-mini-fab" matTooltip="Add center" >
