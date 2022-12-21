@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './modules/navbar/navbar.component';
 import { BankModule } from "./modules/bank/bank.module";
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
     PagesModule,
     HospitalModule,
     BankModule,
-    ScheduleModule, RecurrenceEditorModule
+    ScheduleModule,
+    RecurrenceEditorModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [DayService, WeekService, WorkWeekService, MonthAgendaService, MonthService],
   bootstrap: [AppComponent]

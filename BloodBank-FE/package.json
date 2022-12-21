@@ -22,6 +22,8 @@
     "@angular/router": "^14.1.0",
     "@syncfusion/ej2-angular-schedule": "^20.3.61",
     "@syncfusion/ej2-material-theme": "~20.3.61",
+    "moment": "^2.29.4",
+    "ngx-material-timepicker": "^5.5.3",
     "rxjs": "~7.5.0",
     "ts-time": "^0.2.1",
     "tslib": "^2.3.0",

@@ -31,6 +31,15 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  AddAppointment(): void {
+    this.router.navigate(['/add-center-appointment']);
+  }
+
+  AccountInfo(): void {
+    this.router.navigate(['/profile']);
+  }
+
+
   ngOnInit(): void {
   }
 
