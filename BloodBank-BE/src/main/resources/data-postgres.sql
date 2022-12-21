@@ -1,11 +1,15 @@
+insert into loyalty_card (name, points) values ('silver', 1000);
+insert into loyalty_card (name, points) values ('gold', 2000);
+insert into loyalty_card (name, points) values ('platinum', 3000);
+
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Belgrade', 'Puskinova', '77', '11000');
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Belgrade', 'Safarikova', '40', '11000');
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Novi Sad', 'Pavla Papa', '66', '21400');
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Novi Sad', 'Lasla Gala', '55', '21400');
 
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role) values ('perica', 'perap', 'pera@pera.com', 'Petar', 'Petrovic', '086745384', '1305994779876', 0,'FTN', 'registeredUser', 1, 1020, false, true,  0);
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role) values ('jelica', 'jelenas', 'jelena@jelena.com', 'Jelena', 'Savic', '086745444', '1305994779876', 1,'FTN', 'registeredUser', 1, 1080, false, true, 0);
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role) values ('anica', 'anaj', 'ana@ana.com', 'Ana', 'Jovanovic', '086745777', '1805994773344', 1,'Economy faculty in Novi Sad', 'registeredUser', 1, 3090, false, true, 0);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role, loyalty_card_id) values ('perica', 'perap', 'pera@pera.com', 'Petar', 'Petrovic', '086745384', '1305994779876', 0,'FTN', 'registeredUser', 1, 1020, false, true,  1, '1');
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role, loyalty_card_id) values ('jelica', 'jelenas', 'jelena@jelena.com', 'Jelena', 'Savic', '086745444', '1305994779876', 1,'FTN', 'registeredUser', 1, 1080, false, true, 0, '1');
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role, loyalty_card_id) values ('anica', 'anaj', 'ana@ana.com', 'Ana', 'Jovanovic', '086745777', '1805994773344', 1,'Economy faculty in Novi Sad', 'registeredUser', 1, 3090, false, true, 0, '2');
 insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, app_user_role) values ('vanja', 'vanjak', 'vanja@vanja.com', 'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, 1);
 
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('VMA', '1', 'Ambulance', '4.0', '07:00', '09:52');
@@ -47,9 +51,7 @@ insert into feedback (grade, registered_user_id) values (5, 3);
 insert into feedback (grade, registered_user_id) values (1, 1);
 insert into feedback (grade, registered_user_id) values (2, 2);
 
-insert into loyalty_card (name, points) values ('silver', 1000);
-insert into loyalty_card (name, points) values ('gold', 2000);
-insert into loyalty_card (name, points) values ('platinum', 3000);
+
 
 insert into poll (date, donation_count, occupation, registered_user_id) values ('2022-07-07', 5, 'Student', 1);
 insert into poll (date, donation_count, occupation, registered_user_id) values ('2022-06-06', 3, 'Student', 2);
