@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
       },
         error => {
           catchError(error)
-            alert(error.message)
+            alert(error)
         });
     } catch (error) {
       console.log("Xdpls");

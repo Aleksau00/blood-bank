@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bank.Blood.Bank.dto.AppUserDTO;
-import com.bank.Blood.Bank.model.AppUser;
-import com.bank.Blood.Bank.service.AppUserService;
+import com.bank.Blood.Bank.appuser.AppUser;
+import com.bank.Blood.Bank.appuser.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

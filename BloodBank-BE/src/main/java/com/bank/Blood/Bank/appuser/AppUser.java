@@ -1,14 +1,15 @@
-package com.bank.Blood.Bank.model;
+package com.bank.Blood.Bank.appuser;
+import com.bank.Blood.Bank.enums.AppUserRole;
 import com.bank.Blood.Bank.enums.Gender;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.format.annotation.NumberFormat;
+import com.bank.Blood.Bank.model.Address;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Collection;
+import java.util.Collections;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -46,8 +47,9 @@ import static javax.persistence.InheritanceType.SINGLE_TABLE;
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
 @AllArgsConstructor
-public abstract class AppUser {
+public abstract class AppUser implements UserDetails {
 
     /*
      * Svaki entitet ima svoj kljuc (surogat kljuc), dok se strategija generisanja
@@ -87,7 +89,7 @@ public abstract class AppUser {
     @Column(name = "lastName", nullable = false)
     private String lastName;
 
-    @Pattern(regexp="[\\d]{9,10}", message = "phone number not valid")
+    @Pattern(regexp="[\\d]{9,12}", message = "phone number not valid")
     @Column
     private String phoneNumber;
 
@@ -131,30 +133,59 @@ public abstract class AppUser {
     @JoinColumn(name = "address_id", nullable = true)
     private Address address;
 
+    @NotNull
+    @Column
+    private Boolean isLocked;
+
+    @NotNull
+    @Column
+    private Boolean isEnabled;
+
+    @Column
+    private AppUserRole appUserRole;
+
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        AppUser t = (AppUser) o;
-        return id != null && id.equals(t.getId());
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority =
+                new SimpleGrantedAuthority(appUserRole.name());
+        return Collections.singletonList(authority);
     }
 
     @Override
-    public int hashCode() {
-        /*
-         * Pretpostavka je da je u pitanju tranzijentni objekat (jos nije sacuvan u bazu) i da id ima null vrednost.
-         * Kada se sacuva u bazu dobice non-null vrednost. To znaci da ce objekat imati razlicite kljuceve u dva stanja, te ce za generisan
-         * hashCode i equals vratiti razlicite vrednosti. Vracanje konstantne vrednosti resava ovaj problem.
-         * Sa druge strane ovakva implementacija moze da afektuje performanse u slucaju velikog broja objekata
-         * koji ce zavrsiti u istom hash bucket-u.
-         */
-        return 1337;
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
+    @Override
+    public boolean isAccountNonLocked() {
+        return !isLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled(){
+        return isEnabled;
+    }
+
+    public AppUser(String username, String password, String email, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution, Address address, Boolean isLocked, Boolean isEnabled, AppUserRole appUserRole) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.umcn = umcn;
+        this.gender = gender;
+        this.institution = institution;
+        this.address = address;
+        this.isLocked = isLocked;
+        this.isEnabled = isEnabled;
+        this.appUserRole = appUserRole;
+    }
 
     /*
      * Pri implementaciji equals and hashCode metoda treba obratiti paznju da se

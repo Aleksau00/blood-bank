@@ -3,7 +3,7 @@ package com.bank.Blood.Bank.service;
 import com.bank.Blood.Bank.model.Poll;
 import com.bank.Blood.Bank.model.RegisteredUser;
 import com.bank.Blood.Bank.repository.PollRepository;
-import com.bank.Blood.Bank.repository.RegisteredUserRepository;
+import com.bank.Blood.Bank.appuser.RegisteredUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

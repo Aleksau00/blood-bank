@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   constructor(private registerUserService: RegisteredUserService, private router: Router) {}
 
   ngOnInit(): void {
-    this.registerUserService.getUser(8).subscribe(res => {
+    this.registerUserService.getUser(1).subscribe(res => {
       console.log(res);
     this.registeredUser = res;
     })

@@ -1,5 +1,6 @@
 package com.bank.Blood.Bank.model;
 
+import com.bank.Blood.Bank.appuser.AppUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.util.Set;
 @Entity
 @DiscriminatorValue("staff")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
-public class Staff extends AppUser{
+public class Staff extends AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

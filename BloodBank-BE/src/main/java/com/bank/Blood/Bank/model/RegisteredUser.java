@@ -1,5 +1,6 @@
 package com.bank.Blood.Bank.model;
 
+import com.bank.Blood.Bank.appuser.AppUser;
 import com.bank.Blood.Bank.enums.BloodType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

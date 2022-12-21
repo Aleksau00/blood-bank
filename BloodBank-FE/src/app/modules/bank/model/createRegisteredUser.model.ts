@@ -12,6 +12,9 @@ export class CreateRegisteredUser {
   umcn: string = '';
   gender: string = '';
   institution: string = '';
+  isEnabled: boolean = false;
+  isLocked: boolean = false;
+  appUserRole: number = 0;
 
 
   public constructor(obj?: any) {
@@ -26,6 +29,9 @@ export class CreateRegisteredUser {
       this.umcn = obj.umcn;
       this.gender = obj.gender;
       this.institution = obj.institution;
+      this.isEnabled = obj.isEnabled;
+      this.isLocked = obj.isLocked;
+      this.appUserRole = obj.appUserRole;
     }
   }
 }
