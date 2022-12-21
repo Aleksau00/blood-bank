@@ -138,7 +138,7 @@ public class WebSecurityConfig {
                 // Ovim smo dozvolili pristup statickim resursima aplikacije
                 .antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "favicon.ico",
                         "/**/*.html", "/**/*.css", "/**/*.js")
-                .antMatchers(HttpMethod.GET, "/centers/**");
+                .antMatchers("**");
 
     }
 
