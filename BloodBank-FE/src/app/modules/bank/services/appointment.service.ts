@@ -17,7 +17,7 @@ export class AppointmentService{
   }
 
   saveCenterAppointment(appointment: any, id: number): Observable<any>{
-    return this.http.post<any>(this.apiHost + 'api/appointments' + id, appointment, {headers: this.headers});
+    return this.http.post<any>(this.apiHost + 'api/appointments/' + id, appointment, {headers: this.headers});
   }
 
 

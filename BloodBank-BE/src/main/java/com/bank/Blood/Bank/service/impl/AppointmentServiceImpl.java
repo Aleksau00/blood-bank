@@ -6,6 +6,7 @@ import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.model.Staff;
 import com.bank.Blood.Bank.repository.AppointmentRepository;
 import com.bank.Blood.Bank.repository.CenterRepository;
+import com.bank.Blood.Bank.repository.StaffRepository;
 import com.bank.Blood.Bank.service.AppointmentService;
 import com.bank.Blood.Bank.service.CenterService;
 import com.bank.Blood.Bank.service.StaffService;
@@ -18,19 +19,22 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
     private CenterService centerService;
-    private StaffService staffService;
     private final CenterRepository centerRepository;
+
+    private final StaffRepository staffRepository;
 
     @Autowired
     public AppointmentServiceImpl(AppointmentRepository appointmentRepository,
-                                  CenterRepository centerRepository){this.appointmentRepository = appointmentRepository;
+                                  CenterRepository centerRepository, StaffRepository staffRepository){this.appointmentRepository = appointmentRepository;
         this.centerRepository = centerRepository;
+        this.staffRepository = staffRepository;
     }
     @Override
     public List<Appointment> findAll() {
@@ -39,10 +43,15 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public Appointment save(Appointment appointment, Integer id) {
-        Staff staff = staffService.findOne(id);
-        Center center = centerService.findOne(staff.getCenter().getId());
-        validateWorkingHours(appointment, center);
-        validateCenterAvailability(appointment, center, staff);
+        Optional<Staff> staff = staffRepository.findById(id);
+        Center center = staff.get().getCenter();
+        appointment.setCenter(center);
+        if(!validateWorkingHours(appointment, center)) {
+            throw new IllegalStateException("Working hours!");
+        }
+        if(!validateCenterAvailability(appointment, center, staff.get())) {
+            throw new IllegalStateException("Center availability!");
+        }
         return appointmentRepository.save(appointment);
     }
 
