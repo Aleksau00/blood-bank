@@ -159,5 +159,15 @@ public class CenterController {
         center = centerService.save(center);
         return new ResponseEntity<>(new CenterDTO(center), HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/staff/{id}")
+    public ResponseEntity<CenterDTO> getCenterByStaff(@PathVariable("id") Integer id){
+        Center center = centerService.findOne(id);
+        if (center == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }else {
+            return new ResponseEntity<>(new CenterDTO(center), HttpStatus.OK);
+        }
+    }
 }
 
