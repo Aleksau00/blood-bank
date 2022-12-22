@@ -9,5 +9,7 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<Appointment, Integer> {
 
     public List<Appointment> findAll();
+
+    public List<Appointment> findAllByCenter(Integer id);
 }
 

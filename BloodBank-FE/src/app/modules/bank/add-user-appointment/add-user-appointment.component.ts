@@ -7,11 +7,11 @@ import {Appointment} from "../model/appointment.model";
 import {TokenStorageService} from "../services/token-storage.service";
 
 @Component({
-  selector: 'app-add-center-appointment',
-  templateUrl: './add-center-appointment.component.html',
-  styleUrls: ['./add-center-appointment.component.css']
+  selector: 'app-add-user-appointment',
+  templateUrl: './add-user-appointment.component.html',
+  styleUrls: ['./add-user-appointment.component.css']
 })
-export class AddCenterAppointmentComponent implements OnInit {
+export class AddUserAppointmentComponent implements OnInit {
 
   public appointment: Appointment = new Appointment();
 

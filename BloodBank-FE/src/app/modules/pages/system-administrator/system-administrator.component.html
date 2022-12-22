@@ -70,7 +70,7 @@
     <p>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter username</mat-label>
-        <input [(ngModel)]="staff.username" ngModel pattern="[a-zA-Z ]*" matInput>
+        <input [(ngModel)]="staff.username" matInput>
       </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter password</mat-label>
@@ -88,10 +88,6 @@
       </mat-form-field>
     </p>
     <p>
-      <mat-form-field color="primary"  appearance="fill">
-        <mat-label >Enter email</mat-label>
-        <input [(ngModel)]="staff.email" ngModel pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*"  matInput>
-      </mat-form-field>
       <mat-form-field color="primary"  appearance="fill">
         <mat-label >Enter country</mat-label>
         <input [(ngModel)]="staff.address.country" ngModel pattern="[a-zA-Z ]*" matInput>
@@ -149,7 +145,7 @@
 
     </p>
     <div mat-dialog-action [align]="'end'">
-      <button class="dialogButton" mat-raised-button color="primary" [disabled]="!isValidInput()" (click)="createStaff()">Send</button>
+      <button class="dialogButton" mat-raised-button color="primary" (click)="createStaff()">Send</button>
     </div>
 
 

@@ -15,6 +15,7 @@ import { AddAdministratorComponent } from './add-administrator/add-administrator
 import { WorkingScheduleComponent } from './working-schedule/working-schedule.component';
 import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
 import { LoginComponent } from './login/login.component';
+import {ChangePasswordComponent} from "./change-password/change-password.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     StaffProfileComponent,
     AddAdministratorComponent,
     WorkingScheduleComponent,
-    LoginComponent
+    LoginComponent,
+    ChangePasswordComponent
 
 ],
   imports: [

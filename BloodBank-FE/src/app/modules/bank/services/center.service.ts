@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Center } from "../model/center.model";
 import {Method} from "../../pages/home/home.component";
+import {Appointment} from "../model/appointment.model";
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,9 @@ export class CenterService {
 
   updateCenter(center: any): Observable<any> {
     return this.http.put<any>(this.apiHost + 'api/centers/' + center.id, center, {headers: this.headers});
+  }
+
+  getCenterSuggestions(app: Appointment): Observable<Center[]> {
+    return this.http.post<Center[]>(this.apiHost+'api/centers/available-appointments', app, {headers: this.headers})
   }
 }
