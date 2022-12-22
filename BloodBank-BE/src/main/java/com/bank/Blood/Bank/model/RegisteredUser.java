@@ -21,9 +21,6 @@ public class RegisteredUser extends AppUser {
     private Integer id;
 
     @Column
-    private Boolean isAuthenticated;
-
-    @Column
     private Integer points;
 
     @Column

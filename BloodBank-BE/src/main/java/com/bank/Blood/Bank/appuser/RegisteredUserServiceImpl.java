@@ -70,7 +70,6 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         String encodedPassword = bCryptPasswordEncoder.encode((registeredUser.getPassword()));
         registeredUser.setPassword(encodedPassword);
         registeredUser.setPoints(0);
-        registeredUser.setIsAuthenticated(false);
         Optional<LoyaltyCard> loyaltyCard = loyaltyCardRepository.findById(1);
         registeredUser.setLoyaltyCard(loyaltyCard.get());
         addressRepository.save(registeredUser.getAddress());

@@ -29,10 +29,10 @@ public class RegisteredUserDTO {
     public RegisteredUserDTO(RegisteredUser appUser) {
         this(appUser.getId(), appUser.getAddress(), appUser.getUsername(), appUser.getFirstName(),
                 appUser.getLastName(), appUser.getPhoneNumber(), appUser.getUmcn(),
-                appUser.getGender(), appUser.getInstitution(), appUser.getPoints(), appUser.getIsAuthenticated(), appUser.getLoyaltyCard());
+                appUser.getGender(), appUser.getInstitution(), appUser.getPoints(), appUser.getLoyaltyCard());
     }
 
-    public RegisteredUserDTO(Integer id, Address address, String username, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution, Integer points, Boolean isAuthenticated, LoyaltyCard loyaltyCard) {
+    public RegisteredUserDTO(Integer id, Address address, String username, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution, Integer points,  LoyaltyCard loyaltyCard) {
         this.id = id;
         this.address = address;
         this.username = username;
@@ -43,7 +43,6 @@ public class RegisteredUserDTO {
         this.gender = gender;
         this.institution = institution;
         this.points = points;
-        this.isAuthenticated = isAuthenticated;
         this.loyaltyCard = loyaltyCard;
     }
 

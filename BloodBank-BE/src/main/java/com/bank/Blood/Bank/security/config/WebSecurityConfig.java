@@ -101,16 +101,7 @@ public class WebSecurityConfig {
                 .antMatchers("/api/foo").permitAll()
                 .antMatchers("/api/auth/login").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/centers/**").permitAll()
-                .antMatchers("/api/registeredUsers/1").authenticated()
-                // /api/foo
-                // ukoliko ne zelimo da koristimo @PreAuthorize anotacije nad metodama kontrolera, moze se iskoristiti hasRole() metoda da se ogranici
-                // koji tip korisnika moze da pristupi odgovarajucoj ruti. Npr. ukoliko zelimo da definisemo da ruti 'admin' moze da pristupi
-                // samo korisnik koji ima rolu 'ADMIN', navodimo na sledeci nacin:
-                // .antMatchers("/admin").hasRole("ADMIN") ili .antMatchers("/admin").hasAuthority("ROLE_ADMIN")
-
-                // za svaki drugi zahtev korisnik mora biti autentifikovan
                 .anyRequest().authenticated().and()
-                // za development svrhe ukljuci konfiguraciju za CORS iz WebConfig klase
                 .cors().and()
 
                 // umetni custom filter TokenAuthenticationFilter kako bi se vrsila provera JWT tokena umesto cistih korisnickog imena i lozinke (koje radi BasicAuthenticationFilter)

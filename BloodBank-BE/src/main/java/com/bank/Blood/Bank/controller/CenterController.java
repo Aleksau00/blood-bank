@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,8 @@ public class CenterController {
         this.centerService = centerService;
     }
 
+
+    @PermitAll
     @GetMapping(value = "/all")
     public ResponseEntity<List<CenterDTO>> getAllCenters(){
         List<Center> centerList = centerService.findAll();
@@ -43,7 +46,7 @@ public class CenterController {
         }
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
-
+    @PermitAll
     @GetMapping(value = "/{id}")
     public ResponseEntity<CenterDTO> getCenter(@PathVariable("id") Integer id){
          Center center = centerService.findOne(id);
@@ -54,6 +57,7 @@ public class CenterController {
         }
     }
 
+    @PreAuthorize("hasAnyAuthority('STAFF')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<CenterDTO> updateCenter(@RequestBody Center center, @PathVariable("id") Integer id){
         Center editCenter = centerService.update(center, id);
@@ -126,6 +130,7 @@ public class CenterController {
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
 
+
     @GetMapping(value = "/allAverageGradeAsc")
     public ResponseEntity<List<CenterDTO>> getAllByAverageGradeAsc(){
         List<Center> centerList = centerService.findAllByOrderByAverageGradeAsc();
@@ -136,6 +141,7 @@ public class CenterController {
         }
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
+    @PermitAll
     @GetMapping(value = "/allAverageGradeDesc")
     public ResponseEntity<List<CenterDTO>> getAllByAverageGradeDesc() {
         List<Center> centerList = centerService.findAllByOrderByAverageGradeDesc();
@@ -146,6 +152,7 @@ public class CenterController {
         }
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'STAFF')")
     @PostMapping(consumes = "application/json")
     public ResponseEntity<CenterDTO> saveCenter(@RequestBody CenterDTO centerDTO) {
 

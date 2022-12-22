@@ -6,6 +6,7 @@ import { PollService } from "../services/poll.service";
 import { RegisteredUserService } from "../services/registered-user.service";
 import {Observable} from "rxjs";
 import {MatDialogRef} from "@angular/material/dialog";
+import {TokenStorageService} from "../services/token-storage.service";
 
 @Component({
   selector: 'app-create-poll',
@@ -18,10 +19,9 @@ export class CreatePollComponent implements OnInit {
   public user: RegisteredUser = new RegisteredUser();
   public consent: boolean = false;
 
-  constructor(private dialogRef: MatDialogRef<CreatePollComponent>, private pollService: PollService, private registeredUserService: RegisteredUserService, private router: Router) { }
+  constructor(private tokenStorageService: TokenStorageService, private dialogRef: MatDialogRef<CreatePollComponent>, private pollService: PollService, private registeredUserService: RegisteredUserService, private router: Router) { }
 
   public getRegisteredUser() {
-    console.log(this.registeredUserService.getUser(1));
   }
 
   public createPoll() {
@@ -44,7 +44,7 @@ export class CreatePollComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.registeredUserService.getUser(1).subscribe(res => {
+    this.registeredUserService.getUser(this.tokenStorageService.getUser().id, this.tokenStorageService.getToken()!).subscribe(res => {
       this.user = res;
       this.poll.registeredUser = this.user;
     });
