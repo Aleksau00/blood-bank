@@ -5,8 +5,10 @@ import com.bank.Blood.Bank.appuser.token.ConfirmationTokenServiceImpl;
 import com.bank.Blood.Bank.email.EmailSender;
 import com.bank.Blood.Bank.model.LoyaltyCard;
 import com.bank.Blood.Bank.model.RegisteredUser;
+import com.bank.Blood.Bank.model.Role;
 import com.bank.Blood.Bank.repository.AddressRepository;
 import com.bank.Blood.Bank.repository.LoyaltyCardRepository;
+import com.bank.Blood.Bank.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,10 +30,12 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
     private final ConfirmationTokenServiceImpl confirmationTokenService;
     private final EmailValidator emailValidator;
     private final EmailSender emailSender;
+    private final RoleRepository roleRepository;
 
 
     @Autowired
-    public RegisteredUserServiceImpl(EmailSender emailSender, EmailValidator emailValidator, ConfirmationTokenServiceImpl confirmationTokenService, BCryptPasswordEncoder bCryptPasswordEncoder, LoyaltyCardRepository loyaltyCardRepository, RegisteredUserRepository registeredUserRepository, AddressRepository addressRepository) {
+    public RegisteredUserServiceImpl(EmailSender emailSender, EmailValidator emailValidator, ConfirmationTokenServiceImpl confirmationTokenService, BCryptPasswordEncoder bCryptPasswordEncoder, LoyaltyCardRepository loyaltyCardRepository, RegisteredUserRepository registeredUserRepository, AddressRepository addressRepository,
+                                     RoleRepository roleRepository) {
         this.loyaltyCardRepository = loyaltyCardRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.registeredUserRepository = registeredUserRepository;
@@ -39,6 +43,7 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         this.confirmationTokenService = confirmationTokenService;
         this.emailValidator = emailValidator;
         this.emailSender = emailSender;
+        this.roleRepository = roleRepository;
     }
 
 
@@ -72,6 +77,8 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         registeredUser.setPoints(0);
         Optional<LoyaltyCard> loyaltyCard = loyaltyCardRepository.findById(1);
         registeredUser.setLoyaltyCard(loyaltyCard.get());
+        List<Role> roles = roleRepository.findByName("USER");
+        registeredUser.setRoles(roles);
         addressRepository.save(registeredUser.getAddress());
 
         String token = UUID.randomUUID().toString();

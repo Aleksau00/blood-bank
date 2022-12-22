@@ -78,7 +78,7 @@ public class RegisteredUserController {
         }
     }
 
-    @PermitAll
+  
     @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token) {
         return registeredUserService.confirmToken(token);

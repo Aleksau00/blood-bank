@@ -99,8 +99,6 @@ public class WebSecurityConfig {
         http.authorizeRequests().antMatchers("/auth/**").permitAll()		// /auth/**
                 .antMatchers("/h2-console/**").permitAll()	// /h2-console/** ako se koristi H2 baza)
                 .antMatchers("/api/foo").permitAll()
-                .antMatchers("/api/auth/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/centers/**").permitAll()
                 .anyRequest().authenticated().and()
                 .cors().and()
 
@@ -123,13 +121,16 @@ public class WebSecurityConfig {
         // Autentifikacija ce biti ignorisana ispod navedenih putanja (kako bismo ubrzali pristup resursima)
         // Zahtevi koji se mecuju za web.ignoring().antMatchers() nemaju pristup SecurityContext-u
         // Dozvoljena POST metoda na ruti /auth/login, za svaki drugi tip HTTP metode greska je 401 Unauthorized
-        return (web) -> web.ignoring().antMatchers(HttpMethod.POST, "http://localhost:8082/api/auth/login")
+        return (web) -> web.ignoring().antMatchers(HttpMethod.POST, "/api/auth/login")
 
 
                 // Ovim smo dozvolili pristup statickim resursima aplikacije
                 .antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "favicon.ico",
                         "/**/*.html", "/**/*.css", "/**/*.js")
-                .antMatchers(HttpMethod.GET, "/centers/**");
+                .antMatchers(HttpMethod.GET, "/api/centers/**")
+                .antMatchers(HttpMethod.GET, "/api/registeredUsers/confirm")
+                .antMatchers(HttpMethod.POST, "/api/registeredUsers");
+
 
     }
 
