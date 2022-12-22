@@ -42,8 +42,7 @@ export class UpdateProfileComponent implements OnInit {
       && this.registeredUser?.gender != '' && this.registeredUser?.umcn != ''
       && this.registeredUser?.address?.city != '' && this.registeredUser?.address?.country != ''
       && this.registeredUser?.address?.postalCode != '' && this.registeredUser?.address?.street != ''
-      && this.registeredUser?.address?.number != '' && this.registeredUser?.username != ''
-      && this.registeredUser?.email != '' && this.registeredUser?.phoneNumber != ''
+      && this.registeredUser?.address?.number != '' && this.registeredUser?.username != '' && this.registeredUser?.phoneNumber != ''
       && this.registeredUser?.institution != '';
   }
 

@@ -6,7 +6,6 @@ export class RegisteredUser {
   username: string = '';
   firstName: string = '';
   lastName: string = '';
-  email: string = '';
   address: Address = new Address();
   phoneNumber: string = '';
   umcn: string = '';
@@ -25,7 +24,6 @@ export class RegisteredUser {
       this.username = obj.username;
       this.firstName = obj.firstName;
       this.lastName = obj.lastName;
-      this.email = obj.email;
       this.address = obj.address;
       this.phoneNumber = obj.phoneNumber;
       this.umcn = obj.umcn;

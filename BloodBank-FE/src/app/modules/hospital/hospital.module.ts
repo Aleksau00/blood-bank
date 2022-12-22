@@ -9,6 +9,7 @@ import { RoomsComponent } from "./rooms/rooms.component";
 import { UpdateProfileComponent } from "./update-profile/update-profile.component";
 import { StaffProfileUpdateComponent } from "./staff-profile-update/staff-profile-update.component";
 import { CenterUpdateComponent } from "./center-update/center-update.component";
+import {AppModule} from "../../app.module";
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
