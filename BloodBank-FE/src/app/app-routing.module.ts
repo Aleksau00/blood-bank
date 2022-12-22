@@ -11,6 +11,7 @@ import {AddAdministratorComponent} from "./modules/pages/add-administrator/add-a
 import {WorkingScheduleComponent} from "./modules/pages/working-schedule/working-schedule.component";
 import {LoginComponent} from "./modules/pages/login/login.component";
 import {AddCenterAppointmentComponent} from "./modules/bank/add-center-appointment/add-center-appointment.component";
+import {ChangePasswordComponent} from "./modules/pages/change-password/change-password.component";
 import {AddUserAppointmentComponent} from "./modules/bank/add-user-appointment/add-user-appointment.component";
 import {
   AvailableCentersForAppointments
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'add-administrator', component: AddAdministratorComponent},
   { path: 'working-schedule', component: WorkingScheduleComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'add-center-appointment', component: AddCenterAppointmentComponent},
+  { path: 'change-password', component: ChangePasswordComponent},
   { path: 'add-center-appointment', component: AddCenterAppointmentComponent},
   { path: 'add-user-appointment', component: AddUserAppointmentComponent},
   { path: 'available-centers-for-appointment', component: AvailableCentersForAppointments}
