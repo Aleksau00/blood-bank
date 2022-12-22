@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         if(!validateCenterAvailability(appointment, center, staff.get())) {
             throw new IllegalStateException("Center availability!");
         }
+        if(!validateBeforeToday(appointment)) {
+            throw new IllegalStateException("Can't add an appointment in the past!");
+        }
         return appointmentRepository.save(appointment);
     }
 
@@ -64,6 +68,16 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         //checks if appointment starts and ends in center working hours
         if(!(startTime.isAfter(centerStartTime) && endTime.isBefore(centerEndTime))) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validateBeforeToday(Appointment appointment) {
+        LocalDate startDate = appointment.getDate();
+        LocalDate now = LocalDate.now();
+        //checks if appointment starts and ends in center working hours
+        if(startDate.isBefore(now)) {
             return false;
         }
         return true;
