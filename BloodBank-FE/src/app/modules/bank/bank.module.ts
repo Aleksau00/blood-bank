@@ -8,15 +8,17 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import { CreateAddressComponent } from './create-address/create-address.component';
-
-
+import {AddCenterAppointmentComponent} from "./add-center-appointment/add-center-appointment.component";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
   declarations: [
     CreatePollComponent,
     CreateCenterComponent,
-    CreateAddressComponent
+    CreateAddressComponent,
+    AddCenterAppointmentComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,9 @@ import { CreateAddressComponent } from './create-address/create-address.componen
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class BankModule { }

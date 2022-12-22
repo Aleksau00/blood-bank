@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,7 +36,10 @@ public class Appointment {
 
 
     @Column
-    private LocalDateTime date;
+    private LocalDate date;
+
+    @Column
+    private LocalTime time;
 
     @Column
     private Integer duration;

@@ -43,11 +43,11 @@ insert into center_blood (center_id, blood_id) values (2,2);
 insert into center_blood (center_id, blood_id) values (3,3);
 insert into center_blood (center_id, blood_id) values (4,4);
 
-insert into appointment (registered_user_id, center_id, date, duration) values (1, 1, '2022-11-11 14:00:00', 30);
-insert into appointment (registered_user_id, center_id, date, duration) values (2, 1, '2022-12-10 14:00:00', 45);
-insert into appointment (registered_user_id, center_id, date, duration) values (3, 1, '2022-12-11 14:20:00', 50);
-insert into appointment (registered_user_id, center_id, date, duration) values (1, 1, '2022-08-08 14:30:00', 30);
-insert into appointment (registered_user_id, center_id, date, duration) values (2, 1, '2022-10-10 14:45:00', 45);
+insert into appointment (registered_user_id, center_id, date, time, duration) values (1, 1, '2022-11-11', '14:00:00', 30);
+insert into appointment (registered_user_id, center_id, date, time, duration) values (2, 1, '2022-12-10', '14:00:00', 45);
+insert into appointment (registered_user_id, center_id, date, time, duration) values (3, 1, '2022-12-11', '14:20:00', 50);
+insert into appointment (registered_user_id, center_id, date, time, duration) values (1, 1, '2022-08-08', '14:30:00', 30);
+insert into appointment (registered_user_id, center_id, date, time, duration) values (2, 1, '2022-10-10', '14:45:00', 45);
 
 insert into appointment_staff (staff_id, appointment_id) values (4, 1);
 insert into appointment_staff (staff_id, appointment_id) values (5, 2);
@@ -63,8 +63,6 @@ insert into equipment (amount, name, center_id) values (20, 'Knives', 3);
 insert into feedback (grade, registered_user_id) values (5, 3);
 insert into feedback (grade, registered_user_id) values (1, 1);
 insert into feedback (grade, registered_user_id) values (2, 2);
-
-
 
 insert into poll (date, donation_count, occupation, registered_user_id, question1, question2, question3, question4, question5, question6, question7) values ('2022-07-07', 5, 'Student', 1, false, false, false, false, false, false, false);
 insert into poll (date, donation_count, occupation, registered_user_id, question1, question2, question3, question4, question5, question6, question7) values ('2022-06-06', 3, 'Student', 2, false, false, false, false, false, false, false);
