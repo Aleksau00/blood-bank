@@ -41,12 +41,11 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public Staff update(Staff staff, Integer id){
-        Optional<Staff> editStaff = staffRepository.findById(id);
-        editStaff.get().setIsEnabled(true);
-        editStaff.get().setIsLocked(false);
+        staff.setIsEnabled(true);
+        staff.setIsLocked(false);
         addressService.update(staff.getAddress(), staff.getAddress().getId());
-        staffRepository.save(editStaff.get());
-        return editStaff.isEmpty()? null : editStaff.get();
+        staffRepository.save(staff);
+        return staff;
     }
 
     @Override
