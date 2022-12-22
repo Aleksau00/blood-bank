@@ -6,6 +6,7 @@ import com.bank.Blood.Bank.dto.RegisteredUserDTO;
 import com.bank.Blood.Bank.model.Appointment;
 import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.service.AppointmentService;
+import com.bank.Blood.Bank.service.CenterService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,14 +54,14 @@ public class AppointmentController {
         return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
     }
 
-    @PostMapping(consumes = "application/json")
-    public ResponseEntity<AppointmentDTO> saveCenterAppointment(@RequestBody AppointmentDTO appointmentDTO) {
-
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping(consumes = "application/json", value = "/{id}")
+    public ResponseEntity<AppointmentDTO> saveCenterAppointment(@RequestBody AppointmentDTO appointmentDTO, @PathVariable("id") Integer id) {
         Appointment appointment = new Appointment();
         appointment.setDate(appointmentDTO.getDate());
         appointment.setTime(appointmentDTO.getTime());
         appointment.setDuration(appointmentDTO.getDuration());
-        appointment = appointmentService.save(appointment);
+        appointment = appointmentService.save(appointment, id);
         return new ResponseEntity<>(new AppointmentDTO(appointment.getId(),appointment.getDate(), appointmentDTO.getTime(), appointment.getDuration()), HttpStatus.CREATED);
     }
 }

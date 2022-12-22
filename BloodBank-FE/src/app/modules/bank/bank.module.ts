@@ -11,6 +11,10 @@ import { CreateAddressComponent } from './create-address/create-address.componen
 import {AddCenterAppointmentComponent} from "./add-center-appointment/add-center-appointment.component";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
+import {AddUserAppointmentComponent} from "./add-user-appointment/add-user-appointment.component";
+import {
+  AvailableCentersForAppointments
+} from "./available-centers-for-appointment/available-centers-for-appointment.component";
 
 
 @NgModule({
@@ -18,7 +22,9 @@ import {MatNativeDateModule} from "@angular/material/core";
     CreatePollComponent,
     CreateCenterComponent,
     CreateAddressComponent,
-    AddCenterAppointmentComponent
+    AddCenterAppointmentComponent,
+    AddUserAppointmentComponent,
+    AvailableCentersForAppointments,
   ],
   imports: [
     CommonModule,
