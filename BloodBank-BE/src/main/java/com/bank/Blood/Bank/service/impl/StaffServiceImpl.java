@@ -51,6 +51,8 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public Staff save(Staff staff) {
+        staff.setIsLocked(false);
+        staff.setIsEnabled(true);
         addressRepository.save(staff.getCenter().getAddress());
         centerRepository.save(staff.getCenter());
         addressRepository.save(staff.getAddress());
