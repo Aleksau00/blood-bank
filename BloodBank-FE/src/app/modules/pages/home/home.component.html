@@ -41,9 +41,17 @@
                 <p>{{center.averageGrade}}<mat-icon class="icon-display">star</mat-icon></p>
                 <p>{{center.startTime}}h - {{center.endTime}}h</p>
               </div>
-              <button mat-mini-fab class="mat-mini-fab" matTooltip="View" >
-                <mat-icon>search</mat-icon>
-              </button>
+
+              <div class="wrapper-btn">
+                <button  mat-mini-fab class="but1" matTooltip="View" >
+                  <mat-icon>search</mat-icon>
+                </button>
+                <button (click)="openCenter(center.id)" mat-mini-fab class="but2" matTooltip="Appointments">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+
+
             </mat-card-actions>
 
           </div>

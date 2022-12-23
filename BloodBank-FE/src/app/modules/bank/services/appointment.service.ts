@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Appointment} from "../model/appointment.model";
 import {AppointmentDTO} from "../dto/appointmentDTO.model";
+import {Method} from "../../pages/home/home.component";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,20 @@ export class AppointmentService{
 
   saveCenterAppointment(appointment: any, id: number): Observable<any>{
     return this.http.post<any>(this.apiHost + 'api/appointments/' + id, appointment, {headers: this.headers});
+  }
+
+  getPredefinedAppointmentsForCenter(id: number, sort: Method): Observable<Appointment[]> {
+    return this.http.get<Appointment[]> (this.apiHost + 'api/appointments/predefined/'+sort+'/'+id, {headers: this.headers});
+
+  }
+
+  getPredefinedAppointmentsForCenterInit(id: number, sort: string): Observable<Appointment[]> {
+    return this.http.get<Appointment[]> (this.apiHost + 'api/appointments/predefined/'+sort+'/'+id, {headers: this.headers});
+
+  }
+
+  bookAppointment(appointment: Appointment, id: number): Observable<any>{
+    return this.http.put<any>(this.apiHost + 'api/appointments/predefined/' + id, appointment, {headers: this.headers});
   }
 
 

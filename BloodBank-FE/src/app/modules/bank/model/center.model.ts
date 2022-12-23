@@ -19,6 +19,7 @@ export interface Centar {
 // }
 
 export class Center {
+  id: number = 0;
   name: string = '';
   address: AddressDTO = new AddressDTO();
   description: string = '';
@@ -30,6 +31,7 @@ export class Center {
 
   public constructor(obj?: any) {
     if (obj) {
+      this.id = obj.id;
       this.name = obj.name;
       this.address = obj.address;
       this.description = obj.description;

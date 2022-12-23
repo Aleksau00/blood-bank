@@ -16,6 +16,7 @@ import {AddUserAppointmentComponent} from "./modules/bank/add-user-appointment/a
 import {
   AvailableCentersForAppointments
 } from "./modules/bank/available-centers-for-appointment/available-centers-for-appointment.component";
+import {CenterViewComponent} from "./modules/bank/center-view/center-view.component";
 
 
 const routes: Routes = [
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent},
   { path: 'add-center-appointment', component: AddCenterAppointmentComponent},
   { path: 'add-user-appointment', component: AddUserAppointmentComponent},
-  { path: 'available-centers-for-appointment', component: AvailableCentersForAppointments}
+  { path: 'available-centers-for-appointment', component: AvailableCentersForAppointments},
+  { path: 'center-view', component: CenterViewComponent}
 
 ];
 

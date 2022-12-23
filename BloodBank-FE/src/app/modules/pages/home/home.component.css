@@ -25,12 +25,19 @@ mat-card-actions {
   flex-direction: row;
 }
 
-.mat-mini-fab {
-  background-color: #eeeeee;
+.wrapper-btn {
   color: #00ADB5;
-  margin-left: 12rem;
+  margin-left: 6rem;
   margin-bottom: 1rem;
   align-self: end;
+}
+
+.but1 {
+  margin-right: 5px;
+}
+
+.but2 {
+  margin-left: 5px;
 }
 
 mat-card-header {

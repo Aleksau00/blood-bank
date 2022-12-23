@@ -53,6 +53,11 @@ insert into appointment (registered_user_id, center_id, date, time, duration) va
 insert into appointment (registered_user_id, center_id, date, time, duration) values (1, 1, '2022-08-08', '14:30:00', 30);
 insert into appointment (registered_user_id, center_id, date, time, duration) values (2, 1, '2022-10-10', '14:45:00', 45);
 
+insert into appointment ( center_id, date, time, duration) values (1, '2022-12-27', '14:45:00', 45);
+insert into appointment ( center_id, date, time, duration) values (1, '2022-12-26', '15:30:00', 45);
+insert into appointment ( center_id, date, time, duration) values (1, '2022-12-25', '16:15:00', 45);
+insert into appointment ( center_id, date, time, duration) values (1, '2022-12-24', '17:00:00', 45);
+
 insert into appointment_staff (staff_id, appointment_id) values (4, 1);
 insert into appointment_staff (staff_id, appointment_id) values (5, 2);
 

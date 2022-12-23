@@ -6,6 +6,9 @@ import {PageEvent} from '@angular/material/paginator';
 import {TokenStorageService} from "../../bank/services/token-storage.service";
 import {AdminService} from "../../bank/services/admin.service";
 import {Admin} from "../../bank/model/admin.model";
+import {Overlay} from "@angular/cdk/overlay";
+import {MatDialog} from "@angular/material/dialog";
+import {CenterViewComponent} from "../../bank/center-view/center-view.component";
 
 
 export interface Method {
@@ -40,7 +43,7 @@ export class HomeComponent implements OnInit {
 
   // MatPaginator Output
 
-  constructor(private tokenStorageService: TokenStorageService, private centerService: CenterService, private router: Router, private adminService: AdminService) { }
+  constructor( private dialog: MatDialog, private overlay: Overlay, private tokenStorageService: TokenStorageService, private centerService: CenterService, private router: Router, private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.centerService.getCentersNameAsc().subscribe(res => {
@@ -72,5 +75,15 @@ export class HomeComponent implements OnInit {
 
   onSearchTextEntered(searchValue: string){
     this.searchText = searchValue;
+  }
+
+  public openCenter(id: number){
+    const scrollStrategy = this.overlay.scrollStrategies.reposition();
+    const dialogRef = this.dialog.open(CenterViewComponent, {scrollStrategy: scrollStrategy,
+      width: '400px',
+      data: {
+        centerId: id
+      }
+    });
   }
 }
