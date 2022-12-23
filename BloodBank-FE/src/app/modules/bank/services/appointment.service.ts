@@ -51,4 +51,8 @@ export class AppointmentService{
   getAppointmentsByUserId(id: number): Observable<any>{
     return this.http.post<any>(this.apiHost + 'api/appointments/byUser/' + id, {headers: this.headers});
   }
+
+  cancelAppointment(id: number): Observable<any>{
+    return this.http.put<any>(this.apiHost + 'api/appointments/cancel/' + id, {headers: this.headers});
+  }
 }

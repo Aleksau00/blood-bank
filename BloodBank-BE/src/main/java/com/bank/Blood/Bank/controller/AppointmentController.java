@@ -135,4 +135,14 @@ public class AppointmentController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN', 'STAFF')")
+    @PutMapping(consumes = "application/json", value = "/cancel/{id}")
+    public ResponseEntity<Appointment> cancelAppointment(@PathVariable("id") Integer id) {
+        Boolean appointment = appointmentService.cancelAppointment(id);
+        if (appointment== false){
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

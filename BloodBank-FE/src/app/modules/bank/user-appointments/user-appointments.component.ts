@@ -15,7 +15,7 @@ export class UserAppointmentsComponent implements OnInit {
 
   @Input() appointments :Appointment[]=[]
 
-  displayedColumns: string[] = ['Date','Time'];
+  displayedColumns: string[] = ['Date','Time', 'Cancel'];
 
 
   constructor(public tokenStorageService: TokenStorageService, private centerService: CenterService, private appointmentService: AppointmentService, private router: Router) {
@@ -30,4 +30,13 @@ export class UserAppointmentsComponent implements OnInit {
   }
 
 
+  public cancelAppointment(id: number) {
+    this.appointmentService.cancelAppointment(id).subscribe( res =>
+    {
+      alert("Success!")
+    }, error => {
+      alert("Unable to delete appointment")
+    })
+
+  }
 }

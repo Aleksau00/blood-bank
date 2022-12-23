@@ -171,9 +171,12 @@ public class AppointmentServiceImpl implements AppointmentService {
         List<Appointment> allAppointments = appointmentRepository.findAll();
         List<Appointment> userAppointments = new ArrayList<Appointment>();
         for(Appointment ap : allAppointments) {
-            if(ap.getRegisteredUser().getId().equals(id)) {
-                userAppointments.add(ap);
+            if(ap.getRegisteredUser() != null){
+                if(ap.getRegisteredUser().getId().equals(id)) {
+                    userAppointments.add(ap);
+                }
             }
+
         }
         return userAppointments;
     }
@@ -222,6 +225,17 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
         emailSender.send(registeredUser.get().getUsername(), "Your appointment has been scheduled for "+appointment.get().getDate().toString()+" at "+appointment.get().getTime());
         return appointmentRepository.save(appointment.get());
+    }
+
+    @Override
+    public Boolean cancelAppointment(Integer id) {
+        Optional<Appointment> appointment = appointmentRepository.findById(id);
+        if(appointment.get().getDate().getDayOfYear() == LocalDate.now().plusDays(1).getDayOfYear())
+        {
+            return false;
+        }
+        appointmentRepository.delete(appointment.get());
+        return true;
     }
 }
 

@@ -21,6 +21,8 @@ export class AdminService {
     return this.http.get<Admin>(this.apiHost + 'api/admins/' + id, {headers: this.headers});
   }
   updateAdmin(admin: any): Observable<any> {
+    admin.firstLogin = false;
+    admin.isFirstLogin = false;
     return this.http.put<any>(this.apiHost + 'api/admins/' + admin.id, admin, {headers: this.headers});
   }
 

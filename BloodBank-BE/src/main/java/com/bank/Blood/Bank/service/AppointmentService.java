@@ -23,4 +23,5 @@ public interface AppointmentService {
 
     Appointment savePredefined(AppointmentViewDTO appointmentViewDTO, Integer id);
 
+    Boolean cancelAppointment(Integer id);
 }
