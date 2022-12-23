@@ -18,4 +18,7 @@ public class Admin extends AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column
+    private boolean isFirstLogin;
 }

@@ -25,15 +25,17 @@ insert into center (name, address_id, description, average_grade, start_time, en
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Health Clinic', '2', 'Health clinic for respiratory diseases', '5.0', '07:00', '18:00');
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('HCNS', '3', 'Ambulance', '4.0', '07:00', '21:00');
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Dragise Misovica', '4', 'Ambulance', '2.0', '07:00', '21:00');
-insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, center_id) values ('vanja@vanja.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, 2);
+insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, center_id, is_first_login) values ('vanja@vanja.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, 2, false);
 insert into user_role (user_id, role_id) values (4, 3);
 insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, center_id, is_locked, is_enabled) values ('sanjica@sanjica.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Sanja', 'Kondic', '086746534', '1505994779876', 1,'Medical technician', 'staff', 2, 1, false, true);
 insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, center_id, is_locked, is_enabled) values ('danica@danica.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Danica', 'Dakic', '086746573', '1807994779477', 1,'Medical technician', 'staff', 3, 2, false, true);
 insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, center_id, is_locked, is_enabled) values ('saki@saki.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji', 'Slavica', 'Misic', '068665573', '1411987790440', 1,'Center administrator', 'staff', 1, 1, false, true);
 
+insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, center_id, is_first_login) values ('nemke@nemke.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, 2, true);
 insert into user_role (user_id, role_id) values (5, 2);
 insert into user_role (user_id, role_id) values (6, 2);
 insert into user_role (user_id, role_id) values (7, 2);
+insert into user_role (user_id, role_id) values (8, 3);
 
 insert into blood (amount, type) values (500, 0);
 insert into blood (amount, type) values (60, 1);
@@ -55,6 +57,11 @@ insert into appointment (registered_user_id, center_id, date, time, duration) va
 insert into appointment (registered_user_id, center_id, date, time, duration) values (3, 1, '2022-12-28', '10:00:00', 50);
 insert into appointment (registered_user_id, center_id, date, time, duration) values (1, 3, '2022-12-28', '10:00:00', 30);
 insert into appointment (registered_user_id, center_id, date, time, duration) values (2, 1, '2023-01-03', '11:45:00', 45);
+
+insert into appointment ( center_id, date, time, duration) values (1, '2022-12-27', '14:45:00', 45);
+insert into appointment ( center_id, date, time, duration) values (1, '2022-12-26', '15:30:00', 45);
+insert into appointment ( center_id, date, time, duration) values (1, '2022-12-25', '16:15:00', 45);
+insert into appointment ( center_id, date, time, duration) values (1, '2022-12-24', '17:00:00', 45);
 
 insert into appointment_staff (staff_id, appointment_id) values (4, 1);
 insert into appointment_staff (staff_id, appointment_id) values (5, 2);

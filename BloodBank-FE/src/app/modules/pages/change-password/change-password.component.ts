@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Staff} from "../../bank/model/staff.model";
-import {StaffService} from "../../bank/services/staff.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AdminService} from "../../bank/services/admin.service";
+import {Admin} from "../../bank/model/admin.model";
+import {TokenStorageService} from "../../bank/services/token-storage.service";
 
 @Component({
   selector: 'app-change-password',
@@ -10,19 +11,21 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ChangePasswordComponent implements OnInit {
 
-  public staff: Staff | undefined;
+  public admin: Admin | undefined;
 
-  constructor(private staffService: StaffService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private tokenStorageService: TokenStorageService, private adminService: AdminService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.staffService.getStaff(5).subscribe(res => {
-      this.staff = res;
+    this.adminService.getAdmin(this.tokenStorageService.getUser().id).subscribe(res => {
+      this.admin = res;
+      console.log(this.admin)
     })
   }
 
-  updateStaff(): void {
-    this.staffService.updateStaff(this.staff).subscribe(res => {
-      this.router.navigate(['/staff-profile']);
+  updateAdmin(): void {
+    this.adminService.updateAdmin(this.admin).subscribe(res => {
+      alert("Success!");
+      console.log(this.admin)
     });
   }
 

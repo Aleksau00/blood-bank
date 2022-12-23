@@ -43,9 +43,11 @@ public class PollController {
         try {
             savedPoll = pollService.save(poll);
             if (savedPoll == null) {
+                System.out.println("Y");
                 return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
             }
-            return new ResponseEntity<Poll>(savedPoll, HttpStatus.CREATED);
+            System.out.println("Y");
+            return new ResponseEntity<Poll>(HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<Poll>(savedPoll, HttpStatus.CONFLICT);

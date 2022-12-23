@@ -17,6 +17,8 @@ import {
   AvailableCentersForAppointments
 } from "./modules/bank/available-centers-for-appointment/available-centers-for-appointment.component";
 import {UserAppointmentsComponent} from "./modules/bank/user-appointments/user-appointments.component";
+import {CenterViewComponent} from "./modules/bank/center-view/center-view.component";
+
 
 
 const routes: Routes = [
@@ -36,6 +38,8 @@ const routes: Routes = [
   { path: 'add-user-appointment', component: AddUserAppointmentComponent},
   { path: 'available-centers-for-appointment', component: AvailableCentersForAppointments},
   { path: 'user-appointments', component: UserAppointmentsComponent},
+  { path: 'center-view', component: CenterViewComponent}
+
 ];
 
 @NgModule({
