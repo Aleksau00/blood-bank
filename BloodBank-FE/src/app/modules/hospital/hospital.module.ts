@@ -9,6 +9,9 @@ import { RoomsComponent } from "./rooms/rooms.component";
 import { UpdateProfileComponent } from "./update-profile/update-profile.component";
 import { StaffProfileUpdateComponent } from "./staff-profile-update/staff-profile-update.component";
 import { CenterUpdateComponent } from "./center-update/center-update.component";
+import { AppointmentStaffComponent } from "./appointment-staff/appointment-staff.component";
+import { HistoryExaminationsComponent } from './history-examinations/history-examinations.component';
+
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },
@@ -26,7 +29,9 @@ const routes: Routes = [
     CreateRoomComponent,
     UpdateProfileComponent,
     StaffProfileUpdateComponent,
-    CenterUpdateComponent
+    CenterUpdateComponent,
+    AppointmentStaffComponent,
+    HistoryExaminationsComponent
   ],
   imports: [
     CommonModule,

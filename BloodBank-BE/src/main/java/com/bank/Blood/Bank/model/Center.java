@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -99,6 +101,11 @@ public class Center {
 
         return 1337;
     }
+    @Column(columnDefinition = "integer default 15")
+    private Integer equipment;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Blood> typesOfBlood = new ArrayList<>();
 }
 
 

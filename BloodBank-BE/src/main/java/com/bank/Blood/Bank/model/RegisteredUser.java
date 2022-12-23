@@ -69,4 +69,9 @@ public class RegisteredUser extends AppUser {
         appointment.setRegisteredUser(null);
     }
 
+    @Column
+    private int penalties;
+
+
+
 }

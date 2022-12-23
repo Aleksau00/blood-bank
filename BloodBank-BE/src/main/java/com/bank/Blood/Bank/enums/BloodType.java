@@ -8,5 +8,8 @@ public enum BloodType {
     AB_POSITIVE,
     AB_NEGATIVE,
     O_POSITIVE,
-    O_NEGATIVE
+    O_NEGATIVE;
+
+    public boolean isPositive;
+    public boolean isPositive(){return isPositive;}
 }

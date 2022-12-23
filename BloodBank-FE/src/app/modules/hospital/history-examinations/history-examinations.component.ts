@@ -1,0 +1,17 @@
+import { Component, OnInit } from '@angular/core';
+import { AppointmentUpdate } from '../../bank/model/appointment.model';
+
+@Component({
+  selector: 'app-history-examinations',
+  templateUrl: './history-examinations.component.html',
+  styleUrls: ['./history-examinations.component.css']
+})
+export class HistoryExaminationsComponent implements OnInit {
+  public history: AppointmentUpdate | undefined;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

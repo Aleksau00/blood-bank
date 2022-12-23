@@ -45,4 +45,17 @@ public class PollServiceImpl implements PollService {
          registeredUserRepository.save(ru.get());
          return savedPoll;
     }
+    @Override
+    public boolean isUserAbleToDonateBlood(int id) {
+        for (Poll p : pollRepository.findAll()) {
+            if (p.getRegisteredUser().getId() == id ){
+                if (p.getQuestion1() || p.getQuestion2() || p.getQuestion3() || p.getQuestion4() || p.getQuestion5()
+                        || p.getQuestion6() || p.getQuestion7()){
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
 }

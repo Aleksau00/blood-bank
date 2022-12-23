@@ -7,10 +7,10 @@ insert into address (country, city, street, number, postal_code) values ('Serbia
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Novi Sad', 'Pavla Papa', '66', '21400');
 insert into address (country, city, street, number, postal_code) values ('Serbia', 'Novi Sad', 'Lasla Gala', '55', '21400');
 
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role, loyalty_card_id) values ('perica', 'perap', 'pera@pera.com', 'Petar', 'Petrovic', '086745384', '1305994779876', 0,'FTN', 'registeredUser', 1, 1020, false, true,  1, '1');
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role, loyalty_card_id) values ('jelica', 'jelenas', 'jelena@jelena.com', 'Jelena', 'Savic', '086745444', '1305994779876', 1,'FTN', 'registeredUser', 1, 1080, false, true, 0, '1');
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role, loyalty_card_id) values ('anica', 'anaj', 'ana@ana.com', 'Ana', 'Jovanovic', '086745777', '1805994773344', 1,'Economy faculty in Novi Sad', 'registeredUser', 1, 3090, false, true, 0, '2');
-insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, app_user_role) values ('vanja', 'vanjak', 'vanja@vanja.com', 'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, 1);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role, loyalty_card_id, penalties) values ('perica', 'perap', 'pera@pera.com', 'Petar', 'Petrovic', '086745384', '1305994779876', 0,'FTN', 'registeredUser', 1, 1020, false, true,  1, '1', 0);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role, loyalty_card_id, penalties) values ('jelica', 'jelenas', 'jelena@jelena.com', 'Jelena', 'Savic', '086745444', '1305994779876', 1,'FTN', 'registeredUser', 1, 1080, false, true, 0, '1', 1);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, points, is_locked, is_enabled, app_user_role, loyalty_card_id, penalties) values ('anica', 'anaj', 'ana@ana.com', 'Ana', 'Jovanovic', '086745777', '1805994773344', 1,'Economy faculty in Novi Sad', 'registeredUser', 1, 3090, false, true, 0, '2', 2);
+insert into app_user (username, password, email, first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, app_user_role, penalties) values ('vanja', 'vanjak', 'vanja@vanja.com', 'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, 1, 0);
 
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('VMA', '1', 'Ambulance', '4.0', '07:00', '09:52');
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Health Clinic', '2', 'Health clinic for respiratory diseases', '5.0', '07:00', '18:00');
@@ -30,11 +30,15 @@ insert into center_blood (center_id, blood_id) values (2,2);
 insert into center_blood (center_id, blood_id) values (3,3);
 insert into center_blood (center_id, blood_id) values (4,4);
 
-insert into appointment (registered_user_id, center_id, date, duration) values (1, 1, '2022-11-11 14:00:00', 30);
-insert into appointment (registered_user_id, center_id, date, duration) values (2, 1, '2022-12-10 14:00:00', 45);
-insert into appointment (registered_user_id, center_id, date, duration) values (3, 1, '2022-12-11 14:20:00', 50);
-insert into appointment (registered_user_id, center_id, date, duration) values (1, 1, '2022-08-08 14:30:00', 30);
-insert into appointment (registered_user_id, center_id, date, duration) values (2, 1, '2022-10-10 14:45:00', 45);
+insert into appointment (registered_user_id, center_id, date, duration, status) values (1, 1, '2022-11-11 14:00:00', 30, 0);
+insert into appointment (registered_user_id, center_id, date, duration, status) values (2, 1, '2022-12-10 14:00:00', 45, 1);
+insert into appointment (registered_user_id, center_id, date, duration, status) values (3, 1, '2022-12-11 14:20:00', 50, 2);
+insert into appointment (registered_user_id, center_id, date, duration, status) values (1, 1, '2022-08-08 14:30:00', 30, null);
+insert into appointment (registered_user_id, center_id, date, duration, status) values (2, 1, '2022-10-10 14:45:00', 45, null);
+insert into appointment (registered_user_id, center_id, date, duration, status) values (2, 2, '2022-12-03 13:00:00', 25, null);
+insert into appointment (registered_user_id, center_id, date, duration, status) values (2, 1, '2022-12-04 10:00:00', 15, null);
+insert into appointment (registered_user_id, center_id, date, duration, status) values (2, 1, '2022-12-01 12:45:00', 30, null);
+
 
 insert into appointment_staff (staff_id, appointment_id) values (4, 1);
 insert into appointment_staff (staff_id, appointment_id) values (5, 2);

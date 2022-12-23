@@ -1,5 +1,6 @@
 package com.bank.Blood.Bank.model;
 
+import com.bank.Blood.Bank.enums.AppointmentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,6 +39,10 @@ public class Appointment {
 
     @Column
     private Integer duration;
+
+    private String description;
+
+    private AppointmentStatus status;
 
 
 

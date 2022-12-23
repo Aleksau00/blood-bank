@@ -9,8 +9,8 @@ import {CenterComponent} from "./modules/pages/center/center.component";
 import { StaffProfileComponent } from "./modules/pages/staff-profile/staff-profile.component";
 import {AddAdministratorComponent} from "./modules/pages/add-administrator/add-administrator.component";
 import {WorkingScheduleComponent} from "./modules/pages/working-schedule/working-schedule.component";
-
-
+import { AppointmentStaffComponent } from "./modules/hospital/appointment-staff/appointment-staff.component";
+import { HistoryExaminationsComponent } from "./modules/hospital/history-examinations/history-examinations.component";
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'system-administrator', component: SystemAdministratorComponent},
@@ -20,7 +20,9 @@ const routes: Routes = [
   { path: 'center', component: CenterComponent },
   { path: 'staff-profile', component: StaffProfileComponent},
   { path: 'add-administrator', component: AddAdministratorComponent},
-  { path: 'working-schedule', component: WorkingScheduleComponent}
+  { path: 'working-schedule', component: WorkingScheduleComponent},
+  { path: 'appointment-staff', component: AppointmentStaffComponent},
+  { path: 'history-examinations', component: HistoryExaminationsComponent},
 
 
 
