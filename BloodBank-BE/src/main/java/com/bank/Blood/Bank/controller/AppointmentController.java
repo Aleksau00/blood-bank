@@ -18,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.PermitAll;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -135,6 +136,16 @@ public class AppointmentController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping(value = "/wanted/{id}")
+    public ResponseEntity<Appointment> getWantedAppointmentInCenter(@RequestBody Appointment appointment, @PathVariable("id") Integer centerId){
+        Appointment wantedAppointment = appointmentService.getWantedAppointmentInCenter(appointment, centerId);
+        if (wantedAppointment == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }else {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+    }
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN', 'STAFF')")
     @PutMapping(consumes = "application/json", value = "/cancel/{id}")
     public ResponseEntity<Appointment> cancelAppointment(@PathVariable("id") Integer id) {

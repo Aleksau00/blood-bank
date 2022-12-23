@@ -121,9 +121,7 @@ public class CenterServiceImpl implements CenterService {
                 availableCenters.add(center);
 
             }
-            //else {
-            //    throw new IllegalStateException("Center has an appointment in that time frame!");
-            //}
+
         }
         return availableCenters;
     }
@@ -139,20 +137,7 @@ public class CenterServiceImpl implements CenterService {
         LocalDate newAppointmentDate = appointment.getDate().plusDays(1);
 
         if(centerAppointmentDate.equals(newAppointmentDate)) {
-            /*
-            if(newAppointmentStartTime.isAfter(centerAppointmentStartTime) && newAppointmentStartTime.isBefore(centerAppointmentEndTime)) {
-                return true;
-            }
-            if(newAppointmentEndTime.isAfter(centerAppointmentStartTime) && newAppointmentEndTime.isBefore(centerAppointmentEndTime)) {
-                return true;
-            }
-            if(centerAppointmentStartTime.isAfter(newAppointmentStartTime) && centerAppointmentStartTime.isBefore(newAppointmentEndTime)) {
-                return true;
-            }
-            if(centerAppointmentEndTime.isAfter(newAppointmentStartTime) && centerAppointmentEndTime.isBefore(newAppointmentEndTime)) {
-                return true;
-            }
-            */
+
             if(newAppointmentStartTime.equals(centerAppointmentStartTime)) {
                 return true;
             }

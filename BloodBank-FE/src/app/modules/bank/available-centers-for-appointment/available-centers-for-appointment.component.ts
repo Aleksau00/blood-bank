@@ -8,6 +8,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {CenterService} from "../services/center.service";
 import {TokenStorageService} from "../services/token-storage.service";
+import {MatSelectChange} from "@angular/material/select";
 
 export interface Method {
   value: string;
@@ -22,8 +23,8 @@ export interface Method {
 export class AvailableCentersForAppointments implements OnInit {
 
   methods: Method[] = [
-    {value: 'AverageGradeAsc', viewValue: 'Avg. grade 0-5'},
-    {value: 'AverageGradeDesc', viewValue: 'Avg. grade 5-0'}
+    {value: 'AverageGradeAsc', viewValue: 'Avg. grade 5-0'},
+    {value: 'AverageGradeDesc', viewValue: 'Avg. grade 0-5'}
   ];
   method: Method = {value: 'AverageGradeAsc', viewValue: 'Avg. grade 0-5'};
 
@@ -46,12 +47,13 @@ export class AvailableCentersForAppointments implements OnInit {
     );
   }
 
-  public sortCenters(newValue : Method) {
-    this.method = newValue;
-    this.centerService.getAppCentersSorted(this.method, this.appointment).subscribe(res => {
-      this.centers = res;
-    })
+  public sortCenters() {
+    this.centers.sort((a, b) => (a.averageGrade!>b.averageGrade! ? -1 : 1))
   }
+
+  //public sortCentersDesc() {
+  //  this.centers.sort((a, b) => (a.averageGrade!<b.averageGrade! ? -1 : 1))
+  //}
 
   public createAppointment(center: any) {
     if (!this.isValidInput()) {
@@ -61,7 +63,12 @@ export class AvailableCentersForAppointments implements OnInit {
     try {
       //this.appointment = this.appointmentService.getCenterAppointment(center.id, this.data.date, this.data.time);
       this.appointment.registeredUserDTO.id = this.tokenStorageService.getUser().id;
-      this.appointmentService.saveUserAppointment(this.appointment, this.tokenStorageService.getUser().id).subscribe(res => {
+      this.appointmentService.getWantedAppointment(this.appointment, center.id).subscribe(res => {
+        this.appointment = res;
+        //this.dialogRef.close(0);
+      });
+      this.appointmentService.bookAppointment(this.appointment, this.tokenStorageService.getUser().id).subscribe(res => {
+        this.appointment = res;
         this.dialogRef.close(0);
       });
     } catch (error) {

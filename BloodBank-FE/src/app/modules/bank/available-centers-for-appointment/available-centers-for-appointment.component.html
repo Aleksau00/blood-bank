@@ -3,7 +3,7 @@
   <div>
     <mat-form-field>
       <mat-label>Sort blood centers by:</mat-label>
-      <mat-select [ngModel]="method" (ngModelChange)="sortCenters($event)">
+      <mat-select (selectionChange)="sortCenters()">
         <mat-option *ngFor="let met of methods" [value]="met.value">
           {{met.viewValue}}
         </mat-option>

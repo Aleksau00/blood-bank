@@ -21,7 +21,7 @@ insert into user_role (user_id, role_id) values (2, 1);
 insert into user_role (user_id, role_id) values (3, 1);
 
 
-insert into center (name, address_id, description, average_grade, start_time, end_time) values ('VMA', '1', 'Ambulance', '4.0', '07:00', '20:00');
+insert into center (name, address_id, description, average_grade, start_time, end_time) values ('VMA', '1', 'Ambulance', '3.0', '07:00', '20:00');
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Health Clinic', '2', 'Health clinic for respiratory diseases', '5.0', '07:00', '18:00');
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('HCNS', '3', 'Ambulance', '4.0', '07:00', '21:00');
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Dragise Misovica', '4', 'Ambulance', '2.0', '07:00', '21:00');
