@@ -9,4 +9,10 @@ public interface AppointmentService {
     Appointment save(Appointment appointment, Integer id);
 
     List<Appointment> findAllByCenter(Staff staff);
+
+    List<Appointment> findAllByCenterId(Integer id);
+
+    //Appointment getCenterAppointment(Integer id);
+
+    List<Appointment> getAllUserAppointments(Integer id);
 }

@@ -118,6 +118,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         return true;
     }
 
+    //By center_id from center administrator
     public List<Appointment> findAllByCenter(Staff staff) {
 
         List<Appointment> allAppointments = findAll();
@@ -128,6 +129,36 @@ public class AppointmentServiceImpl implements AppointmentService {
             }
         }
         return centerAppointments;
+    }
+
+    public List<Appointment> findAllByCenterId(Integer id) {
+        //return appointmentRepository.findAllByCenterId(id);
+        List<Appointment> allAppointments = appointmentRepository.findAll();
+        List<Appointment> centerAppointments = new ArrayList<Appointment>();
+        for(Appointment ap : allAppointments) {
+            if(ap.getCenter().getId().equals(id)) {
+                centerAppointments.add(ap);
+            }
+        }
+        return centerAppointments;
+    }
+
+    /*public Appointment getCenterAppointment(Integer id) {
+        List<Appointment> centerAppointments = findAllByCenterId(id);
+        for(Appointment appointment: centerAppointments) {
+            //if(appointment.getDate().equals())
+        }
+    }*/
+
+    public List<Appointment> getAllUserAppointments(Integer id) {
+        List<Appointment> allAppointments = appointmentRepository.findAll();
+        List<Appointment> userAppointments = new ArrayList<Appointment>();
+        for(Appointment ap : allAppointments) {
+            if(ap.getRegisteredUser().getId().equals(id)) {
+                userAppointments.add(ap);
+            }
+        }
+        return userAppointments;
     }
 
 }

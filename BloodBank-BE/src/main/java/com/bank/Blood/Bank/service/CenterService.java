@@ -1,5 +1,6 @@
 package com.bank.Blood.Bank.service;
 
+import com.bank.Blood.Bank.model.Appointment;
 import com.bank.Blood.Bank.model.Center;
 
 import java.util.List;
@@ -18,5 +19,6 @@ public interface CenterService {
    List<Center> findAllByOrderByAddressCountryDesc();
    List<Center> findAllByOrderByAverageGradeDesc();
    List<Center> findAllByOrderByAverageGradeAsc();
+   List<Center> getAllAvailableCenters(Appointment appointment);
 
 }

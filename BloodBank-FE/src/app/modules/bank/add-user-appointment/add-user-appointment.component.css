@@ -1,10 +1,10 @@
 .timepicker {
   display: grid;
   place-items: center;
-  width: 25%;
-  font-size: 20px;
+  width: 45%;
   padding: 5%;
 }
+
 .dateInputs {
   display: flex;
   flex-direction: row;
@@ -22,6 +22,12 @@
   display: flex;
   flex-direction: column;
 }
+
+.title{
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
 .container-f {
   background-color: #fff;
   border-radius: 10px;
@@ -30,14 +36,87 @@
   position: center;
   overflow: hidden;
   max-width: 100%;
-  min-height: 580px;
-  margin: auto;
-  width: 70%;
-  padding: 10px;
+  margin: 60px auto;
+  width: 35%;
+  padding: 20px;
+
+}
+.title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.end-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.date-icon {
+  zoom: 1;
+  position: relative;
+}
+
+.select-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.display-block {
+  width: 200px !important;
+}
+
+.example-margin {
+  margin: 10px;
+}
+.doctor-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  margin: 10px;
 }
 
 .title{
-  text-align: center;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin: 5px 0;
 }
+.create-schedule-container {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+.center-me{
+  position: center;
+}
+.input-schedule {
+  margin-top: 20px;
+  width: 60%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+textarea {
+  height: 100px;
+}
+

@@ -1,32 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-<h1 class="title">Add an appointment</h1>
-<div class="container-f">
-  <div class="rowss">
-  <div class="dateInputs">
-<mat-form-field class="timepicker" appearance="fill">
-  <mat-label>Choose a date</mat-label>
-  <input matInput [(ngModel)]="appointment.date" [matDatepicker]="picker">
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
-</mat-form-field>
-<mat-form-field class="timepicker">
-  <input type="time" [(ngModel)]="appointment.time" mat-timepicker matInput placeholder="Click to get the time" value="08:00" min="08:00" max="19:30">
-</mat-form-field>
-  </div>
-  <div class="dateInputs">
-    <mat-form-field class="timepicker">
-      <mat-label>Duration</mat-label>
-      <input [(ngModel)]="appointment.duration" matInput placeholder="Duration" value="30">
-    </mat-form-field>
-    <button mat-raised-button color="primary" class="addButton" (click)="addAppointment()" >Add</button>
-  </div>
+<div class="container">
+  <div class="container-f">
+    <div class="title-container">
+      <h1 class="title">Schedule an appointment</h1>
+    </div>
+
+    <div class="select-container">
+      <mat-form-field class="display-block" appearance="fill">
+        <mat-label>Choose date and time:</mat-label>
+        <input class="timepicker" matInput [(ngModel)]="appointment.date" [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="timepicker">
+        <input type="time" [(ngModel)]="appointment.time" mat-timepicker matInput placeholder="Click to get the time" value="08:00" min="08:00" max="19:30">
+      </mat-form-field>
+    </div>
+
+    <div class="end-container">
+      <button mat-flat-button color="primary"  >Cancel</button>
+      <button mat-flat-button color="primary" (click)="openDialog()">Confirm</button>
+    </div>
   </div>
 </div>
-</body>
-</html>

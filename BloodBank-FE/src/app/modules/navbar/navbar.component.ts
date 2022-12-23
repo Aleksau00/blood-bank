@@ -44,6 +44,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  AddUserAppointment(): void {
+    this.router.navigate(['/add-user-appointment']);
+  }
+
   AddAppointment(): void {
     this.router.navigate(['/add-center-appointment']);
   }
@@ -52,7 +56,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/profile']);
   }
 
-
+  UserAppointments(): void {
+    this.router.navigate(['/user-appointments']);
+  }
   ngOnInit(): void {
   }
 

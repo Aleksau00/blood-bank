@@ -9,6 +9,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {CenterService} from "../services/center.service";
 import {TokenStorageService} from "../services/token-storage.service";
 
+export interface Method {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-available-centers-for-appointment',
   templateUrl: './available-centers-for-appointment.component.html',
@@ -16,13 +21,19 @@ import {TokenStorageService} from "../services/token-storage.service";
 })
 export class AvailableCentersForAppointments implements OnInit {
 
-
+  methods: Method[] = [
+    {value: 'AverageGradeAsc', viewValue: 'Avg. grade 0-5'},
+    {value: 'AverageGradeDesc', viewValue: 'Avg. grade 5-0'}
+  ];
+  method: Method = {value: 'AverageGradeAsc', viewValue: 'Avg. grade 0-5'};
 
   constructor(public tokenStorageService: TokenStorageService, private appointmentService: AppointmentService, private centerService: CenterService, public dialogRef: MatDialogRef<AvailableCentersForAppointments>,@Inject(MAT_DIALOG_DATA) public data: any, private router: Router) {
   }
 
   centers: Center[] = [];
   appointment: Appointment = new Appointment();
+
+
 
   ngOnInit(): void {
     this.appointment.date = this.data.date;
@@ -35,16 +46,22 @@ export class AvailableCentersForAppointments implements OnInit {
     );
   }
 
+  public sortCenters(newValue : Method) {
+    this.method = newValue;
+    this.centerService.getAppCentersSorted(this.method, this.appointment).subscribe(res => {
+      this.centers = res;
+    })
+  }
+
   public createAppointment(center: any) {
     if (!this.isValidInput()) {
       alert("Fields cannot be empty.");
       return;
     }
     try {
+      //this.appointment = this.appointmentService.getCenterAppointment(center.id, this.data.date, this.data.time);
       this.appointment.registeredUserDTO.id = this.tokenStorageService.getUser().id;
-      this.appointment.date = this.appointment.date;
-      this.appointment.time = this.appointment.time;
-      this.appointmentService.saveCenterAppointment(this.appointment, this.tokenStorageService.getUser().id).subscribe(res => {
+      this.appointmentService.saveUserAppointment(this.appointment, this.tokenStorageService.getUser().id).subscribe(res => {
         this.dialogRef.close(0);
       });
     } catch (error) {
@@ -52,7 +69,7 @@ export class AvailableCentersForAppointments implements OnInit {
     }
   }
   public isValidInput(): boolean {
-    return (this.appointment.duration != 0)
+    return true;
   }
 
 }

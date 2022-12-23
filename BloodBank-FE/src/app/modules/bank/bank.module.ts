@@ -15,6 +15,7 @@ import {AddUserAppointmentComponent} from "./add-user-appointment/add-user-appoi
 import {
   AvailableCentersForAppointments
 } from "./available-centers-for-appointment/available-centers-for-appointment.component";
+import {UserAppointmentsComponent} from "./user-appointments/user-appointments.component";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {
     AddCenterAppointmentComponent,
     AddUserAppointmentComponent,
     AvailableCentersForAppointments,
+    UserAppointmentsComponent
   ],
   imports: [
     CommonModule,

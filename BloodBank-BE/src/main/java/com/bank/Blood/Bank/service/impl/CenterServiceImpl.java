@@ -1,14 +1,20 @@
 package com.bank.Blood.Bank.service.impl;
 
-import com.bank.Blood.Bank.model.Address;
+import com.bank.Blood.Bank.model.Appointment;
 import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.repository.AddressRepository;
+import com.bank.Blood.Bank.repository.AppointmentRepository;
 import com.bank.Blood.Bank.repository.CenterRepository;
 import com.bank.Blood.Bank.service.AddressService;
+import com.bank.Blood.Bank.service.AppointmentService;
 import com.bank.Blood.Bank.service.CenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,15 +24,20 @@ public class CenterServiceImpl implements CenterService {
 
     private CenterRepository centerRepository;
     private AddressRepository addressRepository;
+    private AppointmentService appointmentService;
 
     @Autowired
-    public CenterServiceImpl(CenterRepository centerRepository, AddressRepository addressRepository){
+    public CenterServiceImpl(CenterRepository centerRepository, AddressRepository addressRepository,
+                             AppointmentRepository appointmentRepository, AppointmentService appointmentService){
         this.centerRepository = centerRepository;
         this.addressRepository = addressRepository;
+        this.appointmentRepository = appointmentRepository;
+        this.appointmentService = appointmentService;
     }
 
     @Autowired
     private AddressService addressService = new AddressServiceImpl();
+    private final AppointmentRepository appointmentRepository;
 
     @Override
     public List<Center> findAll() {
@@ -91,5 +102,62 @@ public class CenterServiceImpl implements CenterService {
     public Center save(Center center) {
         addressRepository.save(center.getAddress());
         return centerRepository.save(center);
+    }
+
+    @Override
+    public List<Center> getAllAvailableCenters(Appointment appointment) {
+        List<Center> availableCenters = new ArrayList<>();
+        List<Center> centers = centerRepository.findAll();
+        for(Center center : centers) {
+            List<Appointment> centerAppointments = appointmentService.findAllByCenterId(center.getId());
+            List<Appointment> hasAppointment = new ArrayList<>();
+            for(Appointment centerAppointment : centerAppointments) {
+                if(hasAppointment(centerAppointment,appointment)) {
+                    hasAppointment.add(centerAppointment);
+
+                }
+            }
+            if(!hasAppointment.isEmpty()) {
+                availableCenters.add(center);
+
+            }
+            //else {
+            //    throw new IllegalStateException("Center has an appointment in that time frame!");
+            //}
+        }
+        return availableCenters;
+    }
+
+    public boolean hasAppointment(Appointment centerAppointment, Appointment appointment) {
+        LocalTime centerAppointmentStartTime = centerAppointment.getTime();
+        Duration centerAppointmentDuration = Duration.ofMinutes(centerAppointment.getDuration());
+        LocalTime centerAppointmentEndTime = centerAppointmentStartTime.plus(centerAppointmentDuration);
+        LocalDate centerAppointmentDate = centerAppointment.getDate();
+
+        LocalTime newAppointmentStartTime = appointment.getTime();
+        LocalTime newAppointmentEndTime = newAppointmentStartTime.plusMinutes(30);
+        LocalDate newAppointmentDate = appointment.getDate().plusDays(1);
+
+        if(centerAppointmentDate.equals(newAppointmentDate)) {
+            /*
+            if(newAppointmentStartTime.isAfter(centerAppointmentStartTime) && newAppointmentStartTime.isBefore(centerAppointmentEndTime)) {
+                return true;
+            }
+            if(newAppointmentEndTime.isAfter(centerAppointmentStartTime) && newAppointmentEndTime.isBefore(centerAppointmentEndTime)) {
+                return true;
+            }
+            if(centerAppointmentStartTime.isAfter(newAppointmentStartTime) && centerAppointmentStartTime.isBefore(newAppointmentEndTime)) {
+                return true;
+            }
+            if(centerAppointmentEndTime.isAfter(newAppointmentStartTime) && centerAppointmentEndTime.isBefore(newAppointmentEndTime)) {
+                return true;
+            }
+            */
+            if(newAppointmentStartTime.equals(centerAppointmentStartTime)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

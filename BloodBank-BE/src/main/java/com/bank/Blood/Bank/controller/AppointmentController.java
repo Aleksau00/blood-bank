@@ -25,6 +25,7 @@ import java.util.List;
 @RequestMapping(value = "api/appointments")
 public class AppointmentController {
     private AppointmentService appointmentService;
+    private CenterService centerService;
     private StaffService staffService;
 
     @Autowired
@@ -64,4 +65,41 @@ public class AppointmentController {
         appointment = appointmentService.save(appointment, id);
         return new ResponseEntity<>(new AppointmentDTO(appointment.getId(),appointment.getDate(), appointmentDTO.getTime(), appointment.getDuration()), HttpStatus.CREATED);
     }
+
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping(consumes = "application/json", value = "userAppointment/{id}")
+    public ResponseEntity<Appointment> saveUserAppointment(@RequestBody Appointment appointment, @PathVariable("id") Integer id) {
+        Appointment app = new Appointment();
+        app.setDate(appointment.getDate().plusDays(1));
+        app.setTime(appointment.getTime());
+        app.setDuration(30);
+        app.setRegisteredUser(appointment.getRegisteredUser());
+        app.setCenter(appointment.getCenter());
+        app = appointmentService.save(app, id);
+        return new ResponseEntity<>(new Appointment(app.getId(),app.getDate(), app.getTime(), app.getDuration(), app.getRegisteredUser(), app.getCenter()), HttpStatus.CREATED);
+    }
+/*
+    @PreAuthorize("hasAnyAuthority('USER', 'STAFF', 'ADMIN')")
+    @GetMapping(value = "/centers/{id}")
+    public ResponseEntity<AppointmentDTO> getCenterAppointment(Integer id){
+        Appointment appointment = appointmentService.getCenterAppointment(id);
+        if (appointment == null) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }else {
+            return new ResponseEntity<>(new AppointmentDTO(appointment), HttpStatus.OK);
+        }
+    }
+*/
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping(consumes = "application/json", value = "/byUser/{id}")
+    public ResponseEntity<List<AppointmentDTO>> getAllUserAppointments(@PathVariable("id") Integer id){
+        List<Appointment> appointments = appointmentService.getAllUserAppointments(id);
+        List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
+        for (Appointment appointment : appointments){
+            appointmentDTOS.add(new AppointmentDTO(appointment));
+        }
+    return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
+}
+
+
 }

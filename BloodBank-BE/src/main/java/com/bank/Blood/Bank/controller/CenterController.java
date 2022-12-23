@@ -1,6 +1,8 @@
 package com.bank.Blood.Bank.controller;
 
+import com.bank.Blood.Bank.dto.AppointmentDTO;
 import com.bank.Blood.Bank.dto.CenterDTO;
+import com.bank.Blood.Bank.model.Appointment;
 import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.service.CenterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-@Transactional
+@RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "api/centers")
 public class CenterController {
@@ -130,7 +131,7 @@ public class CenterController {
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
 
-
+    @PermitAll
     @GetMapping(value = "/allAverageGradeAsc")
     public ResponseEntity<List<CenterDTO>> getAllByAverageGradeAsc(){
         List<Center> centerList = centerService.findAllByOrderByAverageGradeAsc();
@@ -148,6 +149,17 @@ public class CenterController {
 
         List<CenterDTO> centerDTOS = new ArrayList<>();
         for (Center center : centerList) {
+            centerDTOS.add(new CenterDTO(center));
+        }
+        return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
+    }
+    @PermitAll
+    @PostMapping(value = "/appCentersAverageGradeAsc")
+    public ResponseEntity<List<CenterDTO>> getAppCentersByAverageGradeAsc(@RequestBody Appointment appointment){
+        List<Center> centerList = centerService.getAllAvailableCenters(appointment);
+        //nije zavrseno
+        List<CenterDTO> centerDTOS = new ArrayList<>();
+        for (Center center : centerList){
             centerDTOS.add(new CenterDTO(center));
         }
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
@@ -175,6 +187,18 @@ public class CenterController {
         }else {
             return new ResponseEntity<>(new CenterDTO(center), HttpStatus.OK);
         }
+    }
+
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping(consumes = "application/json", value = "/available-centers")
+    public ResponseEntity<List<CenterDTO>> getAllAvailableCenters(@RequestBody Appointment appointment){
+        List<Center> centers = centerService.getAllAvailableCenters(appointment);
+
+        List<CenterDTO> centerDTOS = new ArrayList<>();
+        for (Center center : centers){
+            centerDTOS.add(new CenterDTO(center));
+        }
+        return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
 }
 

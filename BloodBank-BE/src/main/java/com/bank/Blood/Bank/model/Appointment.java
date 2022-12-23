@@ -45,9 +45,6 @@ public class Appointment {
     private Integer duration;
 
 
-
-
-
-
-
+    public Appointment(Integer id, LocalDate date, LocalTime time, Integer duration, RegisteredUser registeredUser, Center center) {
+    }
 }
