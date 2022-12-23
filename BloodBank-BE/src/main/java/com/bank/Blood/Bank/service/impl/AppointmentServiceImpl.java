@@ -223,6 +223,50 @@ public class AppointmentServiceImpl implements AppointmentService {
         emailSender.send(registeredUser.get().getUsername(), "Your appointment has been scheduled for "+appointment.get().getDate().toString()+" at "+appointment.get().getTime());
         return appointmentRepository.save(appointment.get());
     }
+    @Override
+    public Appointment getWantedAppointmentInCenter(Appointment appointment,Integer centerId) {
+        List<Appointment> centersAppointmetd = appointmentRepository.findAllByCenter(centerId);
+
+            for(Appointment centerAppointment : centersAppointmetd) {
+                if(hasAppointment(centerAppointment,appointment)) {
+                    return centerAppointment;
+                }
+            }
+        throw new IllegalStateException("Appointment not found in selected center");
+    }
+
+    public boolean hasAppointment(Appointment centerAppointment, Appointment appointment) {
+        LocalTime centerAppointmentStartTime = centerAppointment.getTime();
+        Duration centerAppointmentDuration = Duration.ofMinutes(centerAppointment.getDuration());
+        LocalTime centerAppointmentEndTime = centerAppointmentStartTime.plus(centerAppointmentDuration);
+        LocalDate centerAppointmentDate = centerAppointment.getDate();
+
+        LocalTime newAppointmentStartTime = appointment.getTime();
+        LocalTime newAppointmentEndTime = newAppointmentStartTime.plusMinutes(30);
+        LocalDate newAppointmentDate = appointment.getDate().plusDays(1);
+
+        if(centerAppointmentDate.equals(newAppointmentDate)) {
+            /*
+            if(newAppointmentStartTime.isAfter(centerAppointmentStartTime) && newAppointmentStartTime.isBefore(centerAppointmentEndTime)) {
+                return true;
+            }
+            if(newAppointmentEndTime.isAfter(centerAppointmentStartTime) && newAppointmentEndTime.isBefore(centerAppointmentEndTime)) {
+                return true;
+            }
+            if(centerAppointmentStartTime.isAfter(newAppointmentStartTime) && centerAppointmentStartTime.isBefore(newAppointmentEndTime)) {
+                return true;
+            }
+            if(centerAppointmentEndTime.isAfter(newAppointmentStartTime) && centerAppointmentEndTime.isBefore(newAppointmentEndTime)) {
+                return true;
+            }
+            */
+            if(newAppointmentStartTime.equals(centerAppointmentStartTime)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
 

@@ -30,6 +30,11 @@ export class AppointmentService{
     return this.http.post<any>(this.apiHost + 'api/appointments/userAppointment/' + id, appointment, {headers: this.headers});
   }
 
+  getWantedAppointment(appointment: any, id: number): Observable<any>{
+    return this.http.post<any>(this.apiHost + 'api/appointments/wanted/' + id, appointment, {headers: this.headers});
+  }
+
+
   getCenterAppointment(id: number, date: LocalDate, time: LocalTime): Observable<Appointment> {
     return this.http.get<Appointment>(this.apiHost + 'api/appointments/centers/' + id, {headers: this.headers});
   }
@@ -38,6 +43,7 @@ export class AppointmentService{
     return this.http.get<Appointment[]> (this.apiHost + 'api/appointments/predefined/'+sort+'/'+id, {headers: this.headers});
 
   }
+
 
   getPredefinedAppointmentsForCenterInit(id: number, sort: string): Observable<Appointment[]> {
     return this.http.get<Appointment[]> (this.apiHost + 'api/appointments/predefined/'+sort+'/'+id, {headers: this.headers});
