@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Select an appointment that you'd like</h2>
+<div>
+  <mat-form-field>
+    <mat-label>Sort blood centers by:</mat-label>
+    <mat-select [ngModel]="method" (ngModelChange)="sortAppointments($event)">
+      <mat-option *ngFor="let met of methods" [value]="met.value">
+        {{met.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-content class="bottom">
+  <div class="wrapper" *ngFor="let appointment of appointments">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Date: {{appointment.date}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="content">
+        Time: {{appointment.time}}h
+        <br>
+        Duration: {{appointment.duration}}m
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button (click)="bookAppointment(appointment)" mat-mini-fab color="primary" aria-label="Book this!">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
