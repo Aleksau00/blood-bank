@@ -4,6 +4,8 @@ import { Center } from "../../bank/model/center.model";
 import { CenterService} from "../../bank/services/center.service";
 import {PageEvent} from '@angular/material/paginator';
 import {TokenStorageService} from "../../bank/services/token-storage.service";
+import {AdminService} from "../../bank/services/admin.service";
+import {Admin} from "../../bank/model/admin.model";
 
 
 export interface Method {
@@ -20,6 +22,8 @@ export interface Method {
 export class HomeComponent implements OnInit {
 
   public centers: Center[] = [];
+  public admin: Admin = new Admin();
+
   methods: Method[] = [
     {value: 'NameAsc', viewValue: 'Name A-Z'},
     {value: 'NameDesc', viewValue: 'Name Z-A'},
@@ -36,12 +40,26 @@ export class HomeComponent implements OnInit {
 
   // MatPaginator Output
 
-  constructor(private tokenStorageService: TokenStorageService, private centerService: CenterService, private router: Router) { }
+  constructor(private tokenStorageService: TokenStorageService, private centerService: CenterService, private router: Router, private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.centerService.getCentersNameAsc().subscribe(res => {
       this.centers = res;
     })
+    this.adminService.getAdmin(this.tokenStorageService.getUser().id).subscribe(res =>{
+      this.admin = res;
+      console.log(this.admin)
+      console.log(this.admin.firstLogin)
+      if(this.admin.firstLogin) {
+        console.log("Sdfsdfsdfs")
+        this.router.navigate(['/change-password']).then(
+          ()=>{
+            window.location.reload();
+          }
+        );
+      }
+    } )
+
   }
   public sortCenters(newValue : Method) {
     this.method = newValue;
