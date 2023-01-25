@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.security.PermitAll;
 import javax.transaction.Transactional;
 
 @Controller
@@ -31,8 +33,7 @@ public class AppUserController {
     public AppUserController(AppUserService appUserService){
         this.appUserService = appUserService;
     }
-
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('STAFF')")
     @GetMapping(value = "/all")
     public ResponseEntity<List<AppUserDTO>> getAllUsers() {
         List<AppUser> users = appUserService.findAll();
