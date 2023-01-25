@@ -43,6 +43,7 @@ public class PollServiceImpl implements PollService {
          Optional<RegisteredUser> ru = registeredUserRepository.findById(poll.getRegisteredUser().getId());
          ru.get().setPoll(poll);
          registeredUserRepository.save(ru.get());
+         System.out.println("X");
          return savedPoll;
     }
     @Override

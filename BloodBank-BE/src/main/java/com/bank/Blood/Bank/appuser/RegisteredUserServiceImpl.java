@@ -5,8 +5,10 @@ import com.bank.Blood.Bank.appuser.token.ConfirmationTokenServiceImpl;
 import com.bank.Blood.Bank.email.EmailSender;
 import com.bank.Blood.Bank.model.LoyaltyCard;
 import com.bank.Blood.Bank.model.RegisteredUser;
+import com.bank.Blood.Bank.model.Role;
 import com.bank.Blood.Bank.repository.AddressRepository;
 import com.bank.Blood.Bank.repository.LoyaltyCardRepository;
+import com.bank.Blood.Bank.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,10 +30,12 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
     private final ConfirmationTokenServiceImpl confirmationTokenService;
     private final EmailValidator emailValidator;
     private final EmailSender emailSender;
+    private final RoleRepository roleRepository;
 
 
     @Autowired
-    public RegisteredUserServiceImpl(EmailSender emailSender, EmailValidator emailValidator, ConfirmationTokenServiceImpl confirmationTokenService, BCryptPasswordEncoder bCryptPasswordEncoder, LoyaltyCardRepository loyaltyCardRepository, RegisteredUserRepository registeredUserRepository, AddressRepository addressRepository) {
+    public RegisteredUserServiceImpl(EmailSender emailSender, EmailValidator emailValidator, ConfirmationTokenServiceImpl confirmationTokenService, BCryptPasswordEncoder bCryptPasswordEncoder, LoyaltyCardRepository loyaltyCardRepository, RegisteredUserRepository registeredUserRepository, AddressRepository addressRepository,
+                                     RoleRepository roleRepository) {
         this.loyaltyCardRepository = loyaltyCardRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.registeredUserRepository = registeredUserRepository;
@@ -39,6 +43,7 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         this.confirmationTokenService = confirmationTokenService;
         this.emailValidator = emailValidator;
         this.emailSender = emailSender;
+        this.roleRepository = roleRepository;
     }
 
 
@@ -58,11 +63,11 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
     @Override
     public RegisteredUser save(RegisteredUser registeredUser) throws IllegalAccessException {
-        boolean isValidEmail = emailValidator.test(registeredUser.getEmail());
+        boolean isValidEmail = emailValidator.test(registeredUser.getUsername());
         if(!isValidEmail) {
             throw new IllegalStateException("Email not valid");
         }
-        boolean userExists = registeredUserRepository.findByEmail(registeredUser.getEmail())
+        boolean userExists = registeredUserRepository.findByUsername(registeredUser.getUsername())
                 .isPresent();
         if (userExists){
             throw new IllegalAccessException("Email already taken!");
@@ -70,9 +75,10 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         String encodedPassword = bCryptPasswordEncoder.encode((registeredUser.getPassword()));
         registeredUser.setPassword(encodedPassword);
         registeredUser.setPoints(0);
-        registeredUser.setIsAuthenticated(false);
         Optional<LoyaltyCard> loyaltyCard = loyaltyCardRepository.findById(1);
         registeredUser.setLoyaltyCard(loyaltyCard.get());
+        List<Role> roles = roleRepository.findByName("USER");
+        registeredUser.setRoles(roles);
         addressRepository.save(registeredUser.getAddress());
 
         String token = UUID.randomUUID().toString();
@@ -86,7 +92,7 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         confirmationTokenService.saveConfirmationToken(confirmationTokenoken);
 
         String link = "http://localhost:8082/api/registeredUsers/confirm?token=" + token;
-        emailSender.send(registeredUser.getEmail(),buildEmail(registeredUser.getFirstName(), link));
+        emailSender.send(registeredUser.getUsername(),buildEmail(registeredUser.getFirstName(), link));
         return registeredUser1;
     }
 
@@ -206,7 +212,7 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
 
         confirmationTokenService.setConfirmedAt(token);
         enableRegisteredUser(
-                confirmationToken.getAppUser().getEmail());
+                confirmationToken.getAppUser().getUsername());
         return "confirmed";
     }
 

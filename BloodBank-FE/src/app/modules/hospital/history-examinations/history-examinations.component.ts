@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppointmentUpdate } from '../../bank/model/appointment.model';
+import { AppointmentUpdate } from '../../bank/model/appointmentUpdate.model';
+
 
 @Component({
   selector: 'app-history-examinations',

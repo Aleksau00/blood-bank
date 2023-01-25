@@ -62,7 +62,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   public isValidInput(): boolean {
-      return (this.user.firstName != '' && this.user.password == this.confirmPassword && this.user.lastName != '' && this.user.email != '' && this.user.phoneNumber != '' &&
+      return (this.user.firstName != '' && this.user.password == this.confirmPassword && this.user.lastName != '' && this.user.phoneNumber != '' &&
       this.user.umcn != '' && this.user.institution != '' && this.user.username != '' && this.user.address.country != ''
       && this.user.address.city != '' && this.user.address.street != '' && this.user.address.postalCode != '' && this.user.address.number != '')
   }

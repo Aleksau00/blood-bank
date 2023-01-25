@@ -10,9 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -31,6 +35,7 @@ public class RegisteredUserController {
         this.emailValidator = emailValidator;
     }
 
+    @PreAuthorize("hasAnyAuthority('USER')")
     @GetMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RegisteredUserDTO> getUser(@PathVariable("id") Integer id) {
         RegisteredUser user = registeredUserService.findOne(id);
@@ -44,7 +49,7 @@ public class RegisteredUserController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RegisteredUser> createUser(@Valid @RequestBody RegisteredUser registeredUser) throws ConstraintViolationException {
-        boolean isValid = emailValidator.test(registeredUser.getEmail());
+        boolean isValid = emailValidator.test(registeredUser.getUsername());
         if(!isValid){
             throw new IllegalStateException("Email is not valid");
         }
@@ -61,6 +66,8 @@ public class RegisteredUserController {
         }
     }
 
+
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<RegisteredUserDTO> updateUser(@RequestBody RegisteredUser registeredUser, @PathVariable("id") Integer id){
         RegisteredUser editUser = registeredUserService.update(registeredUser, id);
@@ -71,6 +78,7 @@ public class RegisteredUserController {
         }
     }
 
+  
     @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token) {
         return registeredUserService.confirmToken(token);

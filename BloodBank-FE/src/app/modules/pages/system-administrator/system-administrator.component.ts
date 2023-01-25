@@ -55,12 +55,11 @@ export class SystemAdministratorComponent implements OnInit {
     let emailRGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (!this.staff.center.name.match(stringRGEX) || !this.staff.center.address.country.match(stringRGEX) ||
       !this.staff.center.address.city.match(stringRGEX) || !this.staff.center.address.street.match(stringRGEX) ||
-      !this.staff.center.description.match(stringRGEX) || !this.staff.username.match(stringRGEX) ||
+      !this.staff.center.description.match(stringRGEX)  ||
       !this.staff.firstName.match(stringRGEX) || !this.staff.center.address.postalCode.match(numberRGEX) ||
       !this.staff.lastName.match(stringRGEX) || !this.staff.address.country.match(stringRGEX) ||
       !this.staff.address.city.match(stringRGEX) || !this.staff.address.street.match(stringRGEX) ||
-      !this.staff.institution.match(stringRGEX) || !this.staff.address.postalCode.match(numberRGEX) ||
-      !this.staff.email.match(emailRGEX) || !this.staff.phoneNumber.match(numberRGEX) ||
+      !this.staff.institution.match(stringRGEX) || !this.staff.address.postalCode.match(numberRGEX)  || !this.staff.phoneNumber.match(numberRGEX) ||
       !this.staff.umcn.match(numberRGEX) || !this.staff.address.number.match(numberRGEX)){
       return false;
     }
@@ -68,10 +67,8 @@ export class SystemAdministratorComponent implements OnInit {
       this.staff.center.address.city != '' && this.staff.center.address.street != '' &&
       this.staff.center.address.number != '' && this.staff.center.address.postalCode != '' &&
       this.staff.center.averageGrade != null && this.staff.center.startTime != '' &&
-      this.staff.center.endTime != '' && this.staff.center.description != '' &&
-      this.staff.username != '' && this.staff.password != '' &&
-      this.staff.firstName != '' && this.staff.lastName != '' &&
-      this.staff.email != '' && this.staff.address.country != '' &&
+      this.staff.center.endTime != '' && this.staff.center.description != ''  && this.staff.password != '' &&
+      this.staff.firstName != '' && this.staff.lastName != '' && this.staff.address.country != '' &&
       this.staff.address.city != '' && this.staff.address.street != '' &&
       this.staff.address.number != '' && this.staff.address.postalCode != '' &&
       this.staff.phoneNumber != '' && this.staff.umcn != '' &&

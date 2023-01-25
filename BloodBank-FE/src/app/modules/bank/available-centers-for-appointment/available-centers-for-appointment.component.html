@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Select a center that you'd like</h2>
+<div mat-dialog-content>
+  <div>
+    <mat-form-field>
+      <mat-label>Sort blood centers by:</mat-label>
+      <mat-select (selectionChange)="sortCenters()">
+        <mat-option *ngFor="let met of methods" [value]="met.value">
+          {{met.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="wrapper" *ngFor="let center of centers">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{center.name}}</mat-card-title>
+        <mat-card-subtitle><p>{{center.averageGrade}}<mat-icon class="icon-display">star</mat-icon></p></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="content">
+        Address: {{center.address.city}}, {{center.address.street}} {{center.address.number}}
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button (click)="createAppointment(center)" mat-mini-fab color="primary" aria-label="Book this!">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

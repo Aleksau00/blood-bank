@@ -1,21 +1,33 @@
 <mat-toolbar>
-  <button (click)="openHome()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button (click)="openHome()" mat-icon-button class="example\-icon" aria-label="Example icon-button with menu icon">
     <mat-icon> local_hospital</mat-icon>
   </button>
   <span>Blood bank</span>
   <span class="example-spacer"></span>
   <div class="example-button-container">
+    <button mat-mini-fab class="mat-mini-fab" matTooltip="Add user appointments" (click)="AddUserAppointment()">
+      <mat-icon>assignment_add</mat-icon>
+    </button>
+    <button mat-mini-fab class="mat-mini-fab" matTooltip="Add center appointment" (click)="AddAppointment()">
+      <mat-icon>assignment_add</mat-icon>
+    </button>
+    <button mat-mini-fab class="mat-mini-fab" matTooltip="Appointments" (click)="UserAppointments()">
+      <mat-icon>assignment icon</mat-icon>
+    </button>
     <button mat-mini-fab class="mat-mini-fab" matTooltip="Fill out a poll" (click)="openDialogCreatePoll()" >
       <mat-icon>add_comment</mat-icon>
     </button>
-    <button mat-mini-fab class="mat-mini-fab" matTooltip="Account info" >
+    <button mat-mini-fab class="mat-mini-fab" matTooltip="Account info" (click)="AccountInfo()">
       <mat-icon>account_circle</mat-icon>
     </button>
     <button mat-mini-fab class="mat-mini-fab" matTooltip="Add center" >
       <mat-icon>add</mat-icon>
     </button>
-    <button mat-raised-button color="primary" class="login-button">Log in</button>
-    <button mat-raised-button color="primary" class="mat-raised-button" (click)="openRegistration()" mat-dialog-close>Sign up</button>
+
+    <button  *ngIf="!isLoggedIn" mat-raised-button color="primary" class="login-button" (click)="openLogin()">Log in</button>
+    <button  *ngIf="!isLoggedIn" mat-raised-button color="primary" class="mat-raised-button" (click)="openRegistration()" mat-dialog-close>Sign up</button>
+    <button  *ngIf="isLoggedIn" mat-raised-button color="primary" class="mat-raised-button" (click)="signOut()" mat-dialog-close>Sign out</button>
+
   </div>
 </mat-toolbar>
 

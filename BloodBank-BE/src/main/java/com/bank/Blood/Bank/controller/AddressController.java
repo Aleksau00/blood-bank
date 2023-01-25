@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.annotation.security.PermitAll;
 import javax.transaction.Transactional;
 
 @Controller
@@ -33,6 +34,7 @@ public class AddressController {
     public AddressController(AddressService addressService){ this.addressService = addressService;}
 
 
+    @PermitAll
     @PutMapping(value = "/{id}")
     public ResponseEntity<AddressDTO> updateAddress(@RequestBody Address address, @PathVariable("id") Integer id){
         Address editAddress = addressService.update(address, id);

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,6 +25,7 @@ public class PollController {
         this.pollService = pollService;
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'STAFF', 'USER')")
     @GetMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PollDTO> getUser(@PathVariable("id") Integer id) {
         Poll poll = pollService.findOne(id);
@@ -34,15 +36,18 @@ public class PollController {
         return new ResponseEntity<>(pollDTO, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyAuthority('USER')")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Poll> createPoll(@RequestBody Poll poll)  {
         Poll savedPoll = null;
         try {
             savedPoll = pollService.save(poll);
             if (savedPoll == null) {
+                System.out.println("Y");
                 return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
             }
-            return new ResponseEntity<Poll>(savedPoll, HttpStatus.CREATED);
+            System.out.println("Y");
+            return new ResponseEntity<Poll>(HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<Poll>(savedPoll, HttpStatus.CONFLICT);

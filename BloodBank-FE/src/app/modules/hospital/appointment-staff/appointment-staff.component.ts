@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Appointment, AppointmentUpdate } from '../../bank/model/appointment.model';
+import { Appointment } from '../../bank/model/appointment.model';
+import { AppointmentUpdate } from '../../bank/model/appointmentUpdate.model';
 import { AppointmentService } from '../../bank/services/appointment.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class AppointmentStaffComponent implements OnInit {
   constructor(private readonly router1: Router, private readonly router: ActivatedRoute, private appointmentService: AppointmentService) { }
 
   ngOnInit(): void {
-    this.appointmentService.getAllByUser(2).subscribe(res => {
+    this.appointmentService.getAllByUser(1).subscribe(res => {
       this.dataSource = res;
       console.log(res)
     })

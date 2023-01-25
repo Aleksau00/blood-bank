@@ -9,6 +9,8 @@ export interface Staff{
 }
 
 export class Staff {
+  isEnabled: boolean = false;
+  isLocked: boolean = false;
   id: number = 0;
   username: string = '';
   firstName: string = '';
@@ -25,6 +27,8 @@ export class Staff {
   public constructor(obj?: any) {
     if (obj) {
       this.id = obj.id;
+      this.isEnabled = obj.isEnabled;
+      this.isLocked = obj.isLocked;
       this.username = obj.username;
       this.firstName = obj.firstName;
       this.lastName = obj.lastName;

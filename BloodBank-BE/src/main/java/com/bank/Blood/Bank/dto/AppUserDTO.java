@@ -14,7 +14,6 @@ public class AppUserDTO {
     private Integer id;
     private String username;
     private String password;
-    private String email;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -23,16 +22,15 @@ public class AppUserDTO {
     private String institution;
 
     public AppUserDTO(AppUser appUser) {
-        this(appUser.getId(), appUser.getUsername(), appUser.getPassword(), appUser.getEmail(), appUser.getFirstName(), appUser.getLastName(),
+        this(appUser.getId(), appUser.getUsername(), appUser.getPassword(), appUser.getFirstName(), appUser.getLastName(),
                 appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution());
     }
 
-    public AppUserDTO(Integer id, String username, String password, String email, String firstName, String lastName, String phoneNumber,
+    public AppUserDTO(Integer id, String username, String password, String firstName, String lastName, String phoneNumber,
                       String umcn, Gender gender, String institution) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -52,9 +50,6 @@ public class AppUserDTO {
         return username;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
     public String getFirstName() {
         return firstName;

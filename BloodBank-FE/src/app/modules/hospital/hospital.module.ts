@@ -11,7 +11,7 @@ import { StaffProfileUpdateComponent } from "./staff-profile-update/staff-profil
 import { CenterUpdateComponent } from "./center-update/center-update.component";
 import { AppointmentStaffComponent } from "./appointment-staff/appointment-staff.component";
 import { HistoryExaminationsComponent } from './history-examinations/history-examinations.component';
-
+import {AppModule} from "../../app.module";
 
 const routes: Routes = [
   { path: 'rooms', component: RoomsComponent },

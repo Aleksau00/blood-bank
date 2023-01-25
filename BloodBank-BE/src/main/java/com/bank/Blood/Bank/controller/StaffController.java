@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +34,7 @@ public class StaffController {
     @Autowired
     public StaffController(StaffService staffService){ this.staffService = staffService;}
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'STAFF')")
     @GetMapping(value = "/all")
     public ResponseEntity<List<StaffDTO>> getAllStaff(){
         List<Staff> staffList = staffService.findAll();
@@ -45,6 +47,7 @@ public class StaffController {
     }
 
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'STAFF')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<EditStaffDTO> getStaff(@PathVariable("id") Integer id){
         Staff staff = staffService.findOne(id);
@@ -55,6 +58,7 @@ public class StaffController {
         }
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'STAFF')")
     @PutMapping(value = "/{id}")
     public ResponseEntity<EditStaffDTO> updateStaff(@RequestBody Staff staff, @PathVariable("id") Integer id){
         Staff editStaff = staffService.update(staff, id);
@@ -65,6 +69,7 @@ public class StaffController {
         }
     }
 
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'STAFF')")
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Staff> createUser(@RequestBody Staff staff) throws ConstraintViolationException {
         Staff savedStaff = null;

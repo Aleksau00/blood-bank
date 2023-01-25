@@ -1,6 +1,7 @@
 package com.bank.Blood.Bank.service;
 
 import com.bank.Blood.Bank.model.Blood;
+import com.bank.Blood.Bank.model.Appointment;
 import com.bank.Blood.Bank.model.Center;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -24,4 +25,6 @@ public interface CenterService {
    void changeEquipment(Integer usedEquipment, Center center);
    void changeBlood(Blood blood, Center center);
    boolean BloodTypeExist(Blood blood, List<Blood> bloodList);
+   List<Center> getAllAvailableCenters(Appointment appointment);
+
 }

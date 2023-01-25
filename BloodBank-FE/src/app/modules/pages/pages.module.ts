@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HomeComponent } from './home/home.component';
 import {MaterialModule} from "../../material/material.module";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SystemAdministratorComponent } from './system-administrator/system-administrator.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { UsersComponent } from './users/users.component';
@@ -14,6 +14,8 @@ import { StaffProfileComponent } from './staff-profile/staff-profile.component';
 import { AddAdministratorComponent } from './add-administrator/add-administrator.component';
 import { WorkingScheduleComponent } from './working-schedule/working-schedule.component';
 import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
+import { LoginComponent } from './login/login.component';
+import {ChangePasswordComponent} from "./change-password/change-password.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
     CenterComponent,
     StaffProfileComponent,
     AddAdministratorComponent,
-    WorkingScheduleComponent
+    WorkingScheduleComponent,
+    LoginComponent,
+    ChangePasswordComponent
 
 ],
   imports: [
@@ -34,7 +38,8 @@ import {ScheduleModule} from "@syncfusion/ej2-angular-schedule";
     AppRoutingModule,
     MaterialModule,
     FormsModule,
-    ScheduleModule
+    ScheduleModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

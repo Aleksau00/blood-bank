@@ -2,6 +2,8 @@ package com.bank.Blood.Bank.appuser;
 import com.bank.Blood.Bank.enums.AppUserRole;
 import com.bank.Blood.Bank.enums.Gender;
 import com.bank.Blood.Bank.model.Address;
+import com.bank.Blood.Bank.model.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,6 +14,7 @@ import java.security.Timestamp;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -71,17 +74,13 @@ public abstract class AppUser implements UserDetails {
     /*
      * Kolona moze imati ime koje se razlikuje od naziva atributa.
      */
-    @NotEmpty
+    @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "email is not valid")
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
     @NotBlank(message = "password is required")
     @Column(name = "password", unique = false, nullable = true)
     private String password;
-
-    @Email(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "email is not valid")
-    @Column(unique = true)
-    private String email;
 
     @NotBlank(message = "first name is required")
     @Column(name = "firstName", nullable = false)
@@ -91,7 +90,7 @@ public abstract class AppUser implements UserDetails {
     @Column(name = "lastName", nullable = false)
     private String lastName;
 
-    @Pattern(regexp="[\\d]{9,12}", message = "phone number not valid")
+    @Pattern(regexp="[\\d]{9,14}", message = "phone number not valid")
     @Column
     private String phoneNumber;
 
@@ -144,14 +143,27 @@ public abstract class AppUser implements UserDetails {
     private Boolean isEnabled;
 
 
-    @Column
-    private AppUserRole appUserRole;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private List<Role> roles;
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+
+
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority =
-                new SimpleGrantedAuthority(appUserRole.name());
-        return Collections.singletonList(authority);
+        return this.roles;
     }
 
     @Override
@@ -174,10 +186,9 @@ public abstract class AppUser implements UserDetails {
         return isEnabled;
     }
 
-    public AppUser(String username, String password, String email, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution, Address address, Boolean isLocked, Boolean isEnabled, AppUserRole appUserRole) {
+    public AppUser(String username, String password, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution, Address address, Boolean isLocked, Boolean isEnabled, List<Role> roles) {
         this.username = username;
         this.password = password;
-        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -187,7 +198,7 @@ public abstract class AppUser implements UserDetails {
         this.address = address;
         this.isLocked = isLocked;
         this.isEnabled = isEnabled;
-        this.appUserRole = appUserRole;
+        this.roles = roles;
     }
 
 

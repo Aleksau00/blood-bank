@@ -13,9 +13,10 @@ export class RegisteredUserService {
   headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
 
+
   constructor(private http: HttpClient) { }
 
-  getUser(id: number): Observable<RegisteredUser> {
+  getUser(id: number, token: string): Observable<RegisteredUser> {
     return this.http.get<RegisteredUser>(this.apiHost + 'api/registeredUsers/' + id, {headers: this.headers});
   }
 

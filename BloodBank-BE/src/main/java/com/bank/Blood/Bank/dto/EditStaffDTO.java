@@ -21,8 +21,6 @@ public class EditStaffDTO {
     private String firstName;
     private String lastName;
 
-    private String email;
-
     private Address address;
 
     private String phoneNumber;
@@ -32,17 +30,16 @@ public class EditStaffDTO {
 
     public EditStaffDTO(Staff appUser){
         this(appUser.getId(), appUser.getAddress(), appUser.getUsername(), appUser.getPassword(), appUser.getFirstName(),
-                appUser.getLastName(), appUser.getEmail(), appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution());}
+                appUser.getLastName(), appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution());}
 
 
-    public EditStaffDTO(Integer id,Address address, String username, String password, String firstName, String lastName, String email, String phoneNumber, String umcn, Gender gender, String institution){
+    public EditStaffDTO(Integer id,Address address, String username, String password, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution){
         this.id = id;
         this.address = address;
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.phoneNumber = phoneNumber;
         this.umcn = umcn;
         this.gender = gender;
