@@ -288,6 +288,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         throw new IllegalStateException("Appointment not found in selected center");
     }
 
+    @Override
+    public Boolean cancelAppointment(Integer id) {
+        return null;
+    }
+
     public boolean hasAppointment(Appointment centerAppointment, Appointment appointment) {
         LocalTime centerAppointmentStartTime = centerAppointment.getTime();
         Duration centerAppointmentDuration = Duration.ofMinutes(centerAppointment.getDuration());
