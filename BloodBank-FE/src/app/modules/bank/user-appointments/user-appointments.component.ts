@@ -24,15 +24,26 @@ export class UserAppointmentsComponent implements OnInit {
 
   ngOnInit(): void {
 
+   this.initAppointments()
+  }
+
+  canCancel(date: Date): boolean{
+    if(date == new Date()){
+      return false;
+    }
+    return true;
+  }
+
+  public initAppointments(): void {
     this.appointmentService.getAppointmentsByUserId(this.tokenStorageService.getUser().id).subscribe(res => {
       this.appointments = res;
     });
   }
 
-
   public cancelAppointment(id: number) {
     this.appointmentService.cancelAppointment(id).subscribe( res =>
     {
+      this.initAppointments();
       alert("Success!")
     }, error => {
       alert("Unable to delete appointment")

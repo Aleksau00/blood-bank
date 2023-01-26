@@ -335,11 +335,12 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public Boolean cancelAppointment(Integer id) {
         Optional<Appointment> appointment = appointmentRepository.findById(id);
-        if(appointment.get().getDate().getDayOfYear() == LocalDate.now().plusDays(1).getDayOfYear())
+        if(appointment.get().getDate().isEqual(LocalDate.now()) || appointment.get().getDate().isBefore(LocalDate.now()))
         {
             return false;
         }
-        appointmentRepository.delete(appointment.get());
+        appointment.get().setRegisteredUser(null);
+        appointmentRepository.save(appointment.get());
         return true;
     }
 }

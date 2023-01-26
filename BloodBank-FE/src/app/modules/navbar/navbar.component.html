@@ -5,12 +5,12 @@
   </button>
   <li class="items">
     <ul>
-      <button  style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="AddUserAppointment()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+      <button *ngIf="isRegisteredUser()" style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="AddUserAppointment()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
           <span>Schedule an appointment</span>
       </button>
     </ul>
     <ul>
-      <button style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="UserAppointments()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+      <button *ngIf="isRegisteredUser()" style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="UserAppointments()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
         <span>My appointments</span>
       </button>
     </ul>

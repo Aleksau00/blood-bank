@@ -2,7 +2,9 @@
   width: 16rem;
   display: flex;
   flex-direction: column;
-  margin: 8px;
+  align-items: center;
+  justify-content: space-around;
+  margin: 2rem;
   border-radius: 1rem;
   padding: 1rem;
   height: 20rem;
