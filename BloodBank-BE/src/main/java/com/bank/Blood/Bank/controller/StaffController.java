@@ -46,7 +46,7 @@ public class StaffController {
     }
 
 
-    @PreAuthorize("hasAnyAuthority('ADMIN', 'STAFF')")
+    //@PreAuthorize("hasAnyAuthority('ADMIN', 'STAFF')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<EditStaffDTO> getStaff(@PathVariable("id") Integer id){
         Staff staff = staffService.findOne(id);
