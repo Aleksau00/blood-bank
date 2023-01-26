@@ -22,7 +22,7 @@ public class AdminController {
     @Autowired
     public AdminController(AdminService adminService){ this.adminService = adminService;}
 
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'STAFF')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<AdminDTO> getAdmin(@PathVariable("id") Integer id){
         Admin admin = adminService.findOne(id);

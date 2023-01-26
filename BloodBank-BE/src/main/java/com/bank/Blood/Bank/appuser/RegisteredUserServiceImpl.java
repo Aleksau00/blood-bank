@@ -216,6 +216,12 @@ public class RegisteredUserServiceImpl implements RegisteredUserService {
         return "confirmed";
     }
 
+    @Override
+    public void addPenalty(RegisteredUser registeredUser) {
+        registeredUser.setPenalties(registeredUser.getPenalties()+1);
+        registeredUserRepository.save(registeredUser);
+    }
+
     public int enableRegisteredUser(String email) {
         return registeredUserRepository.enableRegisteredUser(email);
     }

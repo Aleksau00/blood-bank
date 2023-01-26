@@ -1,6 +1,7 @@
 package com.bank.Blood.Bank.appuser;
 
 import com.bank.Blood.Bank.model.RegisteredUser;
+import org.hibernate.validator.constraints.pl.REGON;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,4 +19,6 @@ public interface RegisteredUserService {
     RegisteredUser updatePassword(RegisteredUser registeredUser, Integer id);
 
     String confirmToken(String token);
+
+    void addPenalty(RegisteredUser registeredUser);
 }

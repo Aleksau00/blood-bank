@@ -75,3 +75,6 @@ mat-card-header {
   display: flex;
   flex-direction: row;
 }
+.linkovi{
+  margin: 40px;
+}

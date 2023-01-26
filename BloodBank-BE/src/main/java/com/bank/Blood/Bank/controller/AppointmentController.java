@@ -68,7 +68,7 @@ public class AppointmentController {
         }
         return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
     }
-
+    @PreAuthorize("hasAnyAuthority('STAFF')")
     @PostMapping("/report")
     public ResponseEntity<Void> report(@RequestBody AppointmentReportDTO appointmentReportDTO){
         appointmentService.report(appointmentReportDTO);
@@ -167,5 +167,15 @@ public class AppointmentController {
         }else {
             return new ResponseEntity<>(HttpStatus.OK);
         }
+    }
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN', 'STAFF')")
+    @PutMapping(consumes = "application/json", value = "/cancel/{id}")
+    public ResponseEntity<Appointment> cancelAppointment(@PathVariable("id") Integer id) {
+        Boolean appointment = appointmentService.cancelAppointment(id);
+        if (appointment== false){
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

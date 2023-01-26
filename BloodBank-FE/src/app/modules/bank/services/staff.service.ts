@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Staff } from '../model/staff.model';
+import { Staff as StaffCenter } from '../model/staffCenter.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,10 @@ export class StaffService{
 
   getStaff(id: number): Observable<Staff> {
     return this.http.get<Staff>(this.apiHost + 'api/staff/' + id, {headers: this.headers});
+  }
+
+  getStaffWithCenter(id: number): Observable<StaffCenter> {
+    return this.http.get<StaffCenter>(this.apiHost + 'api/staff/' + id, {headers: this.headers});
   }
 
   updateStaff(staff: any): Observable<any> {

@@ -1,5 +1,6 @@
 package com.bank.Blood.Bank.service.impl;
 
+import com.bank.Blood.Bank.appuser.RegisteredUserService;
 import com.bank.Blood.Bank.dto.AppointmentReportDTO;
 import com.bank.Blood.Bank.enums.AppointmentStatus;
 import com.bank.Blood.Bank.appuser.RegisteredUserRepository;
@@ -44,16 +45,20 @@ public class AppointmentServiceImpl implements AppointmentService {
     private final StaffRepository staffRepository;
     private final RegisteredUserRepository registeredUserRepository;
     private final EmailSender emailSender;
+    private final RegisteredUserService registeredUserService;
 
     @Autowired
     public AppointmentServiceImpl(EmailSender emailSender, AppointmentRepository appointmentRepository,
                                   CenterRepository centerRepository, StaffRepository staffRepository,
-                                  RegisteredUserRepository registeredUserRepository) {
+                                  RegisteredUserRepository registeredUserRepository,
+                                  RegisteredUserService registeredUserService, PollService pollService) {
         this.appointmentRepository = appointmentRepository;
         this.centerRepository = centerRepository;
         this.staffRepository = staffRepository;
         this.registeredUserRepository = registeredUserRepository;
         this.emailSender = emailSender;
+        this.registeredUserService = registeredUserService;
+        this.pollService = pollService;
     }
 
     @Override
@@ -66,6 +71,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         List<Appointment> allAppointments = appointmentRepository.findAll();
         List<Appointment> userAppointments = new ArrayList<>();
         for (Appointment a : allAppointments) {
+            if(a.getRegisteredUser() == null) continue;
             if (a.getRegisteredUser().getId() == id && a.getStatus() == null) {
                 userAppointments.add(a);
             }
@@ -187,8 +193,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         List<Appointment> allAppointments = appointmentRepository.findAll();
         List<Appointment> userAppointments = new ArrayList<Appointment>();
         for(Appointment ap : allAppointments) {
-            if(ap.getRegisteredUser().getId().equals(id)) {
-                userAppointments.add(ap);
+            if(ap.getRegisteredUser() != null){
+                if(ap.getRegisteredUser().getId().equals(id)) {
+                    userAppointments.add(ap);
+                }
             }
         }
         return userAppointments;
@@ -218,6 +226,7 @@ public class AppointmentServiceImpl implements AppointmentService {
             }
             case CANCELED : {
                 appointment.setStatus(AppointmentStatus.CANCELED);
+                registeredUserService.addPenalty(appointment.getRegisteredUser());
                 break;
             }
             case FINISHED : {
@@ -288,10 +297,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         throw new IllegalStateException("Appointment not found in selected center");
     }
 
-    @Override
-    public Boolean cancelAppointment(Integer id) {
-        return null;
-    }
+
 
     public boolean hasAppointment(Appointment centerAppointment, Appointment appointment) {
         LocalTime centerAppointmentStartTime = centerAppointment.getTime();
@@ -324,6 +330,17 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
 
         return false;
+    }
+
+    @Override
+    public Boolean cancelAppointment(Integer id) {
+        Optional<Appointment> appointment = appointmentRepository.findById(id);
+        if(appointment.get().getDate().getDayOfYear() == LocalDate.now().plusDays(1).getDayOfYear())
+        {
+            return false;
+        }
+        appointmentRepository.delete(appointment.get());
+        return true;
     }
 }
 

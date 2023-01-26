@@ -25,6 +25,7 @@ public class AppUserServiceImpl implements AppUserService, UserDetailsService {
 
     @Override
     public List<AppUser> findAll() {
+        System.out.println("x");
         return appUserRepository.findAll();
     }
 

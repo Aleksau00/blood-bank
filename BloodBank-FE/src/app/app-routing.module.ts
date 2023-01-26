@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'staff-profile', component: StaffProfileComponent},
   { path: 'add-administrator', component: AddAdministratorComponent},
   { path: 'working-schedule', component: WorkingScheduleComponent},
-  { path: 'appointment-staff', component: AppointmentStaffComponent},
+  { path: 'appointment-staff/:id', component: AppointmentStaffComponent},
   { path: 'history-examinations', component: HistoryExaminationsComponent},
   { path: 'login', component: LoginComponent},
   { path: 'add-center-appointment', component: AddCenterAppointmentComponent},
