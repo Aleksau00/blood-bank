@@ -47,7 +47,7 @@ export class CenterViewComponent implements OnInit {
   public bookAppointment(appointment: AppointmentUpdate) {
     this.appointmentService.bookAppointment(appointment, this.tokenStorageService.getUser().id).subscribe(
       res => {
-        console.log(res);
+        console.log(appointment);
         alert("Success");
         this.dialogRef.close()
       },
