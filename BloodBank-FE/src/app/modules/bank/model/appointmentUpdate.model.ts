@@ -17,8 +17,8 @@ export class AppointmentUpdate{
     status: number = 0;
     appointmentEquipment: number = 0;
     blood: Blood = new Blood();
-  
+
     public constructor(obj?:any) {
     }
-  
+
   }
