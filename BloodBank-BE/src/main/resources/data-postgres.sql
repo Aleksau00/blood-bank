@@ -25,21 +25,15 @@ insert into center (name, address_id, description, average_grade, start_time, en
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Health Clinic', '2', 'Health clinic for respiratory diseases', '5.0', '07:00', '18:00');
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('HCNS', '3', 'Ambulance', '4.0', '07:00', '21:00');
 insert into center (name, address_id, description, average_grade, start_time, end_time) values ('Dragise Misovica', '4', 'Ambulance', '2.0', '07:00', '21:00');
-<<<<<<< HEAD
-insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, center_id, is_first_login, penalties) values ('vanja@vanja.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, 2, false, 0);
-=======
-insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, is_first_login) values ('vanja@vanja.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, false);
->>>>>>> c8aa36cc7521d51bfac989fe5fb79fae596d3af4
+
+insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, is_first_login, penalties) values ('vanja@vanja.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, false, 0);
 insert into user_role (user_id, role_id) values (4, 3);
 insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, center_id, is_locked, is_enabled, penalties) values ('sanjica@sanjica.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Sanja', 'Kondic', '086746534', '1505994779876', 1,'Medical technician', 'staff', 2, 1, false, true, 0);
 insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, center_id, is_locked, is_enabled, penalties) values ('danica@danica.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Danica', 'Dakic', '086746573', '1807994779477', 1,'Medical technician', 'staff', 3, 2, false, true, 0);
 insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, center_id, is_locked, is_enabled, penalties) values ('saki@saki.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji', 'Slavica', 'Misic', '068665573', '1411987790440', 1,'Center administrator', 'staff', 1, 1, false, true, 0);
 
-<<<<<<< HEAD
-insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, center_id, is_first_login, penalties) values ('nemke@nemke.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, 2, true, 0);
-=======
-insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled,  is_first_login) values ('nemke@nemke.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, true);
->>>>>>> c8aa36cc7521d51bfac989fe5fb79fae596d3af4
+insert into app_user (username, password,  first_name, last_name, phone_number, umcn, gender, institution, role, address_id, is_locked, is_enabled, is_first_login, penalties) values ('nemke@nemke.com', '$2a$10$dDjrNg.RVyF4ozF/cr4auO3q6.AgihxSWUz.dqLI/OzoPZjSnXoji',  'Vanja', 'Krstic', '066756573', '2312990779440', 2,'System administrator', 'admin', 4, false, true, true, 0);
+
 insert into user_role (user_id, role_id) values (5, 2);
 insert into user_role (user_id, role_id) values (6, 2);
 insert into user_role (user_id, role_id) values (7, 2);
