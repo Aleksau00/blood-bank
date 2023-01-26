@@ -116,15 +116,26 @@ public class AppointmentController {
     }
 */
     @PreAuthorize("hasAuthority('USER')")
-    @PostMapping(consumes = "application/json", value = "/byUser/{id}")
-    public ResponseEntity<List<AppointmentDTO>> getAllUserAppointments(@PathVariable("id") Integer id){
-        List<Appointment> appointments = appointmentService.getAllUserAppointments(id);
+    @PostMapping(consumes = "application/json", value = "/byUserFuture/{id}")
+    public ResponseEntity<List<AppointmentDTO>> getAllFutureUserAppointments(@PathVariable("id") Integer id){
+        List<Appointment> appointments = appointmentService.getAllFutureUserAppointments(id);
         List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
         for (Appointment appointment : appointments){
             appointmentDTOS.add(new AppointmentDTO(appointment));
         }
     return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
-}
+    }
+
+    @PreAuthorize("hasAuthority('USER')")
+    @PostMapping(consumes = "application/json", value = "/byUserPast/{id}")
+    public ResponseEntity<List<AppointmentDTO>> getAllPastUserAppointments(@PathVariable("id") Integer id){
+        List<Appointment> appointments = appointmentService.getAllPastUserAppointments(id);
+        List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
+        for (Appointment appointment : appointments){
+            appointmentDTOS.add(new AppointmentDTO(appointment));
+        }
+        return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
+    }
 
 
     @PreAuthorize("hasAnyAuthority('USER')")
@@ -178,4 +189,27 @@ public class AppointmentController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping(value = "/allDurationAsc")
+    public ResponseEntity<List<AppointmentDTO>> getAllByDurationAsc(){
+        List<Appointment> appointments = appointmentService.findAllByOrderByDurationAsc();
+
+        List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
+        for (Appointment appointment : appointments){
+            appointmentDTOS.add(new AppointmentDTO(appointment.getId(),appointment.getDate(),appointment.getTime(),appointment.getDuration()));
+        }
+        return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
+    }
+    @GetMapping(value = "/allDurationDesc")
+    public ResponseEntity<List<AppointmentDTO>> getAllByDurationDesc(){
+        List<Appointment> appointments = appointmentService.findAllByOrderByDurationDesc();
+
+        List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
+        for (Appointment appointment : appointments){
+            appointmentDTOS.add(new AppointmentDTO(appointment.getId(),appointment.getDate(),appointment.getTime(),appointment.getDuration()));
+        }
+        return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
+    }
+
+
 }

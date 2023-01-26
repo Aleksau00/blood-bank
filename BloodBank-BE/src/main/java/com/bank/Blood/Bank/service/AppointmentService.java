@@ -26,7 +26,9 @@ public interface AppointmentService {
 
     //Appointment getCenterAppointment(Integer id);
 
-    List<Appointment> getAllUserAppointments(Integer id);
+    List<Appointment> getAllFutureUserAppointments(Integer id);
+
+    List<Appointment> getAllPastUserAppointments (Integer id);
 
     List<AppointmentViewDTO> findAllByCenterDate(Integer id);
 
@@ -36,4 +38,7 @@ public interface AppointmentService {
     Appointment getWantedAppointmentInCenter(Appointment appointment, Integer centerId);
 
     Boolean cancelAppointment(Integer id);
+
+    List<Appointment> findAllByOrderByDurationAsc();
+    List<Appointment> findAllByOrderByDurationDesc();
 }

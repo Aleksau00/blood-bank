@@ -30,6 +30,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -189,18 +190,47 @@ public class AppointmentServiceImpl implements AppointmentService {
         }
     }*/
 
-    public List<Appointment> getAllUserAppointments(Integer id) {
+    public List<Appointment> getAllFutureUserAppointments(Integer id) {
         List<Appointment> allAppointments = appointmentRepository.findAll();
         List<Appointment> userAppointments = new ArrayList<Appointment>();
         for(Appointment ap : allAppointments) {
             if(ap.getRegisteredUser() != null){
                 if(ap.getRegisteredUser().getId().equals(id)) {
-                    userAppointments.add(ap);
+                    if(ap.getDate().isAfter(LocalDate.now())) {
+                        userAppointments.add(ap);
+                    }
                 }
             }
         }
         return userAppointments;
     }
+
+    public List<Appointment> getAllPastUserAppointments(Integer id) {
+        List<Appointment> allAppointments = appointmentRepository.findAll();
+        List<Appointment> userAppointments = new ArrayList<Appointment>();
+        for(Appointment ap : allAppointments) {
+            if(ap.getRegisteredUser() != null){
+                if(ap.getRegisteredUser().getId().equals(id)) {
+                    if(ap.getDate().isBefore(LocalDate.now())) {
+                        userAppointments.add(ap);
+                    }
+                }
+            }
+        }
+        return userAppointments;
+    }
+
+    @Override
+    public List<Appointment> findAllByOrderByDurationDesc() {
+        return appointmentRepository.findAllByOrderByDurationDesc();
+    }
+
+    @Override
+    public List<Appointment> findAllByOrderByDurationAsc() {
+
+        return appointmentRepository.findAllByOrderByDurationAsc();
+    }
+
 
     @Override
     public void report(AppointmentReportDTO appointmentReportDTO){
