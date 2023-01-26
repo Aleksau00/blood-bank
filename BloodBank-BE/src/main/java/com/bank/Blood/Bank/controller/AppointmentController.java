@@ -236,7 +236,7 @@ public class AppointmentController {
 
     @GetMapping(value = "/allDateAsc/{id}")
     public ResponseEntity<List<AppointmentDTO>> getAllByDateAsc(@PathVariable Integer id){
-        List<Appointment> appointments = appointmentService.findAllByOrderByDateDesc();
+        List<Appointment> appointments = appointmentService.findAllByOrderByDateAsc();
 
         List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
         for (Appointment appointment : appointments) {

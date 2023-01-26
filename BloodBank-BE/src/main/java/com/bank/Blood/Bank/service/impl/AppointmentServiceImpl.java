@@ -321,7 +321,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         return pollService.isUserAbleToDonateBlood(id);
     }
     public List<AppointmentViewDTO> findAllByCenterDate(Integer id) {
-        List<Appointment> appointmentsSorted = appointmentRepository.findAllByOrderByDateAsc();
+        List<Appointment> appointmentsSorted = appointmentRepository.findAllByOrderByDateDesc();
         List<AppointmentViewDTO> appointments = new ArrayList<AppointmentViewDTO>();
         for (Appointment a: appointmentsSorted) {
             if (a.getCenter().getId().equals(id) && a.getRegisteredUser() == null) {

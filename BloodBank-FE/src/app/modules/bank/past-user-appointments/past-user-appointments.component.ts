@@ -19,7 +19,9 @@ export class PastUserAppointmentsComponent implements OnInit {
   displayedColumns: string[] = ['Date','Time'];
   methods: Method[] = [
     {value: 'DurationAsc', viewValue: 'Duration - MIN first'},
-    {value: 'DurationDesc', viewValue: 'Duration - MAX first'}
+    {value: 'DurationDesc', viewValue: 'Duration - MAX first'},
+    {value: 'DateAsc', viewValue: 'Date - MIN first'},
+    {value: 'DateDesc', viewValue: 'Date - MAX first'}
 
   ];
   method: Method = {value: 'DurationAsc', viewValue: 'Duration - Min first'};
