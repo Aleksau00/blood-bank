@@ -33,7 +33,7 @@ public class AppUserController {
     public AppUserController(AppUserService appUserService){
         this.appUserService = appUserService;
     }
-    @PreAuthorize("hasAnyAuthority('STAFF')")
+    @PreAuthorize("hasAnyAuthority('STAFF', 'ADMIN')")
     @GetMapping(value = "/all")
     public ResponseEntity<List<AppUserDTO>> getAllUsers() {
         List<AppUser> users = appUserService.findAll();

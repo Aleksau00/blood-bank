@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@Transactional
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "api/staff")
 public class StaffController {
