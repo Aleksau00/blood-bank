@@ -60,6 +60,11 @@ export class NavbarComponent implements OnInit {
   UserAppointments(): void {
     this.router.navigate(['/user-appointments']);
   }
+
+  PastUserAppointments(): void {
+    this.router.navigate(['/past-user-appointments']);
+  }
+
   ngOnInit(): void {
   }
 

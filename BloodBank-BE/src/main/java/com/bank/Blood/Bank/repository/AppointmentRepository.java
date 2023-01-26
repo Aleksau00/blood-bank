@@ -1,6 +1,7 @@
 package com.bank.Blood.Bank.repository;
 
 import com.bank.Blood.Bank.model.Appointment;
+import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.service.AppointmentService;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -18,6 +19,10 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
     List<Appointment> findAllByOrderByDateAsc();
 
     List<Appointment> findAllByOrderByTimeAsc();
+
+    public List<Appointment> findAllByOrderByDurationAsc();
+
+    public List<Appointment> findAllByOrderByDurationDesc();
 
 }
 

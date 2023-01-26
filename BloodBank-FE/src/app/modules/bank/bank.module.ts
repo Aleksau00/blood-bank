@@ -17,6 +17,7 @@ import {
 } from "./available-centers-for-appointment/available-centers-for-appointment.component";
 import {UserAppointmentsComponent} from "./user-appointments/user-appointments.component";
 import { CenterViewComponent } from './center-view/center-view.component';
+import {PastUserAppointmentsComponent} from "./past-user-appointments/past-user-appointments.component";
 
 
 
@@ -29,7 +30,8 @@ import { CenterViewComponent } from './center-view/center-view.component';
     AddUserAppointmentComponent,
     AvailableCentersForAppointments,
     UserAppointmentsComponent,
-    CenterViewComponent
+    CenterViewComponent,
+    PastUserAppointmentsComponent
 
   ],
   imports: [

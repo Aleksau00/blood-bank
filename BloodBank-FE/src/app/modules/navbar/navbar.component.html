@@ -14,6 +14,11 @@
         <span>My appointments</span>
       </button>
     </ul>
+    <ul>
+      <button *ngIf="isRegisteredUser()" style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="PastUserAppointments()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+        <span>Appointment history</span>
+      </button>
+    </ul>
   </li>
   <span class="example-spacer"></span>
   <div class="example-button-container">

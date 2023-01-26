@@ -1,6 +1,24 @@
 /* Structure */
 .example-container {
   position: relative;
+
+}
+
+.container {
+  background-color: #fff;
+  padding-bottom: 2%;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+  0 10px 10px rgba(0,0,0,0.22);
+  position: center;
+  overflow: hidden;
+  max-width: 100%;
+  min-height: 570px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  max-height: 98%;
+  width: 65%;
 }
 
 .example-table-container {
@@ -8,6 +26,7 @@
   min-height: 200px;
   max-height: 400px;
   overflow: auto;
+
 }
 
 table {
@@ -74,19 +93,7 @@ section {
   width: 120px;
 }
 
-.container {
-  background-color: #fff;
-  padding-bottom: 2%;
-  border-radius: 10px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-  0 10px 10px rgba(0,0,0,0.22);
-  position: center;
-  overflow: hidden;
-  max-width: 100%;
-  min-height: 570px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  max-height: 98%;
-  width: 65%;
+mat-form-field {
+  padding-top: 5%;
+  padding-left: 2%;
 }
