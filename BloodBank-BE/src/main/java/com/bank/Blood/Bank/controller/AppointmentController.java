@@ -191,23 +191,53 @@ public class AppointmentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping(value = "/allDurationAsc")
-    public ResponseEntity<List<AppointmentDTO>> getAllByDurationAsc(){
+    @GetMapping(value = "/allDurationAsc/{id}")
+    public ResponseEntity<List<AppointmentDTO>> getAllByDurationAsc(@PathVariable Integer id){
         List<Appointment> appointments = appointmentService.findAllByOrderByDurationAsc();
 
         List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
-        for (Appointment appointment : appointments){
-            appointmentDTOS.add(new AppointmentDTO(appointment.getId(),appointment.getDate(),appointment.getTime(),appointment.getDuration()));
+        for (Appointment appointment : appointments) {
+            if (appointment.getRegisteredUser() != null && appointment.getRegisteredUser().getId() == id) {
+                appointmentDTOS.add(new AppointmentDTO(appointment.getId(), appointment.getDate(), appointment.getTime(), appointment.getDuration()));
+            }
         }
         return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
     }
-    @GetMapping(value = "/allDurationDesc")
-    public ResponseEntity<List<AppointmentDTO>> getAllByDurationDesc(){
+    @GetMapping(value = "/allDurationDesc/{id}")
+    public ResponseEntity<List<AppointmentDTO>> getAllByDurationDesc(@PathVariable Integer id){
         List<Appointment> appointments = appointmentService.findAllByOrderByDurationDesc();
 
         List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
-        for (Appointment appointment : appointments){
-            appointmentDTOS.add(new AppointmentDTO(appointment.getId(),appointment.getDate(),appointment.getTime(),appointment.getDuration()));
+        for (Appointment appointment : appointments) {
+            if (appointment.getRegisteredUser() != null && appointment.getRegisteredUser().getId() == id) {
+                appointmentDTOS.add(new AppointmentDTO(appointment.getId(), appointment.getDate(), appointment.getTime(), appointment.getDuration()));
+            }
+        }
+        return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/allDateDesc/{id}")
+    public ResponseEntity<List<AppointmentDTO>> getAllByDateDesc(@PathVariable Integer id){
+        List<Appointment> appointments = appointmentService.findAllByOrderByDateDesc();
+
+        List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
+        for (Appointment appointment : appointments) {
+            if (appointment.getRegisteredUser() != null && appointment.getRegisteredUser().getId() == id) {
+                appointmentDTOS.add(new AppointmentDTO(appointment.getId(), appointment.getDate(), appointment.getTime(), appointment.getDuration()));
+            }
+        }
+        return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/allDateAsc/{id}")
+    public ResponseEntity<List<AppointmentDTO>> getAllByDateAsc(@PathVariable Integer id){
+        List<Appointment> appointments = appointmentService.findAllByOrderByDateDesc();
+
+        List<AppointmentDTO> appointmentDTOS = new ArrayList<>();
+        for (Appointment appointment : appointments) {
+            if (appointment.getRegisteredUser() != null && appointment.getRegisteredUser().getId() == id) {
+                appointmentDTOS.add(new AppointmentDTO(appointment.getId(), appointment.getDate(), appointment.getTime(), appointment.getDuration()));
+            }
         }
         return new ResponseEntity<>(appointmentDTOS, HttpStatus.OK);
     }

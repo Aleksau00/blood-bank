@@ -226,6 +226,16 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    public List<Appointment> findAllByOrderByDateDesc() {
+        return appointmentRepository.findAllByOrderByDateDesc();
+    }
+
+    @Override
+    public List<Appointment> findAllByOrderByDateAsc() {
+        return appointmentRepository.findAllByOrderByDateAsc();
+    }
+
+    @Override
     public List<Appointment> findAllByOrderByDurationAsc() {
 
         return appointmentRepository.findAllByOrderByDurationAsc();

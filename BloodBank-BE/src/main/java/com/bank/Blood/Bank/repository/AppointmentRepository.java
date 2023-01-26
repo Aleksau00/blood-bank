@@ -18,11 +18,11 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Intege
 
     List<Appointment> findAllByOrderByDateAsc();
 
-    List<Appointment> findAllByOrderByTimeAsc();
 
     public List<Appointment> findAllByOrderByDurationAsc();
 
     public List<Appointment> findAllByOrderByDurationDesc();
 
+    List<Appointment> findAllByOrderByDateDesc();
 }
 

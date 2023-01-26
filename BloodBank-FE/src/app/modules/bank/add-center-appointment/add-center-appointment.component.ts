@@ -31,6 +31,7 @@ export class AddCenterAppointmentComponent implements OnInit {
         alert("Appointment submitted.")
       });
     } catch (error) {
+      console.log("X")
       alert(error)
     }
   }

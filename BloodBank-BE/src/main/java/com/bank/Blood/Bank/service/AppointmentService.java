@@ -42,4 +42,7 @@ public interface AppointmentService {
 
     List<Appointment> findAllByOrderByDurationAsc();
     List<Appointment> findAllByOrderByDurationDesc();
+
+    List<Appointment> findAllByOrderByDateDesc();
+    List<Appointment> findAllByOrderByDateAsc();
 }

@@ -73,15 +73,15 @@ export class AppointmentService{
   }
 
   getPastAppointmentsByUserId(id: number): Observable<any>{
-    return this.http.post<any>(this.apiHost + 'api/appointments/byUserPast/' + id, {headers: this.headers});
+    return this.http.post<any>(this.apiHost + 'api/appointments/byUserPast/' + id,  {headers: this.headers});
   }
 
   cancelAppointment(id: number): Observable<any>{
     return this.http.put<any>(this.apiHost + 'api/appointments/cancel/' + id, {headers: this.headers});
   }
 
-  getAppointmentsSorted(method: Method): Observable<Appointment[]> {
+  getAppointmentsSorted(method: Method, id: number): Observable<Appointment[]> {
     console.log(method);
-    return this.http.get<Appointment[]>(this.apiHost + 'api/appointments/all'+method, {headers: this.headers});
+    return this.http.get<Appointment[]>(this.apiHost + 'api/appointments/all'+method+'/'+ id, {headers: this.headers});
   }
 }
