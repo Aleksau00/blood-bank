@@ -47,7 +47,7 @@ public class CenterController {
         }
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
-    @PermitAll
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<CenterDTO> getCenter(@PathVariable("id") Integer id){
          Center center = centerService.findOne(id);

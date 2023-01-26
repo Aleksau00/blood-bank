@@ -20,6 +20,7 @@ public class RegisteredUserDTO {
     private String institution;
     private Integer points;
     private Boolean isAuthenticated;
+    private Integer penalties;
     private LoyaltyCard loyaltyCard;
 
     public RegisteredUserDTO() {
@@ -29,10 +30,10 @@ public class RegisteredUserDTO {
     public RegisteredUserDTO(RegisteredUser appUser) {
         this(appUser.getId(), appUser.getAddress(), appUser.getUsername(), appUser.getFirstName(),
                 appUser.getLastName(), appUser.getPhoneNumber(), appUser.getUmcn(),
-                appUser.getGender(), appUser.getInstitution(), appUser.getPoints(), appUser.getLoyaltyCard());
+                appUser.getGender(), appUser.getInstitution(), appUser.getPoints(), appUser.getPenalties(), appUser.getLoyaltyCard());
     }
 
-    public RegisteredUserDTO(Integer id, Address address, String username, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution, Integer points,  LoyaltyCard loyaltyCard) {
+    public RegisteredUserDTO(Integer id, Address address, String username, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution, Integer penalties, Integer points,  LoyaltyCard loyaltyCard) {
         this.id = id;
         this.address = address;
         this.username = username;
@@ -43,12 +44,33 @@ public class RegisteredUserDTO {
         this.gender = gender;
         this.institution = institution;
         this.points = points;
+        this.penalties = penalties;
         this.loyaltyCard = loyaltyCard;
     }
 
     public RegisteredUserDTO(Optional<RegisteredUser> registeredUser) {
     }
 
+
+    public Integer getPenalties() {
+        return penalties;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPenalties(Integer penalties) {
+        this.penalties = penalties;
+    }
 
     public Boolean getAuthenticated() {
         return isAuthenticated;

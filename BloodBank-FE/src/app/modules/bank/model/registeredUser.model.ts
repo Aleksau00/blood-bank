@@ -16,6 +16,7 @@ export class RegisteredUser {
   isEnabled: boolean = false;
   appUserRole: string = '';
   loyaltyCard: LoyaltyCard = new LoyaltyCard();
+  penalties: number = 0;
 
 
   public constructor(obj?: any) {
@@ -34,6 +35,7 @@ export class RegisteredUser {
       this.isEnabled = obj.isEnabled;
       this.appUserRole = obj.appUserRole;
       this.loyaltyCard = obj.loyaltyCard;
+      this.penalties = obj?.penalties;
     }
   }
 }

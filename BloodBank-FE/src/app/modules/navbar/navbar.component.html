@@ -4,19 +4,24 @@
     <mat-icon> local_hospital</mat-icon>  <span>Blood bank</span>
   </button>
   <li class="items">
-    <ul>
-      <button *ngIf="isRegisteredUser()" style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="AddUserAppointment()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+    <ul *ngIf="isRegisteredUser()">
+      <button  style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="AddUserAppointment()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
           <span>Schedule an appointment</span>
       </button>
     </ul>
-    <ul>
-      <button *ngIf="isRegisteredUser()" style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="UserAppointments()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
-        <span>My appointments</span>
+    <ul *ngIf="isRegisteredUser()">
+      <button  style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="UserAppointments()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+        <span>My future appointments</span>
       </button>
     </ul>
-    <ul>
-      <button *ngIf="isRegisteredUser()" style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="PastUserAppointments()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+    <ul *ngIf="isRegisteredUser()">
+      <button  style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="PastUserAppointments()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
         <span>Appointment history</span>
+      </button>
+    </ul>
+    <ul  *ngIf="isStaff()">
+      <button style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="WorkingSchedule()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+        <span>My working schedule</span>
       </button>
     </ul>
   </li>

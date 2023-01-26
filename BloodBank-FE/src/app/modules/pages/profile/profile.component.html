@@ -14,18 +14,20 @@
       <mat-label class="mat-form-field" color="primary"><b> Phone number: </b></mat-label>
       <mat-label class="mat-form-field" color="primary"><b> Umcn: </b></mat-label>
       <mat-label class="mat-form-field" color="primary"><b> Institution: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Penalties: </b></mat-label>
       <mat-label class="mat-form-field" color="primary"><b> Address: </b></mat-label>
     </div>
     <div class="div-column">
       <mat-label class="mat-form-field" color="primary"> {{registeredUser?.firstName}} </mat-label>
       <mat-label class="mat-form-field" color="primary"> {{registeredUser?.username}} </mat-label>
-      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.points}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.penalties}} </mat-label>
       <mat-label class="mat-form-field" color="primary"> {{registeredUser?.lastName}} </mat-label>
       <mat-label class="mat-form-field" color="primary"> {{registeredUser!.loyaltyCard.name}} </mat-label>
       <mat-label class="mat-form-field" color="primary"> {{registeredUser?.gender}} </mat-label>
       <mat-label class="mat-form-field" color="primary"> {{registeredUser?.phoneNumber}} </mat-label>
       <mat-label class="mat-form-field" color="primary"> {{registeredUser?.umcn}} </mat-label>
       <mat-label class="mat-form-field" color="primary"> {{registeredUser?.institution}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.points}} </mat-label>
       <mat-label class="mat-form-field" color="primary"> {{registeredUser?.address?.street}} {{registeredUser?.address?.number}},
         {{registeredUser?.address?.city}}, {{registeredUser?.address?.postalCode}}
         {{registeredUser?.address?.country}}</mat-label>

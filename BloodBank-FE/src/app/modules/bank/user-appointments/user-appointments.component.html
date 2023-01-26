@@ -3,7 +3,7 @@
     <!-- Number Column -->
     <ng-container matColumnDef="Date">
       <th mat-header-cell matSort *matHeaderCellDef>Date</th>
-      <td mat-cell *matCellDef="let row">{{row.date}}</td>
+      <td mat-cell *matCellDef="let row">{{row.date | date: 'shortDate'}}</td>
     </ng-container>
     <ng-container matColumnDef="Time">
       <th mat-header-cell *matHeaderCellDef>Start time</th>

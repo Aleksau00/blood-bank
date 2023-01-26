@@ -61,6 +61,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/user-appointments']);
   }
 
+  WorkingSchedule(): void {
+    this.router.navigate(['/working-schedule']);
+  }
+
   PastUserAppointments(): void {
     this.router.navigate(['/past-user-appointments']);
   }

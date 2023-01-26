@@ -192,7 +192,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         for(Appointment ap : allAppointments) {
             if(ap.getRegisteredUser() != null){
                 if(ap.getRegisteredUser().getId().equals(id)) {
-                    if(ap.getDate().isAfter(LocalDate.now())) {
+                    if(ap.getDate().isAfter(LocalDate.now().minusDays(1))) {
                         userAppointments.add(ap);
                     }
                 }
