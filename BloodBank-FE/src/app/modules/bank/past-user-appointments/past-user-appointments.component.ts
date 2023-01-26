@@ -48,7 +48,7 @@ export class PastUserAppointmentsComponent implements OnInit {
 
   public sortAppointments(newValue : Method) {
     this.method = newValue;
-    this.appointmentService.getAppointmentsSorted(this.method).subscribe(res => {
+    this.appointmentService.getAppointmentsSorted(this.method, this.tokenStorageService.getUser().id).subscribe(res => {
       this.appointments = res;
     })
   }
