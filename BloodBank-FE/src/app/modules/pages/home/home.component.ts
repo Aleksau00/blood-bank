@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     {value: 'CityAsc', viewValue: 'City A-Z'},
     {value: 'CityDesc', viewValue: 'City Z-A'},
     {value: 'CountryAsc', viewValue: 'Country A-Z'},
-    {value: 'CountryDesc', viewValue: 'Country A-Z'},
+    {value: 'CountryDesc', viewValue: 'Country Z-A'},
     {value: 'AverageGradeAsc', viewValue: 'Avg. grade 0-5'},
     {value: 'AverageGradeDesc', viewValue: 'Avg. grade 5-0'}
 

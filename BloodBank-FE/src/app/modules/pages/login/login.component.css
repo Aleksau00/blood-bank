@@ -1,67 +1,21 @@
-.example-section {
-  margin: 12px 0;
-}
-
-#feedbackArea {
-  width: 346px;
-}
-
 .wrapper {
-  padding-top: 10rem;
-  box-shadow: #222831;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 10rem;
+}
+
+.form-wrapper {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-content: space-evenly;
+
 }
 
-
-
-
-
-
-
-.dialogButton {
-  margin: 4px;
-  color: white;
-}
-
-.dialogButtonCancel {
-  margin: 4px;
-}
-
-.mat-raised-button {
-  margin-left: 6px;
-}
-
-#addressButton{
-  margin-left: 2.5rem;
-}
-
-.mat-form-field {
-  margin: 10px;
-}
-
-.example-radio-group {
+.title-container {
   display: flex;
-  flex-direction: row;
-  padding-bottom: 10px;
-  padding-top: 5px;
-  align-items: flex-start;
-}
-
-.mat-footer-cell {
-  display: flex;
-  flex-direction: row;
-
-  align-items: flex-start;
-}
-
-.mat-label {
-  margin: 0 80px;
-
-}
-
-.mat-radio-button {
-  margin-left: 10px;
+  justify-content: center;
+  align-content: center;
 }

@@ -2,9 +2,18 @@
   flex: 1 1 auto;
 }
 
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
 mat-toolbar {
   background-color: #222831;
   color: #eeeeee;
+  margin: 0;
 }
 
 .mat-mini-fab {
@@ -20,6 +29,8 @@ mat-toolbar {
 .mat-raised-button {
   margin-left: 8px;
 }
+
+
 
 
 

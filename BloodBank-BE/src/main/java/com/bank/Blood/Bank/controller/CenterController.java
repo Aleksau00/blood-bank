@@ -131,7 +131,7 @@ public class CenterController {
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
 
-    @PermitAll
+
     @GetMapping(value = "/allAverageGradeAsc")
     public ResponseEntity<List<CenterDTO>> getAllByAverageGradeAsc(){
         List<Center> centerList = centerService.findAllByOrderByAverageGradeAsc();
@@ -142,7 +142,6 @@ public class CenterController {
         }
         return new ResponseEntity<>(centerDTOS, HttpStatus.OK);
     }
-    @PermitAll
     @GetMapping(value = "/allAverageGradeDesc")
     public ResponseEntity<List<CenterDTO>> getAllByAverageGradeDesc() {
         List<Center> centerList = centerService.findAllByOrderByAverageGradeDesc();

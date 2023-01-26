@@ -18,7 +18,6 @@ import java.util.Optional;
 @Service
 public class StaffServiceImpl implements StaffService {
 
-    @Autowired
     private StaffRepository staffRepository;
     private CenterRepository centerRepository;
     private AddressRepository addressRepository;
