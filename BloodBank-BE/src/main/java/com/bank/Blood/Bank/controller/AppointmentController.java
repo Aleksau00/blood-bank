@@ -70,6 +70,11 @@ public class AppointmentController {
         appointmentService.report(appointmentReportDTO);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @PreAuthorize("hasAnyAuthority('USER')")
+    @GetMapping(value = "/registered-user-history/{id}")
+    public ResponseEntity<List<AppointmentHistoryDTO>> getHistoryOfRegisteredUserAppointments(@PathVariable("id") int id) {
+        return new ResponseEntity<>(appointmentService.getHistoryOfRegisteredUserAppointments(id), HttpStatus.OK);
+    }
 
     @GetMapping(value = "/poll-result/{id}")
     public ResponseEntity<Boolean> isURegisteredUserAbleToDonateBlood(@PathVariable("id") int id) {

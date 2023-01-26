@@ -21,10 +21,6 @@ public interface CenterService {
    List<Center> findAllByOrderByAddressCountryDesc();
    List<Center> findAllByOrderByAverageGradeDesc();
    List<Center> findAllByOrderByAverageGradeAsc();
-   void changeBloodAndEquipment(Blood blood, Integer usedEquipment, Integer centerId);
-   void changeEquipment(Integer usedEquipment, Center center);
-   void changeBlood(Blood blood, Center center);
-   boolean BloodTypeExist(Blood blood, List<Blood> bloodList);
    List<Center> getAllAvailableCenters(Appointment appointment);
 
 }

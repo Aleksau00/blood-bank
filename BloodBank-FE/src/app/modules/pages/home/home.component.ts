@@ -9,6 +9,8 @@ import {Admin} from "../../bank/model/admin.model";
 import {Overlay} from "@angular/cdk/overlay";
 import {MatDialog} from "@angular/material/dialog";
 import {CenterViewComponent} from "../../bank/center-view/center-view.component";
+import { StaffService } from '../../bank/services/staff.service';
+import { UserToken } from '../../bank/model/user-token.model';
 
 
 export interface Method {
@@ -26,6 +28,8 @@ export class HomeComponent implements OnInit {
 
   public centers: Center[] = [];
   public admin: Admin = new Admin();
+  public havePermission: boolean = false;
+  public loggedUser: UserToken | undefined ;
 
   methods: Method[] = [
     {value: 'NameAsc', viewValue: 'Name A-Z'},
@@ -63,6 +67,11 @@ export class HomeComponent implements OnInit {
       }
     } )
 
+    this.loggedUser = this.tokenStorageService.getUser();
+    console.log("Ulogovani korisnik: ", this.loggedUser)
+    if (this.loggedUser.role.toString() == 'STAFF') {
+      this.havePermission = true;
+    }
   }
   public sortCenters(newValue : Method) {
     this.method = newValue;

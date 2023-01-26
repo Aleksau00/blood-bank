@@ -28,11 +28,10 @@ public class CenterServiceImpl implements CenterService {
 
     private CenterRepository centerRepository;
     private AddressRepository addressRepository;
-    @Lazy
     private AppointmentService appointmentService;
 
     @Autowired
-    public CenterServiceImpl(@Lazy  CenterRepository centerRepository, AddressRepository addressRepository,
+    public CenterServiceImpl(CenterRepository centerRepository, AddressRepository addressRepository,
                              AppointmentRepository appointmentRepository, AppointmentService appointmentService){
         this.centerRepository = centerRepository;
         this.addressRepository = addressRepository;
@@ -108,56 +107,6 @@ public class CenterServiceImpl implements CenterService {
         addressRepository.save(center.getAddress());
         return centerRepository.save(center);
     }
-
-    @Override
-    public void changeBloodAndEquipment(Blood blood, Integer usedEquipment, Integer centerId){
-        Optional<Center> optionalCenter = centerRepository.findById(centerId);
-        if(optionalCenter.isEmpty()){
-            return;
-        }
-        Center center = optionalCenter.get();
-        changeEquipment(usedEquipment, center);
-        changeBlood(blood, center);
-        centerRepository.save(center);
-    }
-
-    @Override
-    public void changeEquipment(Integer usedEquipment, Center center){
-        Integer newEquipment = center.getEquipment() - usedEquipment;
-        if(newEquipment < 0){
-            newEquipment = 0;
-        }
-        center.setEquipment(newEquipment);
-    }
-    @Override
-    public void changeBlood(Blood blood, Center center){
-        List<Blood> bloodList = center.getTypesOfBlood();
-        if(bloodList == null){
-            bloodList = new ArrayList<>();
-        }
-        if (!BloodTypeExist(blood, bloodList)){
-            bloodList.add(blood);
-        }
-        for (Blood b: bloodList){
-            if(blood.getType() == b.getType()){
-                int index = bloodList.indexOf(b);
-                b.setAmount(b.getAmount() + blood.getAmount());
-                bloodList.set(index, b);
-            }
-        }
-        center.setTypesOfBlood(bloodList);
-    }
-
-    @Override
-    public boolean BloodTypeExist(Blood blood, List<Blood> bloodList){
-        for(Blood b : bloodList){
-            if (blood.getType() == b.getType() && blood.getType().isPositive() == b.getType().isPositive()){
-                return true;
-            }
-        }
-        return false;
-    }
-
 
     public List<Center> getAllAvailableCenters(Appointment appointment) {
         List<Center> availableCenters = new ArrayList<>();

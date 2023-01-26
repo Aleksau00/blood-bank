@@ -1,8 +1,10 @@
 package com.bank.Blood.Bank.service;
 import com.bank.Blood.Bank.dto.AppoDTO;
+import com.bank.Blood.Bank.dto.AppointmentHistoryDTO;
 import com.bank.Blood.Bank.dto.AppointmentReportDTO;
 import com.bank.Blood.Bank.dto.AppointmentDTO;
 import com.bank.Blood.Bank.dto.AppointmentViewDTO;
+import com.bank.Blood.Bank.model.Blood;
 import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.model.Staff;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,9 @@ public interface AppointmentService {
     void report(AppointmentReportDTO appointmentReportDTO);
 
     void addAppointmentReport(AppointmentReportDTO appointmentReportDTO, Appointment appointment);
-
+    void changeBloodAndEquipment(Blood blood, Integer usedEquipment, Integer centerId);
+    void changeEquipment(Integer usedEquipment, Center center);
+    List<AppointmentHistoryDTO> getHistoryOfRegisteredUserAppointments(int id);
     boolean isURegisteredUserAbleToDonateBlood(int id);
     Appointment save(Appointment appointment, Integer id);
 

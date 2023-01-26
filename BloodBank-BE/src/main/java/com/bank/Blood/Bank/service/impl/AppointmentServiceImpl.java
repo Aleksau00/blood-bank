@@ -5,10 +5,7 @@ import com.bank.Blood.Bank.dto.*;
 import com.bank.Blood.Bank.enums.AppointmentStatus;
 import com.bank.Blood.Bank.appuser.RegisteredUserRepository;
 import com.bank.Blood.Bank.email.EmailSender;
-import com.bank.Blood.Bank.model.Appointment;
-import com.bank.Blood.Bank.model.Center;
-import com.bank.Blood.Bank.model.RegisteredUser;
-import com.bank.Blood.Bank.model.Staff;
+import com.bank.Blood.Bank.model.*;
 import com.bank.Blood.Bank.repository.AppointmentRepository;
 import com.bank.Blood.Bank.repository.CenterRepository;
 import com.bank.Blood.Bank.repository.StaffRepository;
@@ -17,7 +14,6 @@ import com.bank.Blood.Bank.service.CenterService;
 import com.bank.Blood.Bank.service.PollService;
 import com.bank.Blood.Bank.service.StaffService;
 import net.bytebuddy.asm.Advice;
-import org.hibernate.validator.internal.util.stereotypes.Lazy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -262,9 +258,52 @@ public class AppointmentServiceImpl implements AppointmentService {
             case FINISHED : {
                 appointment.setStatus(AppointmentStatus.FINISHED);
                 appointment.setDescription(appointmentReportDTO.getDescription());
-                centerService.changeBloodAndEquipment(appointmentReportDTO.getBlood(), appointmentReportDTO.getAppointmentEquipment(), appointment.getCenter().getId());
+                changeBloodAndEquipment(appointmentReportDTO.getBlood(), appointmentReportDTO.getAppointmentEquipment(), appointment.getCenter().getId());
             }
         }
+    }
+
+    @Override
+    public void changeBloodAndEquipment(Blood blood, Integer usedEquipment, Integer centerId){
+        Optional<Center> optionalCenter = centerRepository.findById(centerId);
+        if(optionalCenter.isEmpty()){
+            return;
+        }
+        Center center = optionalCenter.get();
+        changeEquipment(usedEquipment, center);
+        centerRepository.save(center);
+    }
+
+    @Override
+    public void changeEquipment(Integer usedEquipment, Center center){
+        Integer newEquipment = center.getEquipment() - usedEquipment;
+        if(newEquipment < 0){
+            newEquipment = 0;
+        }
+        center.setEquipment(newEquipment);
+    }
+
+    @Override
+    public List<AppointmentHistoryDTO> getHistoryOfRegisteredUserAppointments(int id) {
+        List<AppointmentHistoryDTO> historyOfRegisteredUser = new ArrayList<>();
+        List<Appointment> allAppointments = appointmentRepository.findAll();
+
+        for (Appointment appointment : allAppointments){
+            if(appointment.getStatus() == AppointmentStatus.FINISHED) {
+                if(appointment.getRegisteredUser().getId() == id) {
+                    AppointmentHistoryDTO a = new AppointmentHistoryDTO();
+                    a.setDescription(appointment.getDescription());
+                    a.setStatus(appointment.getStatus());
+                    a.setId(appointment.getId());
+                    a.setDate(appointment.getDate());
+                    a.setTime(appointment.getTime());
+                    a.setDuration(appointment.getDuration());
+
+                    historyOfRegisteredUser.add(a);
+                }
+            }
+        }
+        return historyOfRegisteredUser;
     }
 
     @Override
