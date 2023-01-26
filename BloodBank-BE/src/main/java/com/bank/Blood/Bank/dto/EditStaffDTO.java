@@ -2,8 +2,6 @@ package com.bank.Blood.Bank.dto;
 
 import com.bank.Blood.Bank.enums.Gender;
 import com.bank.Blood.Bank.model.Address;
-import com.bank.Blood.Bank.model.Appointment;
-import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.model.Staff;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,12 +26,14 @@ public class EditStaffDTO {
     private Gender gender;
     private String institution;
 
+    private CenterDTO center;
+
     public EditStaffDTO(Staff appUser){
         this(appUser.getId(), appUser.getAddress(), appUser.getUsername(), appUser.getPassword(), appUser.getFirstName(),
-                appUser.getLastName(), appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution());}
+                appUser.getLastName(), appUser.getPhoneNumber(), appUser.getUmcn(), appUser.getGender(), appUser.getInstitution(), new CenterDTO(appUser.getCenter()));}
 
 
-    public EditStaffDTO(Integer id,Address address, String username, String password, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution){
+    public EditStaffDTO(Integer id,Address address, String username, String password, String firstName, String lastName, String phoneNumber, String umcn, Gender gender, String institution, CenterDTO center){
         this.id = id;
         this.address = address;
         this.username = username;
@@ -44,6 +44,7 @@ public class EditStaffDTO {
         this.umcn = umcn;
         this.gender = gender;
         this.institution = institution;
+        this.center = center;
     }
 
 }

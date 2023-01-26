@@ -62,6 +62,12 @@ export class AppointmentService{
 
   }
 
+
+  getHistoryOfRegisteredUserAppointments(id: number): Observable<any>{
+    return this.http.get<any>(this.apiHost + 'api/appointments/registered-user-history/' + id, {headers: this.headers});
+  }
+
+
   bookAppointment(appointment: any, id: number): Observable<any>{
     return this.http.put<any>(this.apiHost + 'api/appointments/predefined/' + id, appointment, {headers: this.headers});
   }

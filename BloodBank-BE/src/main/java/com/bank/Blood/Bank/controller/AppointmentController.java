@@ -1,10 +1,6 @@
 package com.bank.Blood.Bank.controller;
 
-import com.bank.Blood.Bank.dto.AppointmentDTO;
-import com.bank.Blood.Bank.dto.AppointmentReportDTO;
-import com.bank.Blood.Bank.dto.AppointmentViewDTO;
-import com.bank.Blood.Bank.dto.CenterDTO;
-import com.bank.Blood.Bank.dto.RegisteredUserDTO;
+import com.bank.Blood.Bank.dto.*;
 import com.bank.Blood.Bank.model.Appointment;
 import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.service.AppointmentService;
@@ -73,6 +69,11 @@ public class AppointmentController {
     public ResponseEntity<Void> report(@RequestBody AppointmentReportDTO appointmentReportDTO){
         appointmentService.report(appointmentReportDTO);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PreAuthorize("hasAnyAuthority('USER')")
+    @GetMapping(value = "/registered-user-history/{id}")
+    public ResponseEntity<List<AppointmentHistoryDTO>> getHistoryOfRegisteredUserAppointments(@PathVariable("id") int id) {
+        return new ResponseEntity<>(appointmentService.getHistoryOfRegisteredUserAppointments(id), HttpStatus.OK);
     }
 
     @GetMapping(value = "/poll-result/{id}")

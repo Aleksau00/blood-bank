@@ -7,7 +7,7 @@ export class CenterDTO{
   averageGrade: number = 0;
   startTime: string = '';
   endTime: string = '';
-
+  id: number = 0;
 
   public constructor(obj?: any) {
     if (obj) {
@@ -17,6 +17,7 @@ export class CenterDTO{
       this.averageGrade = obj.averageGrade;
       this.startTime = obj.startTime;
       this.endTime = obj.endTime;
+      this.id = obj.id;
     }
   }
 }

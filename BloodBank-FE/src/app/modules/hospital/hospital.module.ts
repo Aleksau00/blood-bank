@@ -20,6 +20,8 @@ const routes: Routes = [
   { path: 'profile/update', component: UpdateProfileComponent },
   { path: 'staff-profile/update', component: StaffProfileUpdateComponent },
   { path: 'center/update', component: CenterUpdateComponent },
+  { path: 'history', component: HistoryExaminationsComponent },
+
 ];
 
 @NgModule({
