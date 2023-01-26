@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
+
 public class Center {
 
     @Id

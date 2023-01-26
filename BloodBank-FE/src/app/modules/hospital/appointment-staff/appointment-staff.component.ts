@@ -109,7 +109,8 @@ export class AppointmentStaffComponent implements OnInit {
     this.newAppointment.status = 1; // FINISHED
     this.newAppointment.blood.id = 1;
     this.newAppointment.blood.type = 0;
-    // this.newAppointment.center = 
+    this.newAppointment.blood.amount = 5.1;
+
 
     console.log("New Appointment ", this.newAppointment)
     this.appointmentService.report(this.newAppointment).subscribe({
