@@ -1,17 +1,20 @@
 <div class="wrapper">
-  <h1 mat-dialog-title class="mat-dialog-title">Sign up</h1>
-  <div  style="font-size: 11px">
-    <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+  <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+    <div class="form-wrapper">
       <div class="title-container">
-        <h1>Sign in</h1>
-        <span>or use your account</span>
+        <h1 style="color: rebeccapurple">Sign in</h1>
       </div>
-      <input type="text" placeholder="Email"  name="userId" formControlName="email"/>
-      <input type="password" placeholder="Password" formControlName="password"/>
-      <a href="#">Forgot your password?</a>
-      <button type="submit">Sign In</button>
-    </form>
+      <mat-form-field class="mat-form-field" color="primary" id="occupationInput" appearance="fill">
+        <mat-label >E-mail</mat-label>
+        <input class="mat-input-element" placeholder="E-mail" name="userId" formControlName="email" matInput>
+      </mat-form-field>
+      <mat-form-field class="mat-form-field" color="primary" id="passwordInput" appearance="fill">
+        <mat-label >Password</mat-label>
+        <input class="mat-input-element" placeholder="Password" name="passwordId" formControlName="password" matInput>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Sign In</button>
+    </div>
 
-  </div>
+
+  </form>
 </div>
-

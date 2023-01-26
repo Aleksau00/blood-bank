@@ -15,6 +15,7 @@ import {UserToken} from "../bank/model/user-token.model";
 export class NavbarComponent implements OnInit {
 
   user: UserToken;
+  role: any;
   isLoggedIn: boolean = false;
 
   constructor(private tokenStorageService: TokenStorageService, public dialog: MatDialog, private router: Router) {
@@ -62,6 +63,27 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isRegisteredUser(): boolean{
+    if(this.tokenStorageService.getUser().role.toString() == 'USER'){
+      return true;
+    }
+    return false;
+  }
+
+  isStaff(): boolean{
+    if(this.tokenStorageService.getUser().role.toString() == 'STAFF'){
+      return true;
+    }
+    return false;
+  }
+
+  isAdmin(): boolean{
+    if(this.tokenStorageService.getUser().role.toString() == 'ADMIN'){
+      return true;
+    }
+    return false;
+  }
+
   signOut() {
     this.tokenStorageService.signOut()
     this.router.navigate(['']).then(()=>{
@@ -69,4 +91,7 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  addCenter() {
+    this.router.navigate(['/system-administrator']);
+  }
 }

@@ -8,7 +8,8 @@
 }
 
 .mat-form-field {
-  margin: 10px;
+  padding: 10px;
+  margin-right: min(50px, 20%);
   font-size: 15px;
 }
 

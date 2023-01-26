@@ -1,26 +1,32 @@
 <mat-toolbar>
-  <button (click)="openHome()" mat-icon-button class="example\-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon> local_hospital</mat-icon>
+
+  <button style="font-size: 20px; background-color: transparent; color: white;" (click)="openHome()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon> local_hospital</mat-icon>  <span>Blood bank</span>
   </button>
-  <span>Blood bank</span>
+  <li class="items">
+    <ul>
+      <button  style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="AddUserAppointment()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+          <span>Schedule an appointment</span>
+      </button>
+    </ul>
+    <ul>
+      <button style="font-size: 14px; background-color: transparent; color: white; padding: 0;" (click)="UserAppointments()" mat-flat-button class="example\-icon" aria-label="Example icon-button with menu icon">
+        <span>My appointments</span>
+      </button>
+    </ul>
+  </li>
   <span class="example-spacer"></span>
   <div class="example-button-container">
-    <button mat-mini-fab class="mat-mini-fab" matTooltip="Add user appointments" (click)="AddUserAppointment()">
+    <button mat-mini-fab class="mat-mini-fab" *ngIf="isStaff()" matTooltip="Add center appointment" (click)="AddAppointment()">
       <mat-icon>assignment_add</mat-icon>
     </button>
-    <button mat-mini-fab class="mat-mini-fab" matTooltip="Add center appointment" (click)="AddAppointment()">
-      <mat-icon>assignment_add</mat-icon>
-    </button>
-    <button mat-mini-fab class="mat-mini-fab" matTooltip="Appointments" (click)="UserAppointments()">
-      <mat-icon>assignment icon</mat-icon>
-    </button>
-    <button mat-mini-fab class="mat-mini-fab" matTooltip="Fill out a poll" (click)="openDialogCreatePoll()" >
+    <button mat-mini-fab class="mat-mini-fab" *ngIf="isRegisteredUser()" matTooltip="Fill out a poll" (click)="openDialogCreatePoll()" >
       <mat-icon>add_comment</mat-icon>
     </button>
-    <button mat-mini-fab class="mat-mini-fab" matTooltip="Account info" (click)="AccountInfo()">
+    <button mat-mini-fab class="mat-mini-fab" *ngIf="isRegisteredUser()" matTooltip="Account info" (click)="AccountInfo()">
       <mat-icon>account_circle</mat-icon>
     </button>
-    <button mat-mini-fab class="mat-mini-fab" matTooltip="Add center" >
+    <button mat-mini-fab class="mat-mini-fab" *ngIf="isAdmin()" (click)="addCenter()" matTooltip="Add center" >
       <mat-icon>add</mat-icon>
     </button>
 

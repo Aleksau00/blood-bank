@@ -43,6 +43,10 @@ export class CreatePollComponent implements OnInit {
     return (this.poll.occupation != '' && this.poll.donationCount != 0 && this.consent)
   }
 
+  cancel(): void {
+    this.dialogRef.close();
+  }
+
   ngOnInit(): void {
     this.registeredUserService.getUser(this.tokenStorageService.getUser().id, this.tokenStorageService.getToken()!).subscribe(res => {
       this.user = res;
