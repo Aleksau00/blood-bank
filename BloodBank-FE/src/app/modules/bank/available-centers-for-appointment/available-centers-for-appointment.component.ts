@@ -10,6 +10,8 @@ import {CenterService} from "../services/center.service";
 import {TokenStorageService} from "../services/token-storage.service";
 import {MatSelectChange} from "@angular/material/select";
 import { AppointmentUpdate } from '../model/appointmentUpdate.model';
+import {AppointmentUpdateDTO} from "../dto/appointmentUpdateDTO.model";
+import {addDays} from "@syncfusion/ej2-angular-schedule";
 
 export interface Method {
   value: string;
@@ -33,19 +35,28 @@ export class AvailableCentersForAppointments implements OnInit {
   }
 
   centers: Center[] = [];
-  appointment: AppointmentUpdate = new AppointmentUpdate();
+  appointment: AppointmentUpdateDTO = new AppointmentUpdateDTO();
+  appointmentFull: AppointmentUpdate =  new AppointmentUpdate();
 
 
 
   ngOnInit(): void {
+
+    this.appointment.duration = 30;
     this.appointment.date = this.data.date;
+    addDays(this.appointment.date, 1);
+    console.log(this.appointment)
     this.appointment.time = this.data.time;
-    this.appointment.registeredUserDTO = this.data.registeredUserDTO;
     this.centerService.getCenterSuggestions(this.appointment).subscribe(
       res => {
         this.centers = res;
       }
     );
+  }
+
+   addDays(date: Date, days: number) {
+    date.setDate(date.getDate() + days);
+    return date;
   }
 
   public sortCenters() {
@@ -61,20 +72,28 @@ export class AvailableCentersForAppointments implements OnInit {
       alert("Fields cannot be empty.");
       return;
     }
+
+
     try {
       //this.appointment = this.appointmentService.getCenterAppointment(center.id, this.data.date, this.data.time);
-      this.appointment.registeredUserDTO.id = this.tokenStorageService.getUser().id;
       this.appointmentService.getWantedAppointment(this.appointment, center.id).subscribe(res => {
-        this.appointment = res;
-        //this.dialogRef.close(0);
+        console.log(res);
+        this.appointmentFull = res;
+        this.appointmentService.bookAppointment(this.appointmentFull, this.tokenStorageService.getUser().id).subscribe(res => {
+          this.appointment = res;
+
+        });
+
+
       });
-      this.appointmentService.bookAppointment(this.appointment, this.tokenStorageService.getUser().id).subscribe(res => {
-        this.appointment = res;
-        this.dialogRef.close(0);
-      });
+      this.dialogRef.close();
+      alert("Successfully scheduled an appointment")
+
     } catch (error) {
+      console.log("X")
       this.dialogRef.close(1);
     }
+
   }
   public isValidInput(): boolean {
     return true;

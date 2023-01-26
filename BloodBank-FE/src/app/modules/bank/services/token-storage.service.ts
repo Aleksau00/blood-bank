@@ -26,12 +26,9 @@ export class TokenStorageService {
     return !!window.sessionStorage.getItem(TOKEN_KEY);
   }
   public saveUser(token: string): void {
-    console.log(token)
     let user:string = atob(token.split('.')[1]);
     let userObject = JSON.parse(user)
-    console.log(userObject)
     let userTk:UserToken = new UserToken(userObject.sub,userObject.id,userObject.role);
-    console.log(userTk)
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(userTk));
 
@@ -39,7 +36,6 @@ export class TokenStorageService {
   public getUser(): UserToken {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
-      console.log(window.sessionStorage.getItem(USER_KEY))
       return JSON.parse(user);
     }
     return new UserToken("",0,0);

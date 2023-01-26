@@ -29,9 +29,9 @@ export class UserAppointmentsComponent implements OnInit {
 
   canCancel(date: Date): boolean{
     if(date == new Date()){
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   public initAppointments(): void {

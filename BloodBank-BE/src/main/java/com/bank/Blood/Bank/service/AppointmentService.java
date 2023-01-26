@@ -1,4 +1,5 @@
 package com.bank.Blood.Bank.service;
+import com.bank.Blood.Bank.dto.AppoDTO;
 import com.bank.Blood.Bank.dto.AppointmentReportDTO;
 import com.bank.Blood.Bank.dto.AppointmentDTO;
 import com.bank.Blood.Bank.dto.AppointmentViewDTO;
@@ -33,7 +34,7 @@ public interface AppointmentService {
     List<AppointmentViewDTO> findAllByCenterTime(Integer id);
 
     Appointment savePredefined(AppointmentViewDTO appointmentViewDTO, Integer id);
-    Appointment getWantedAppointmentInCenter(Appointment appointment, Integer centerId);
+    Appointment getWantedAppointmentInCenter(AppoDTO appointment, Integer centerId);
 
     Boolean cancelAppointment(Integer id);
 }

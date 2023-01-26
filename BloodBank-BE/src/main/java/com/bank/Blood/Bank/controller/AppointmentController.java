@@ -1,10 +1,6 @@
 package com.bank.Blood.Bank.controller;
 
-import com.bank.Blood.Bank.dto.AppointmentDTO;
-import com.bank.Blood.Bank.dto.AppointmentReportDTO;
-import com.bank.Blood.Bank.dto.AppointmentViewDTO;
-import com.bank.Blood.Bank.dto.CenterDTO;
-import com.bank.Blood.Bank.dto.RegisteredUserDTO;
+import com.bank.Blood.Bank.dto.*;
 import com.bank.Blood.Bank.model.Appointment;
 import com.bank.Blood.Bank.model.Center;
 import com.bank.Blood.Bank.service.AppointmentService;
@@ -159,13 +155,15 @@ public class AppointmentController {
     }
 
     @PreAuthorize("hasAuthority('USER')")
-    @PostMapping(value = "/wanted/{id}")
-    public ResponseEntity<Appointment> getWantedAppointmentInCenter(@RequestBody Appointment appointment, @PathVariable("id") Integer centerId){
+    @PostMapping(consumes = "application/json", value = "/wanted/{id}")
+    public ResponseEntity<AppointmentNoStaffDTO> getWantedAppointmentInCenter(@RequestBody AppoDTO appointment, @PathVariable("id") Integer centerId){
         Appointment wantedAppointment = appointmentService.getWantedAppointmentInCenter(appointment, centerId);
+        AppointmentNoStaffDTO a = new AppointmentNoStaffDTO(wantedAppointment.getId(), wantedAppointment.getDate(), wantedAppointment.getTime(), wantedAppointment.getDuration());
         if (wantedAppointment == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }else {
-            return new ResponseEntity<>(HttpStatus.OK);
+
+            return new ResponseEntity<>(a, HttpStatus.OK);
         }
     }
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN', 'STAFF')")

@@ -1,12 +1,9 @@
 package com.bank.Blood.Bank.service.impl;
 
 import com.bank.Blood.Bank.appuser.RegisteredUserService;
-import com.bank.Blood.Bank.dto.AppointmentReportDTO;
+import com.bank.Blood.Bank.dto.*;
 import com.bank.Blood.Bank.enums.AppointmentStatus;
 import com.bank.Blood.Bank.appuser.RegisteredUserRepository;
-import com.bank.Blood.Bank.dto.AppointmentDTO;
-import com.bank.Blood.Bank.dto.AppointmentViewDTO;
-import com.bank.Blood.Bank.dto.RegisteredUserDTO;
 import com.bank.Blood.Bank.email.EmailSender;
 import com.bank.Blood.Bank.model.Appointment;
 import com.bank.Blood.Bank.model.Center;
@@ -24,6 +21,8 @@ import org.hibernate.validator.internal.util.stereotypes.Lazy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.Duration;
@@ -32,6 +31,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
@@ -274,8 +274,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointments;
     }
 
+
     @Override
     public Appointment savePredefined(AppointmentViewDTO appointmentViewDTO, Integer id) {
+        System.out.println(appointmentViewDTO);
         Optional<Appointment> appointment = appointmentRepository.findById(appointmentViewDTO.getId());
         Optional<RegisteredUser> registeredUser = registeredUserRepository.findById(id);
         appointment.get().setRegisteredUser(registeredUser.get());
@@ -286,8 +288,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentRepository.save(appointment.get());
     }
     @Override
-    public Appointment getWantedAppointmentInCenter(Appointment appointment,Integer centerId) {
-        List<Appointment> centersAppointmetd = appointmentRepository.findAllByCenter(centerId);
+    public Appointment getWantedAppointmentInCenter(AppoDTO appointment, Integer centerId) {
+        List<Appointment> centersAppointmetd = appointmentRepository.findAllByCenterId(centerId);
+        LocalDate realDate = appointment.getDate().plusDays(1);
+        appointment.setDate(realDate);
 
             for(Appointment centerAppointment : centersAppointmetd) {
                 if(hasAppointment(centerAppointment,appointment)) {
@@ -299,7 +303,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 
 
-    public boolean hasAppointment(Appointment centerAppointment, Appointment appointment) {
+    public boolean hasAppointment(Appointment centerAppointment, AppoDTO appointment) {
         LocalTime centerAppointmentStartTime = centerAppointment.getTime();
         Duration centerAppointmentDuration = Duration.ofMinutes(centerAppointment.getDuration());
         LocalTime centerAppointmentEndTime = centerAppointmentStartTime.plus(centerAppointmentDuration);
@@ -307,7 +311,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
         LocalTime newAppointmentStartTime = appointment.getTime();
         LocalTime newAppointmentEndTime = newAppointmentStartTime.plusMinutes(30);
-        LocalDate newAppointmentDate = appointment.getDate().plusDays(1);
+        LocalDate newAppointmentDate = appointment.getDate();
 
         if(centerAppointmentDate.equals(newAppointmentDate)) {
             /*

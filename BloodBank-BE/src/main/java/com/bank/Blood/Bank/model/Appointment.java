@@ -22,6 +22,8 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "registered_user_id", nullable = true)
     private RegisteredUser registeredUser;
