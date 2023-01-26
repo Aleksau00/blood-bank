@@ -338,7 +338,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<AppointmentViewDTO> findAllByCenterTime(Integer id) {
-        List<Appointment> appointmentsSorted = appointmentRepository.findAllByOrderByTimeAsc();
+        List<Appointment> appointmentsSorted = appointmentRepository.findAllByOrderByDateAsc();
         List<AppointmentViewDTO> appointments = new ArrayList<AppointmentViewDTO>();
         for (Appointment a: appointmentsSorted) {
             if (a.getCenter().getId().equals(id) && a.getRegisteredUser() == null && a.getDate().isAfter(LocalDate.now().plusDays(1))) {
