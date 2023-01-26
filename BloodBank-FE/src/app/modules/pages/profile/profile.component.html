@@ -1,41 +1,37 @@
-<div>
-</div>
-<div class="wrapper" >
-  <div class="h2">
-    <div class="title-edit">
-      <h2>Personal profile</h2>
-      <mat-icon (click)="editProfile()">edit</mat-icon>
+<div class="screen">
+  <div class="title">
+    <h2>Personal profile</h2>
+    <mat-icon (click)="editProfile()">edit</mat-icon>
+  </div>
+  <div class="content">
+    <div class="div-column">
+      <mat-label class="mat-form-field" color="primary"><b> Name: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Username: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Points: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Surname: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Loyalty status: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Gender: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Phone number: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Umcn: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Institution: </b></mat-label>
+      <mat-label class="mat-form-field" color="primary"><b> Address: </b></mat-label>
+    </div>
+    <div class="div-column">
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.firstName}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.username}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.points}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.lastName}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser!.loyaltyCard.name}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.gender}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.phoneNumber}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.umcn}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.institution}} </mat-label>
+      <mat-label class="mat-form-field" color="primary"> {{registeredUser?.address?.street}} {{registeredUser?.address?.number}},
+        {{registeredUser?.address?.city}}, {{registeredUser?.address?.postalCode}}
+        {{registeredUser?.address?.country}}</mat-label>
     </div>
   </div>
-  <p>
-    <mat-label class="mat-form-field" color="primary"><b> Name: </b></mat-label>
-    <mat-label class="mat-form-field" color="primary"> {{registeredUser?.firstName}} </mat-label>
-    <mat-label class="mat-form-field" color="primary"><b> Username: </b></mat-label>
-    <mat-label class="mat-form-field" color="primary"> {{registeredUser?.username}} </mat-label>
-    <mat-label class="mat-form-field" color="primary"><b> Points: </b></mat-label>
-    <mat-label class="mat-form-field" color="primary"> {{registeredUser?.points}} </mat-label>
-  </p>
-  <p>
-    <mat-label class="mat-form-field" color="primary"><b> Surname: </b></mat-label>
-    <mat-label class="mat-form-field" color="primary"> {{registeredUser?.lastName}} </mat-label>
-    <mat-label class="mat-form-field" color="primary"><b> Loyalty status: </b></mat-label>
-    <mat-label class="mat-form-field" color="primary"> {{registeredUser!.loyaltyCard.name}} </mat-label>
-  </p><p>
-  <mat-label class="mat-form-field" color="primary"><b> Gender: </b></mat-label>
-  <mat-label class="mat-form-field" color="primary"> {{registeredUser?.gender}} </mat-label>
-  <mat-label class="mat-form-field" color="primary"><b> Phone number: </b></mat-label>
-  <mat-label class="mat-form-field" color="primary"> {{registeredUser?.phoneNumber}} </mat-label>
-</p><p>
-  <mat-label class="mat-form-field" color="primary"><b> Umcn: </b></mat-label>
-  <mat-label class="mat-form-field" color="primary"> {{registeredUser?.umcn}} </mat-label>
-  <mat-label class="mat-form-field" color="primary"><b> Institution: </b></mat-label>
-  <mat-label class="mat-form-field" color="primary"> {{registeredUser?.institution}} </mat-label>
-</p>
-  <p>
-    <mat-label class="mat-form-field" color="primary"><b> Address: </b></mat-label>
-    <mat-label class="mat-form-field" color="primary"> {{registeredUser?.address?.street}} {{registeredUser?.address?.number}},
-      {{registeredUser?.address?.city}}, {{registeredUser?.address?.postalCode}}
-      {{registeredUser?.address?.country}}</mat-label>
-  </p>
 </div>
+
+
 

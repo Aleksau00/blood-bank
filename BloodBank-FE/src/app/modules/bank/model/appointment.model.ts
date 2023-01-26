@@ -12,7 +12,7 @@ export class Appointment{
     CANCELED,
     FINISHED,
     DENIED
-  */  
+  */
 
   public constructor(obj?:any) {
   }

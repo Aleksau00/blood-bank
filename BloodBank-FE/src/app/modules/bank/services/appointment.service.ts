@@ -43,7 +43,7 @@ export class AppointmentService{
   getAllByUser(id: number): Observable<Appointment[]>{
     return this.http.get<Appointment[]>(this.apiHost + 'api/appointments/users/' + id, {headers: this.headers});
   }
-  
+
   report(updatedAppointment: AppointmentUpdate): Observable<any>{
     return  this.http.post<any>(this.apiHost + 'api/appointments/report', updatedAppointment, {headers: this.headers});
   }

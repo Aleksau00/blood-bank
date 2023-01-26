@@ -10,6 +10,7 @@ import {CenterService} from "../services/center.service";
 import {TokenStorageService} from "../services/token-storage.service";
 import {MatSelectChange} from "@angular/material/select";
 import { AppointmentUpdate } from '../model/appointmentUpdate.model';
+import {UserAppointmentUpdate} from "../model/userAppointmentUpdate.model";
 
 export interface Method {
   value: string;
@@ -33,7 +34,7 @@ export class AvailableCentersForAppointments implements OnInit {
   }
 
   centers: Center[] = [];
-  appointment: AppointmentUpdate = new AppointmentUpdate();
+  appointment: UserAppointmentUpdate = new UserAppointmentUpdate();
 
 
 
@@ -57,18 +58,23 @@ export class AvailableCentersForAppointments implements OnInit {
   //}
 
   public createAppointment(center: any) {
+    console.log("da li ovo uopste dodje ovde 1")
     if (!this.isValidInput()) {
       alert("Fields cannot be empty.");
       return;
     }
     try {
+      console.log("da li ovo uopste dodje ovde 2")
       //this.appointment = this.appointmentService.getCenterAppointment(center.id, this.data.date, this.data.time);
       this.appointment.registeredUserDTO.id = this.tokenStorageService.getUser().id;
       this.appointmentService.getWantedAppointment(this.appointment, center.id).subscribe(res => {
+        console.log("da li ovo uopste dodje ovde 3")
         this.appointment = res;
         //this.dialogRef.close(0);
+
       });
       this.appointmentService.bookAppointment(this.appointment, this.tokenStorageService.getUser().id).subscribe(res => {
+        console.log("a ovdeeeeeeee")
         this.appointment = res;
         this.dialogRef.close(0);
       });
