@@ -12,6 +12,14 @@
       <input type="number" [(ngModel)]="poll.donationCount" matInput>
     </mat-form-field>
   </p>
+
+  <mat-checkbox color="primary" class="example-margin" [(ngModel)]="poll.question1"><i>Do you feel healthy, capable, rested?</i></mat-checkbox>
+  <mat-checkbox color="primary" class="example-margin" [(ngModel)]="poll.question2"><i>Are there any changes on your skin or infections?</i></mat-checkbox>
+  <mat-checkbox color="primary" class="example-margin" [(ngModel)]="poll.question3"><i>Is your blood pressure too high or too low?</i></mat-checkbox>
+  <mat-checkbox color="primary" class="example-margin" [(ngModel)]="poll.question4"><i>Were you on therapy in the past seven days?</i></mat-checkbox>
+  <mat-checkbox color="primary" class="example-margin" [(ngModel)]="poll.question5"><i>Are you under your menstrual cycle? (female)</i></mat-checkbox>
+  <mat-checkbox color="primary" class="example-margin" [(ngModel)]="poll.question6"><i>Did you have a dental intervention in the past seven days?</i></mat-checkbox>
+  <mat-checkbox color="primary" class="example-margin" [(ngModel)]="poll.question7"><i>Did you have any tattoos, piercings in the past 6 months?</i></mat-checkbox>
   <section class="example-section">
     <mat-checkbox color="primary" labelPosition="after" class="example-margin" [(ngModel)]="consent">I agree to share my public profile information.</mat-checkbox>
   </section>
