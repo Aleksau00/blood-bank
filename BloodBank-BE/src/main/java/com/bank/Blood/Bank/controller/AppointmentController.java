@@ -97,6 +97,9 @@ public class AppointmentController {
         app.setRegisteredUser(appointment.getRegisteredUser());
         app.setCenter(appointment.getCenter());
         app = appointmentService.save(app, id);
+        if (app == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
         return new ResponseEntity<>(new Appointment(app.getId(),app.getDate(), app.getTime(), app.getDuration(), app.getRegisteredUser(), app.getCenter()), HttpStatus.CREATED);
     }
 /*

@@ -90,7 +90,7 @@ export class AvailableCentersForAppointments implements OnInit {
       alert("Successfully scheduled an appointment")
 
     } catch (error) {
-      console.log("X")
+      alert("Center not available at this time")
       this.dialogRef.close(1);
     }
 
